@@ -1,5 +1,11 @@
+import RootLayout from "../layout";
+
 const CompletedOrders = () => {
-  return <main>Completed Orders</main>;
+  return (
+    <RootLayout showNavbar={true}>
+      <main>Completed Orders</main>
+    </RootLayout>
+  );
 };
 
 export default CompletedOrders;

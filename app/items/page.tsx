@@ -1,5 +1,11 @@
+import RootLayout from "../layout";
+
 const Items = () => {
-  return <main>Items</main>;
+  return (
+    <RootLayout showNavbar={true}>
+      <main>Items</main>
+    </RootLayout>
+  );
 };
 
 export default Items;

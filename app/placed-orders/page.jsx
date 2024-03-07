@@ -1,5 +1,11 @@
+import RootLayout from "../layout";
+
 const PlacedOrders = () => {
-  return <main>Placed Orders</main>;
+  return (
+    <RootLayout showNavbar={true}>
+      <main>Items</main>
+    </RootLayout>
+  );
 };
 
 export default PlacedOrders;
