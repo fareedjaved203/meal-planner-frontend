@@ -1,9 +1,10 @@
+import MainLayout from "../components/shared/MainLayout";
 import RootLayout from "./layout";
 
 const Home = () => {
   return (
     <RootLayout showNavbar={true}>
-      <div>main page</div>
+      <div>Main Page</div>
     </RootLayout>
   );
 };

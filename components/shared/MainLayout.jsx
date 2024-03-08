@@ -1,15 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
 import { Layout, Menu, theme } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 import {
-  DashboardOutlined,
-  OrderedListOutlined,
-  CheckCircleOutlined,
-  ShopOutlined,
-  QuestionCircleOutlined,
   LogoutOutlined,
   AppstoreFilled,
   ShoppingCartOutlined,
@@ -18,26 +14,12 @@ import {
   QuestionCircleFilled,
 } from "@ant-design/icons";
 
-const items = [
-  { key: "1", label: "Dashboard", icon: <DashboardOutlined /> },
-  { key: "2", label: "Placed Orders", icon: <OrderedListOutlined /> },
-  { key: "3", label: "Completed Orders", icon: <CheckCircleOutlined /> },
-  { key: "4", label: "Items", icon: <ShopOutlined /> },
-  { key: "5", type: "divider" },
-  { key: "6", label: "Help", icon: <QuestionCircleOutlined /> },
-  { key: "7", label: "Logout", icon: <LogoutOutlined />, position: "bottom" },
-].map((item) => {
-  if (item.type === "divider") {
-    return { type: "divider" };
-  }
-  return {
-    key: item.key,
-    icon: item.icon,
-    label: item.label,
-    position: item.position,
+const MainLayout = ({ children }) => {
+  const [selectedKey, setSelectedKey] = useState("1");
+
+  const onMenuClick = (e) => {
+    setSelectedKey(e.key);
   };
-});
-const MainLayout = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -51,7 +33,7 @@ const MainLayout = () => {
           left: 0,
           top: 0,
           bottom: 0,
-          backgroundColor: "white", // Set the background color to white
+          backgroundColor: "white",
         }}
       >
         <Image
@@ -65,6 +47,9 @@ const MainLayout = () => {
           theme="light"
           mode="inline"
           defaultSelectedKeys={["1"]}
+          selectedKeys={[selectedKey]}
+          onClick={onMenuClick}
+          className="my-menu"
           style={{
             height: "100%",
             borderRight: 0,
@@ -77,7 +62,7 @@ const MainLayout = () => {
             icon={<AppstoreFilled />}
             style={{ whiteSpace: "normal", lineHeight: 1.375 }}
           >
-            Dashboard
+            <Link href="/">Dashboard</Link>
           </Menu.Item>
           <Menu.Item
             key="2"
@@ -88,7 +73,7 @@ const MainLayout = () => {
               marginTop: "20px",
             }}
           >
-            Placed Orders
+            <Link href="placed-orders">Placed Orders</Link>
           </Menu.Item>
           <Menu.Item
             key="3"
@@ -99,7 +84,7 @@ const MainLayout = () => {
               marginTop: "20px",
             }}
           >
-            Completed Orders
+            <Link href="completed-orders">Completed Orders</Link>
           </Menu.Item>
           <Menu.Item
             key="4"
@@ -110,7 +95,7 @@ const MainLayout = () => {
               marginTop: "20px",
             }}
           >
-            Items
+            <Link href="/items">Items</Link>
           </Menu.Item>
           <div className="m-4 text-white">.</div>
           <hr className="p-2 m-4 mb-0" />
@@ -123,13 +108,13 @@ const MainLayout = () => {
               marginTop: "20px",
             }}
           >
-            Help
+            <Link href="/">Help</Link>
           </Menu.Item>
         </Menu>
         <div style={{ position: "absolute", bottom: 0, width: "100%" }}>
           <Menu theme="light" mode="inline">
             <Menu.Item key="6" icon={<LogoutOutlined />}>
-              Logout
+              <Link href="/login">Logout</Link>
             </Menu.Item>
           </Menu>
         </div>
@@ -161,21 +146,7 @@ const MainLayout = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <p>long content</p>
-            {
-              // indicates very long content
-              Array.from(
-                {
-                  length: 100,
-                },
-                (_, index) => (
-                  <React.Fragment key={index}>
-                    {index % 20 === 0 && index ? "more" : "..."}
-                    <br />
-                  </React.Fragment>
-                )
-              )
-            }
+            {children}
           </div>
         </Content>
       </Layout>

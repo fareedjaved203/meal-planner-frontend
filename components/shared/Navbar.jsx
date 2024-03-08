@@ -42,7 +42,7 @@ const Navbar = () => {
         </span>
       </div>
       <div className="flex items-center">
-        <span className="mr-2 max-sm:hidden">{username}</span>
+        <span className="mr-4 max-sm:hidden font-bold">{username}</span>
         <img
           src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
           width={400}

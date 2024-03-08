@@ -16,12 +16,9 @@ export default function RootLayout({ children, showNavbar = false }) {
   return (
     <html lang="en">
       <body>
-        {showNavbar && (
-          <>
-            <MainLayout />
-          </>
-        )}
-        <AntdRegistry>{children}</AntdRegistry>
+        <AntdRegistry>
+          {showNavbar ? <MainLayout>{children}</MainLayout> : <>{children}</>}
+        </AntdRegistry>
       </body>
     </html>
   );
