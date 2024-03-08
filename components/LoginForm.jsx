@@ -15,8 +15,8 @@ const LoginForm = () => {
         </div>
         {/* right section */}
 
-        <div className="bg-white md:w-1/2 p-4 flex items-center justify-center">
-          <div class="p-4 md:w-3/4">
+        <div className="bg-white md:w-1/2 w-full p-4 flex items-center justify-center">
+          <div class="p-4 md:w-3/4 w-full">
             <div className="mb-4">
               <div className="text-2xl mb-4 flex items-center">
                 <Image

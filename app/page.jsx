@@ -3,7 +3,7 @@ import RootLayout from "./layout";
 const Home = () => {
   return (
     <RootLayout showNavbar={true}>
-      <main>Meal Planner Home Page</main>;
+      <div>main page</div>
     </RootLayout>
   );
 };

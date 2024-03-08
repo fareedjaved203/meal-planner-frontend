@@ -1,7 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "@fontsource/mulish";
-import Navbar from "../components/shared/Navbar";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import Layout from "../components/shared/MainLayout";
+import MainLayout from "../components/shared/MainLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,9 +15,13 @@ export const metadata = {
 export default function RootLayout({ children, showNavbar = false }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {showNavbar && <Navbar />}
-        {children}
+      <body>
+        {showNavbar && (
+          <>
+            <MainLayout />
+          </>
+        )}
+        <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>
   );
