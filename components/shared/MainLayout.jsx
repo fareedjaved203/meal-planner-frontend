@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
@@ -134,13 +134,12 @@ const MainLayout = ({ children }) => {
         </Header>
         <Content
           style={{
-            margin: "24px 16px 0",
             overflow: "initial",
+            background: "#F2F1F9",
           }}
         >
           <div
             style={{
-              padding: 24,
               textAlign: "center",
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
