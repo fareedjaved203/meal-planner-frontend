@@ -1,5 +1,6 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
@@ -15,11 +16,29 @@ import {
 } from "@ant-design/icons";
 
 const MainLayout = ({ children }) => {
-  const [selectedKey, setSelectedKey] = useState("1");
+  const pathname = usePathname();
+  const [selectedKey, setSelectedKey] = useState("");
+  console.log(pathname);
 
-  const onMenuClick = (e) => {
-    setSelectedKey(e.key);
-  };
+  useEffect(() => {
+    switch (pathname) {
+      case "/":
+        setSelectedKey("1");
+        break;
+      case "/items":
+        setSelectedKey("4");
+        break;
+      case "/placed-orders":
+        setSelectedKey("2");
+        break;
+      case "/completed-orders":
+        setSelectedKey("3");
+        break;
+      default:
+        setSelectedKey("");
+    }
+  }, [pathname]);
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -46,9 +65,7 @@ const MainLayout = ({ children }) => {
         <Menu
           theme="light"
           mode="inline"
-          defaultSelectedKeys={["1"]}
           selectedKeys={[selectedKey]}
-          onClick={onMenuClick}
           className="my-menu"
           style={{
             height: "100%",
