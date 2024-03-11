@@ -155,15 +155,7 @@ const MainLayout = ({ children }) => {
             background: "#F2F1F9",
           }}
         >
-          <div
-            style={{
-              textAlign: "center",
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            {children}
-          </div>
+          {children}
         </Content>
       </Layout>
     </Layout>
