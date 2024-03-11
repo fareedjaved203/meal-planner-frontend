@@ -1,9 +1,26 @@
 import RootLayout from "../layout";
+import CompleteOrdersTable from "../../components/orders/completeOrdersTable";
+import Image from "next/image";
 
 const CompletedOrders = () => {
   return (
     <RootLayout showNavbar={true}>
-      <main>Completed Orders</main>
+      <>
+        <div className="bg-white m-4 rounded p-4 pt-1">
+          <div className="flex justify-between items-center">
+            <div className="text-2xl font-bold p-4 mt-4">Completed Orders</div>
+            <div>
+              <Image
+                src="/block.png"
+                width={110}
+                height={110}
+                alt="logo icon"
+              />
+            </div>
+          </div>
+          <CompleteOrdersTable />
+        </div>
+      </>
     </RootLayout>
   );
 };
