@@ -1,5 +1,5 @@
 import RootLayout from "../layout";
-import CompleteOrdersTable from "../../components/orders/completeOrdersTable";
+import CompleteOrdersTable from "../../components/orders/CompleteOrdersTable";
 import Image from "next/image";
 
 const CompletedOrders = () => {
