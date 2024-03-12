@@ -4,7 +4,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 
-const data = [
+let data = [
   {
     key: "1",
     pid: "123",
@@ -25,7 +25,190 @@ const data = [
     price: 4000,
     complete: true,
   },
+  // 10 more similar objects
+  {
+    key: "3",
+    pid: "456",
+    date: "24 Feb 2023",
+    orderby: "anotherexample@gmail.com",
+    quantity: 20,
+    type: "Standard",
+    price: 3000,
+    complete: false,
+  },
+  {
+    key: "4",
+    pid: "789",
+    date: "25 Feb 2023",
+    orderby: "yetanotherexample@gmail.com",
+    quantity: 40,
+    type: "Custom",
+    price: 5000,
+    complete: true,
+  },
+  {
+    key: "5",
+    pid: "135",
+    date: "26 Feb 2023",
+    orderby: "user@example.com",
+    quantity: 25,
+    type: "Custom",
+    price: 4500,
+    complete: false,
+  },
+  {
+    key: "6",
+    pid: "246",
+    date: "27 Feb 2023",
+    orderby: "user@example.com",
+    quantity: 35,
+    type: "Standard",
+    price: 3800,
+    complete: true,
+  },
+  {
+    key: "7",
+    pid: "357",
+    date: "28 Feb 2023",
+    orderby: "test@example.com",
+    quantity: 45,
+    type: "Custom",
+    price: 5200,
+    complete: false,
+  },
+  {
+    key: "8",
+    pid: "468",
+    date: "01 Mar 2023",
+    orderby: "test@example.com",
+    quantity: 30,
+    type: "Standard",
+    price: 3200,
+    complete: true,
+  },
+  {
+    key: "9",
+    pid: "579",
+    date: "02 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 40,
+    type: "Custom",
+    price: 4800,
+    complete: false,
+  },
+  {
+    key: "10",
+    pid: "680",
+    date: "03 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 20,
+    type: "Custom",
+    price: 4200,
+    complete: true,
+  },
+  // 10 more similar objects...
+  {
+    key: "11",
+    pid: "781",
+    date: "04 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 35,
+    type: "Standard",
+    price: 3600,
+    complete: false,
+  },
+  {
+    key: "12",
+    pid: "892",
+    date: "05 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 28,
+    type: "Custom",
+    price: 4300,
+    complete: true,
+  },
+  {
+    key: "13",
+    pid: "903",
+    date: "06 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 33,
+    type: "Standard",
+    price: 3400,
+    complete: false,
+  },
+  {
+    key: "14",
+    pid: "914",
+    date: "07 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 22,
+    type: "Custom",
+    price: 4100,
+    complete: true,
+  },
+  {
+    key: "15",
+    pid: "925",
+    date: "08 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 27,
+    type: "Custom",
+    price: 4400,
+    complete: false,
+  },
+  {
+    key: "16",
+    pid: "936",
+    date: "09 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 38,
+    type: "Standard",
+    price: 3700,
+    complete: true,
+  },
+  {
+    key: "17",
+    pid: "947",
+    date: "10 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 31,
+    type: "Custom",
+    price: 4900,
+    complete: false,
+  },
+  {
+    key: "18",
+    pid: "958",
+    date: "11 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 26,
+    type: "Custom",
+    price: 4500,
+    complete: true,
+  },
+  {
+    key: "19",
+    pid: "969",
+    date: "12 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 36,
+    type: "Standard",
+    price: 3800,
+    complete: false,
+  },
+  {
+    key: "20",
+    pid: "970",
+    date: "13 Mar 2023",
+    orderby: "admin@example.com",
+    quantity: 29,
+    type: "Custom",
+    price: 4600,
+    complete: true,
+  },
 ];
+
 const CompleteOrdersTable = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -209,8 +392,16 @@ const CompleteOrdersTable = () => {
       title: "Complete",
       dataIndex: "complete",
       key: "complete",
-      render: (text, record) => <Checkbox checked={record.complete} />,
-      ...getColumnSearchProps("complete"),
+      render: (text, record, onChange) => (
+        <Checkbox
+          checked={record.complete}
+          onChange={(e) => {
+            const recordIndex = data.findIndex(
+              (item) => item.key === record.key
+            );
+          }}
+        />
+      ),
     },
   ];
   return (
@@ -219,7 +410,7 @@ const CompleteOrdersTable = () => {
       rowSelection={{
         ...rowSelection,
       }}
-      dataSource={data}
+      dataSource={[...data]}
     />
   );
 };
