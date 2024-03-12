@@ -53,7 +53,7 @@ const MonthDropDown = () => {
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 sm:w-64 md:w-56 lg:w-48 xl:w-56 2xl:w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-auto max-h-60">
+        <div className="origin-top-right z-10 absolute right-0 mt-2 sm:w-64 md:w-56 lg:w-48 xl:w-56 2xl:w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-auto max-h-60">
           <div
             className="py-1"
             role="menu"
