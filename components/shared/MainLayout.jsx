@@ -5,6 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
 import { Layout, Menu, theme } from "antd";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaBagShopping } from "react-icons/fa6";
+import { MdDashboard } from "react-icons/md";
+import { BsBookmarkCheckFill } from "react-icons/bs";
+import { IoIosHelpCircle } from "react-icons/io";
+import { IoIosArrowRoundBack } from "react-icons/io";
+
 const { Header, Content, Footer, Sider } = Layout;
 import {
   LogoutOutlined,
@@ -76,14 +83,14 @@ const MainLayout = ({ children }) => {
         >
           <Menu.Item
             key="1"
-            icon={<AppstoreFilled />}
+            icon={<MdDashboard style={{ fontSize: "20px" }} />}
             style={{ whiteSpace: "normal", lineHeight: 1.375 }}
           >
             <Link href="/">Dashboard</Link>
           </Menu.Item>
           <Menu.Item
             key="2"
-            icon={<ShoppingCartOutlined />}
+            icon={<FaCartShopping style={{ fontSize: "20px" }} />}
             style={{
               whiteSpace: "normal",
               lineHeight: 1.375,
@@ -94,7 +101,7 @@ const MainLayout = ({ children }) => {
           </Menu.Item>
           <Menu.Item
             key="3"
-            icon={<CheckSquareFilled />}
+            icon={<BsBookmarkCheckFill style={{ fontSize: "20px" }} />}
             style={{
               whiteSpace: "normal",
               lineHeight: 1.375,
@@ -105,7 +112,7 @@ const MainLayout = ({ children }) => {
           </Menu.Item>
           <Menu.Item
             key="4"
-            icon={<ShoppingOutlined />}
+            icon={<FaBagShopping style={{ fontSize: "20px" }} />}
             style={{
               whiteSpace: "normal",
               lineHeight: 1.375,
@@ -118,7 +125,7 @@ const MainLayout = ({ children }) => {
           <hr className="p-2 m-4 mb-0" />
           <Menu.Item
             key="5"
-            icon={<QuestionCircleFilled />}
+            icon={<IoIosHelpCircle style={{ fontSize: "20px" }} />}
             style={{
               whiteSpace: "normal",
               lineHeight: 1.375,
@@ -130,7 +137,10 @@ const MainLayout = ({ children }) => {
         </Menu>
         <div style={{ position: "absolute", bottom: 0, width: "100%" }}>
           <Menu theme="light" mode="inline">
-            <Menu.Item key="6" icon={<LogoutOutlined />}>
+            <Menu.Item
+              key="6"
+              icon={<IoIosArrowRoundBack style={{ fontSize: "20px" }} />}
+            >
               <Link href="/login">Logout</Link>
             </Menu.Item>
           </Menu>
