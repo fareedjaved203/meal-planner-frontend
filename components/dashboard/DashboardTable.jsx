@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Space, Table, Checkbox } from "antd";
+import { Button, Input, Space, Table, Checkbox, Pagination } from "antd";
 import Highlighter from "react-highlight-words";
 import Image from "next/image";
 

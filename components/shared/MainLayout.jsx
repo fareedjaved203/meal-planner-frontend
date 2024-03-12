@@ -135,13 +135,21 @@ const MainLayout = ({ children }) => {
             <Link href="/">Help</Link>
           </Menu.Item>
         </Menu>
-        <div style={{ position: "absolute", bottom: 0, width: "100%" }}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            width: "100%",
+          }}
+        >
           <Menu theme="light" mode="inline">
             <Menu.Item
               key="6"
               icon={<IoIosArrowRoundBack style={{ fontSize: "20px" }} />}
             >
-              <Link href="/login">Logout</Link>
+              <Link href="/login">
+                <span className="text-gray-500">Logout</span>
+              </Link>
             </Menu.Item>
           </Menu>
         </div>
