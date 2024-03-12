@@ -1,9 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
+import CompleteOrdersTable from "./CompleteOrdersTable";
+import Image from "next/image";
 
 const data = [
-  { content: "Content goes here..." },
+  {
+    content: "ajksda",
+  },
   // Add more items here...
 ];
 
@@ -49,8 +53,15 @@ function Accordion() {
               activeIndex === index ? "max-h-60" : "max-h-0"
             }`}
           >
-            <div className="p-5 border-t border-gray-200">
-              <p>{item.content}</p>
+            <div className="w-full flex justify-end pr-4">
+              <div className="flex justify-center items-center bg-indigo-200 text-indigo-700 font-semibold border-indigo-700 cursor-pointer hover:bg-indigo-700 hover:text-indigo-200 rounded px-4 py-2">
+                <Image src={"/scan-barcode.png"} width={20} height={20} />
+                <div className="ml-2">Download QR</div>
+              </div>
+            </div>
+
+            <div className="p-5">
+              <CompleteOrdersTable />
             </div>
           </div>
         </div>
