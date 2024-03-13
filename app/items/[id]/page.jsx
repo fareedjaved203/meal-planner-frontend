@@ -141,8 +141,14 @@ const ItemsId = () => {
                 width={40}
                 height={40}
                 className="ml-2"
+                alt="image"
               />
-              <Image src="/close-square.png" width={50} height={50} />
+              <Image
+                src="/close-square.png"
+                width={50}
+                height={50}
+                alt="image"
+              />
             </div>
 
             <div className="flex justify-center items-center p-4">
@@ -151,8 +157,19 @@ const ItemsId = () => {
                 value="test@gmail.com"
                 className="bg-indigo-100 w-[90%] rounded h-10 p-4"
               />
-              <Image src="/tick.png" width={40} height={40} className="ml-2" />
-              <Image src="/close-square.png" width={50} height={50} />
+              <Image
+                src="/tick.png"
+                width={40}
+                height={40}
+                className="ml-2"
+                alt="image"
+              />
+              <Image
+                src="/close-square.png"
+                width={50}
+                height={50}
+                alt="image"
+              />
             </div>
 
             <div className="flex justify-center items-center p-4">
@@ -175,8 +192,14 @@ const ItemsId = () => {
                 width={40}
                 height={40}
                 className="ml-2"
+                alt="image"
               />
-              <Image src="/close-square.png" width={50} height={50} />
+              <Image
+                src="/close-square.png"
+                width={50}
+                height={50}
+                alt="image"
+              />
             </div>
 
             <div className="flex justify-center items-center p-4">
@@ -185,8 +208,19 @@ const ItemsId = () => {
                 value="test@gmail.com"
                 className="bg-indigo-100 w-[90%] rounded h-10 p-4"
               />
-              <Image src="/tick.png" width={40} height={40} className="ml-2" />
-              <Image src="/close-square.png" width={50} height={50} />
+              <Image
+                src="/tick.png"
+                width={40}
+                height={40}
+                className="ml-2"
+                alt="image"
+              />
+              <Image
+                src="/close-square.png"
+                width={50}
+                height={50}
+                alt="image"
+              />
             </div>
 
             <div className="flex justify-center items-center p-4">

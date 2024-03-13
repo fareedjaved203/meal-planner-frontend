@@ -6,3 +6,8 @@
   background-color: #e4e3ff !important;
   color: #4c49ed !important;
 }
+
+.spacer:hover {
+  background-color: transparent !important;
+  cursor: default !important;
+}

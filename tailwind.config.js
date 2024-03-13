@@ -12,5 +12,14 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".ml-0-important": {
+          marginLeft: "0 !important",
+        },
+      };
+      addUtilities(newUtilities, ["responsive"]);
+    },
+  ],
 };

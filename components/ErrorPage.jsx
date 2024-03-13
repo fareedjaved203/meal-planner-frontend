@@ -10,7 +10,7 @@ const ErrorPage = () => {
               <span className="sr-only">Error</span>404
             </h2>
             <p className="text-2xl md:text-3xl dark:text-gray-300">
-              Sorry, we couldn't find this page.
+              page not found
             </p>
             <Link
               href="/"

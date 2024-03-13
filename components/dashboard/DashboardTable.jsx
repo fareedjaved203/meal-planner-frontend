@@ -183,7 +183,7 @@ const DashboardTable = () => {
                 className="flex justify-center items-center bg-green-200 text-green-700 font-semibold border-green-700 cursor-pointer hover:bg-green-700 hover:text-green-200 rounded px-2 py-2"
                 style={{ fontSize: "0.75rem" }}
               >
-                <Image src={"/Icon.png"} width={15} height={15} />
+                <Image src={"/Icon.png"} width={15} height={15} alt="image" />
                 <div className="ml-2">QR Generated</div>
               </div>
             </>
@@ -193,7 +193,12 @@ const DashboardTable = () => {
                 className="flex justify-center items-center bg-indigo-200 text-indigo-700 font-semibold border-indigo-700 cursor-pointer hover:bg-indigo-700 hover:text-indigo-200 rounded px-2 py-2"
                 style={{ fontSize: "0.75rem" }}
               >
-                <Image src={"/scan-barcode.png"} width={15} height={15} />
+                <Image
+                  src={"/scan-barcode.png"}
+                  width={15}
+                  height={15}
+                  alt="image"
+                />
                 <div className="ml-2">Generate QR</div>
               </div>
             </>
