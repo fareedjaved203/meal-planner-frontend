@@ -1,9 +1,10 @@
 import { Inter } from "next/font/google";
-import React, { FC } from "react";
+import React from "react";
 import "./globals.css";
 import "@fontsource/mulish";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import MainLayout from "../components/shared/MainLayout";
+import PropTypes from "prop-types";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ export const metadata = {
   description: "Splenify",
 };
 
-export default function RootLayout({ children, showNavbar = false }) {
+const RootLayout = ({ children, showNavbar = false }) => {
   return (
     <html lang="en">
       <body>
@@ -22,4 +23,11 @@ export default function RootLayout({ children, showNavbar = false }) {
       </body>
     </html>
   );
-}
+};
+
+RootLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+  showNavbar: PropTypes.bool,
+};
+
+export default RootLayout;
