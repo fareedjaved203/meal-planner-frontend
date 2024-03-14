@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import React, { FC } from "react";
 import "./globals.css";
 import "@fontsource/mulish";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
