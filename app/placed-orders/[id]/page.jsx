@@ -20,10 +20,10 @@ const PlacedOrderId = () => {
             Predefined Order Details
           </div>
           <div className="mr-4 pr-4 mb-4">
-            <Accordion />
+            <Accordion predefined={true}/>
           </div>
           <div className="mr-4 pr-4 mb-4">
-            <Accordion />
+            <Accordion predefined={true} />
           </div>
         </div>
         <div className="bg-white m-4 rounded p-4 pt-1">

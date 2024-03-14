@@ -12,6 +12,9 @@ module.exports = {
       },
       colors: {
         custom: "rgba(76, 73, 237, 0.1)",
+        removeItem: "#FFEEDB",
+        removeItemText: "#FF9C29",
+        purpleText: "#4C49ED",
       },
     },
   },
