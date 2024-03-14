@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme, Divider } from "antd";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaBagShopping } from "react-icons/fa6";
 import { MdDashboard } from "react-icons/md";
@@ -59,9 +59,11 @@ const items = [
     key: "5",
     icon: <IoIosHelpCircle style={{ fontSize: "20px" }} />,
     label: (
-      <Link href="/">
-        <span className="text-gray-600">Help</span>
-      </Link>
+      <>
+        <Link href="/">
+          <span className="text-gray-600">Help</span>
+        </Link>
+      </>
     ),
     style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "20px" },
   },
@@ -96,27 +98,38 @@ const items = [
 
 const MainLayout = ({ children }) => {
   const pathname = usePathname();
-  const [selectedKey, setSelectedKey] = useState("");
+  const [path, setPath] = useState("");
+  const [selectedKey, setSelectedKey] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("path") : ""
+  );
   console.log(pathname);
 
   useEffect(() => {
-    switch (pathname) {
-      case "/":
-        setSelectedKey("1");
-        break;
-      case "/items":
-        setSelectedKey("4");
-        break;
-      case "/placed-orders":
-        setSelectedKey("2");
-        break;
-      case "/completed-orders":
-        setSelectedKey("3");
-        break;
-      default:
-        setSelectedKey("");
+    const data = localStorage.getItem("path");
+    setPath(data);
+  }, []);
+
+  useEffect(() => {
+    if (pathname.startsWith("/completed-orders")) {
+      setSelectedKey("3");
+      localStorage.setItem("path", "3");
+    } else if (pathname.startsWith("/items")) {
+      setSelectedKey("4");
+      localStorage.setItem("path", "4");
+    } else if (pathname.startsWith("/placed-orders")) {
+      setSelectedKey("2");
+      localStorage.setItem("path", "2");
+    } else {
+      switch (pathname) {
+        case "/":
+          setSelectedKey("1");
+          localStorage.setItem("path", "1");
+          break;
+        default:
+          setSelectedKey("1");
+      }
     }
-  }, [pathname]);
+  }, [pathname, path]);
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -134,13 +147,21 @@ const MainLayout = ({ children }) => {
           backgroundColor: "white",
         }}
       >
-        <Image
-          src="/Logo.png"
-          width={400}
-          height={400}
-          alt="logo icon"
-          className="mt-4"
-        />
+        <div className="flex items-center w-full justify-center p-4 pr-0">
+          <Image
+            src="/so-wallet-coin.png"
+            width={30}
+            height={30}
+            alt="logo icon"
+            className="mt-3 ml-4"
+          />
+          <div
+            className="font-mulish p-2 pt-4"
+            style={{ fontSize: "1.1rem", fontWeight: "bolder" }}
+          >
+            Meal Planner
+          </div>
+        </div>
         <Menu
           theme="light"
           mode="inline"

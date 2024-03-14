@@ -179,27 +179,23 @@ const DashboardTable = () => {
         <>
           {record.complete ? (
             <>
-              <div
-                className="flex justify-center items-center bg-green-200 text-green-700 font-semibold border-green-700 cursor-pointer hover:bg-green-700 hover:text-green-200 rounded px-2 py-2"
-                style={{ fontSize: "0.75rem" }}
-              >
-                <Image src={"/Icon.png"} width={15} height={15} alt="image" />
-                <div className="ml-2">QR Generated</div>
+              <div className="inline-flex p-2 justify-center items-center font-bold bg-gray-100 text-green-700 border-green-700 cursor-pointer rounded text-xs">
+                <Image src={"/Icon.png"} width={18} height={18} alt="image" />
+                <div className="ml-4" style={{ color: "#00C67F" }}>
+                  QR Generated
+                </div>
               </div>
             </>
           ) : (
             <>
-              <div
-                className="flex justify-center items-center bg-indigo-200 text-indigo-700 font-semibold border-indigo-700 cursor-pointer hover:bg-indigo-700 hover:text-indigo-200 rounded px-2 py-2"
-                style={{ fontSize: "0.75rem" }}
-              >
+              <div className="inline-flex p-2 justify-center items-center font-bold bg-indigo-100 text-indigo-700 border-indigo-700 cursor-pointer rounded text-xs">
                 <Image
                   src={"/scan-barcode.png"}
-                  width={15}
-                  height={15}
+                  width={20}
+                  height={20}
                   alt="image"
                 />
-                <div className="ml-2">Generate QR</div>
+                <div className="ml-4">Generated QR</div>
               </div>
             </>
           )}

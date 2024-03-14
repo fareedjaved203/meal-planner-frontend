@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         mulish: ["Mulish", "sans-serif"],
       },
+      colors: {
+        custom: "rgba(76, 73, 237, 0.1)",
+      },
     },
   },
   plugins: [

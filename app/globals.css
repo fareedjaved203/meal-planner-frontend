@@ -11,3 +11,7 @@
   background-color: transparent !important;
   cursor: default !important;
 }
+
+.ant-table-column-sort {
+  background: white !important;
+}

@@ -25,7 +25,7 @@ const CompletedOrderId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -35,7 +35,7 @@ const CompletedOrderId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -48,7 +48,7 @@ const CompletedOrderId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -58,7 +58,7 @@ const CompletedOrderId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -71,7 +71,7 @@ const CompletedOrderId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -81,7 +81,7 @@ const CompletedOrderId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -94,7 +94,7 @@ const CompletedOrderId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>

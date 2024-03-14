@@ -369,7 +369,6 @@ const CompleteOrdersTable = () => {
       key: "quantity",
       width: "20%",
       ...getColumnSearchProps("quantity"),
-      defaultSortOrder: "descend",
       sorter: (a, b) => a.quantity - b.quantity,
     },
     {
@@ -385,7 +384,6 @@ const CompleteOrdersTable = () => {
       key: "price",
       width: "20%",
       ...getColumnSearchProps("price"),
-      defaultSortOrder: "descend",
       sorter: (a, b) => a.price - b.price,
     },
     {

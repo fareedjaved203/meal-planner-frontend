@@ -28,7 +28,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -42,7 +42,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -59,7 +59,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -73,7 +73,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -90,7 +90,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -104,7 +104,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -122,7 +122,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-indigo-100 w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-4"
                 />
               </div>
             </div>
@@ -134,7 +134,7 @@ const ItemsId = () => {
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-indigo-100 w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[90%] rounded h-10 p-4"
               />
               <Image
                 src="/Group 11068.png"
@@ -155,7 +155,7 @@ const ItemsId = () => {
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-indigo-100 w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[90%] rounded h-10 p-4"
               />
               <Image
                 src="/tick.png"
@@ -173,7 +173,7 @@ const ItemsId = () => {
             </div>
 
             <div className="flex justify-center items-center p-4">
-              <div className="bg-indigo-100 w-full rounded h-15 p-4 flex justify-center items-center text-indigo-700 font-semibold border border-dashed border-indigo-700 border-2">
+              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-indigo-700 font-semibold border border-dashed border-indigo-700 border-2">
                 Add Ingredients
               </div>
             </div>
@@ -185,7 +185,7 @@ const ItemsId = () => {
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-indigo-100 w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[90%] rounded h-10 p-4"
               />
               <Image
                 src="/Group 11068.png"
@@ -206,7 +206,7 @@ const ItemsId = () => {
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-indigo-100 w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[90%] rounded h-10 p-4"
               />
               <Image
                 src="/tick.png"
@@ -224,7 +224,7 @@ const ItemsId = () => {
             </div>
 
             <div className="flex justify-center items-center p-4">
-              <div className="bg-indigo-100 w-full rounded h-15 p-4 flex justify-center items-center text-indigo-700 font-semibold border border-dashed border-indigo-700 border-2">
+              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-indigo-700 font-semibold border border-dashed border-indigo-700 border-2">
                 Add Ingredients
               </div>
             </div>

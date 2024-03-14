@@ -54,7 +54,7 @@ function Accordion() {
             }`}
           >
             <div className="w-full flex justify-end pr-4">
-              <div className="flex justify-center items-center bg-indigo-200 text-indigo-700 font-semibold border-indigo-700 cursor-pointer hover:bg-indigo-700 hover:text-indigo-200 rounded px-4 py-2">
+              <div className="flex justify-center items-center bg-indigo-200 text-indigo-700 font-semibold border-indigo-700 cursor-pointer rounded px-4 py-2">
                 <Image
                   src={"/scan-barcode.png"}
                   width={20}
