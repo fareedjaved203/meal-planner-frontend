@@ -3,9 +3,11 @@ import Image from "next/image";
 const Summary = () => {
   return (
     <>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full font-mulish">
         <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white">
-          <p className="text-gray-400 font-bold text-sm pb-1">Total Earnings</p>
+          <div className="font-mulish text-base leading-5 font-semibold text-summaryTextColor mb-1">
+            Total Earnings
+          </div>
           <div className="text-2xl font-bold pb-1">$ 1000</div>
           <div>
             <Image
@@ -18,7 +20,9 @@ const Summary = () => {
           </div>
         </div>
         <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white">
-          <p className="text-gray-400 font-bold text-sm pb-1">Total Orders</p>
+          <div className="font-mulish text-base leading-5 font-semibold text-summaryTextColor mb-1">
+            Total Orders
+          </div>
           <div className="text-2xl font-bold pb-1">540</div>
           <div>
             <Image
@@ -31,7 +35,9 @@ const Summary = () => {
           </div>
         </div>
         <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white">
-          <p className="text-gray-400 font-bold text-sm pb-1">Total Items</p>
+          <div className="font-mulish text-base leading-5 font-semibold text-summaryTextColor mb-1">
+            Total Items
+          </div>
           <div className="text-2xl font-bold pb-1">180</div>
           <div>
             {" "}
@@ -45,9 +51,9 @@ const Summary = () => {
           </div>
         </div>
         <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white ">
-          <p className="text-gray-400 font-bold text-sm pb-1">
+          <div className="font-mulish text-base leading-5 font-semibold text-summaryTextColor mb-1">
             Completed Orders
-          </p>
+          </div>
           <div className="text-2xl font-bold pb-1">140</div>
           <div>
             {" "}

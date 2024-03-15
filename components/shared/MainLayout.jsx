@@ -80,11 +80,6 @@ const items = [
     className: "spacer",
   },
   {
-    key: "spacer",
-    label: <div style={{ flex: "1 1 auto", background: "none" }} />,
-    className: "spacer",
-  },
-  {
     key: "6",
     icon: <IoIosArrowRoundBack style={{ fontSize: "20px" }} />,
     className: "logout",
@@ -135,7 +130,7 @@ const MainLayout = ({ children }) => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout hasSider>
+    <Layout hasSider className="font-mulish">
       <Sider
         style={{
           overflow: "hidden",
@@ -147,18 +142,15 @@ const MainLayout = ({ children }) => {
           backgroundColor: "white",
         }}
       >
-        <div className="flex items-center w-full justify-center p-4 pr-0">
+        <div className="flex items-center w-full justify-center p-4 pr-0 mt-8 pl-0">
           <Image
             src="/so-wallet-coin.png"
             width={30}
             height={30}
             alt="logo icon"
-            className="mt-3 ml-4"
+            className="mt-2 ml-4"
           />
-          <div
-            className="font-mulish p-2 pt-4"
-            style={{ fontSize: "1.1rem", fontWeight: "bolder" }}
-          >
+          <div className="font-extrabold text-lg leading-7 m-3 mt-4 ml-1">
             Meal Planner
           </div>
         </div>
@@ -192,7 +184,7 @@ const MainLayout = ({ children }) => {
         <Content
           style={{
             overflow: "initial",
-            background: "#F2F1F9",
+            background: "#F8F8F8",
           }}
         >
           {children}

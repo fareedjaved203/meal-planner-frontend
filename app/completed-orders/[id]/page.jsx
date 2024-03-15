@@ -5,7 +5,7 @@ const CompletedOrderId = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="flex items-center justify-start w-full pl-4 mt-4">
+        <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
@@ -14,7 +14,7 @@ const CompletedOrderId = () => {
             <hr />
           </div>
         </div>
-        <div className="bg-white m-4 rounded p-4 pt-1">
+        <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div className="text-2xl font-bold p-4 mt-4">
             Completed Order Details
           </div>

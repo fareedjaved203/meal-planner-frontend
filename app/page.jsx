@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="min-h-screen min-w-full bg-gray-100 p-4">
+        <div className="min-h-screen min-w-full bg-gray-100 p-4 font-mulish">
           <Summary />
           <GraphAndStats />
           <div className="p-4 bg-white rounded m-4 mr-0 ml-0">

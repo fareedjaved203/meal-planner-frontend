@@ -6,7 +6,7 @@ const ItemsId = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="flex items-center justify-start w-full pl-4 mt-4">
+        <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
@@ -15,7 +15,7 @@ const ItemsId = () => {
             <hr />
           </div>
         </div>
-        <div className="bg-white m-4 rounded p-4 pt-1">
+        <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div className="text-2xl font-bold p-4 mt-4">Item Details</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">

@@ -15,3 +15,7 @@
 .ant-table-column-sort {
   background: white !important;
 }
+
+.ant-table-thead .ant-table-cell {
+  background-color: rgba(76, 73, 237, 0.1) !important;
+}

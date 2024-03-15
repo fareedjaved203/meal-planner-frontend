@@ -24,7 +24,7 @@ function Accordion({ predefined = false }) {
   };
 
   return (
-    <div className="w-full bg-gray-100 rounded pl-4 pr-4 ml-4">
+    <div className="w-full bg-gray-100 rounded pl-4 pr-4 ml-4 font-mulish">
       {data.map((item, index) => (
         <div key={index} className="border-b border-gray-200">
           <div

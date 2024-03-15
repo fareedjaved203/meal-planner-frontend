@@ -3,7 +3,7 @@ import Image from "next/image";
 const LoginForm = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row h-screen items-center justify-center">
+      <div className="flex flex-col md:flex-row h-screen items-center justify-center font-mulish">
         <div class="bg-gradient-to-r from-indigo-600 to-blue-800 w-1/2 p-4 pl-0 h-screen max-sm:hidden flex items-center justify-start">
           <Image
             src="/Vector.png"

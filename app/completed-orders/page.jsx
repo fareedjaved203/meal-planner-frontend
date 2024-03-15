@@ -7,12 +7,16 @@ const CompletedOrders = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="bg-white m-4 rounded p-4 pt-1">
-          <div className="flex justify-between items-center">
+        <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
+          <div className="flex justify-between items-center pr-4">
             <div className="text-2xl font-bold p-4 mt-4">Completed Orders</div>
-            <DatePickerButton />
+            <div className="mt-4">
+              <DatePickerButton />
+            </div>
           </div>
-          <CompleteOrdersTable />
+          <div className="p-4 pt-0">
+            <CompleteOrdersTable />
+          </div>
         </div>
       </>
     </RootLayout>

@@ -35,12 +35,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 leading-snug pt-4">
+    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-2 leading-snug font-mulish">
       <div className="flex flex-col items-start justify-start">
-        <span className="font-semibold mr-2">Hello {username}</span>
-        <span className="text-sm text-gray-400">
-          <span>{currentTime}</span>
-        </span>
+        <div
+          className="font-semibold text-lg leading-7 tracking-wider"
+          style={{ color: "#00261C" }}
+        >
+          Hello {username}
+        </div>
+        <div
+          className="font-normal text-xs leading-4 tracking-tighter"
+          style={{ color: "#707EAE" }}
+        >
+          {currentTime}
+        </div>
       </div>
       <div className="flex items-center pr-3">
         <span className="mr-4 max-sm:hidden font-bold">{username}</span>

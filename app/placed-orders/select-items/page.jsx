@@ -8,7 +8,7 @@ const PlacedOrders = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="flex items-center justify-start w-full pl-4 mt-4">
+        <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
@@ -22,7 +22,7 @@ const PlacedOrders = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white m-4 rounded p-4 pt-1">
+        <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold p-4 mt-4">Select Items</div>
             <div className="pl-4 pr-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">

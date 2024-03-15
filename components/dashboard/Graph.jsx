@@ -29,20 +29,20 @@ const data = [
 ];
 
 const CustomBar = (props) => {
-  const borderRadius = 5;
+  const borderRadius = 8;
   return <Rectangle {...props} radius={[borderRadius, borderRadius, 0, 0]} />;
 };
 
 const Graph = () => {
   return (
     <>
-      <div className="flex flex-col sm:flex-row justify-between p-4">
+      <div className="flex flex-col sm:flex-row justify-between p-4 font-mulish">
         <div className="flex flex-col sm:flex-row">
           <div className="text-2xl font-bold pb-1 mr-4">Earnings</div>
           <MonthDropDown />
         </div>
-        <div className="bg-gray-100 pl-4 pr-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">
-          <p className="text-gray-600">9 Dec 2022 - 7 Jan 2023 </p>
+        <div className="bg-graphDate pl-4 pr-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">
+          <p className="text-graphDateText">9 Dec 2022 - 7 Jan 2023 </p>
           <span className="p-2 pr-0">
             <Image src="/svg.png" width={20} height={20} alt="logo icon" />
           </span>
@@ -66,7 +66,7 @@ const Graph = () => {
             <Legend />
             <Bar
               dataKey="uv"
-              fill="#303F9F"
+              fill="#4C49ED"
               barSize={12}
               shape={<CustomBar />}
             />
