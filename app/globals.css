@@ -2,9 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.my-menu .ant-menu-item {
+  color: #a1a0bd !important;
+}
+
 .my-menu .ant-menu-item-selected {
   background-color: #e4e3ff !important;
   color: #4c49ed !important;
+}
+.my-menu {
+  font-size: "20px" !important;
+  font-weight: 400 !important;
+  line-height: "21.34px" !important;
 }
 
 .spacer:hover {

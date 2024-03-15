@@ -53,7 +53,11 @@ const items = [
         <span className="text-gray-600">Items</span>
       </Link>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "20px" },
+    style: {
+      whiteSpace: "normal",
+      lineHeight: 1.375,
+      marginTop: "20px",
+    },
   },
   {
     key: "5",
