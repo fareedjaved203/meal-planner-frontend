@@ -9,8 +9,8 @@ const Items = () => {
     <RootLayout showNavbar={true}>
       <>
         <div className="flex justify-center items-center w-40 bg-lightSky font-semibold cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2 m-4">
-          <div className="text-purpleText w-full flex justify-center items-center">
-            <Link href="/items/add-item">
+          <Link href="/items/add-item">
+            <div className="text-purpleText w-full flex justify-center items-center">
               Add Item
               <span className="ml-4">
                 <Image
@@ -20,8 +20,8 @@ const Items = () => {
                   alt="add-item"
                 />
               </span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
         <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div className="flex justify-between items-center pr-4">
