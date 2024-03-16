@@ -1,5 +1,5 @@
 import RootLayout from "../../layout";
-import SelectOrdersTable from "../../../components/select _items/SelectOrdersTable";
+import SelectOrdersTable from "../../../components/selectItems/SelectOrdersTable";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import DatePickerButton from "../../../components/shared/DatePickerButton";
 import Link from "next/link";

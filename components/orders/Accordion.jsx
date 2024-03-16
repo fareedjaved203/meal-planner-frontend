@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
-import SelectOrdersTable from "../select_items/selectOrdersTable";
+import SelectOrdersTable from "../selectItems/SelectOrdersTable";
 import Image from "next/image";
 import Link from "next/link";
 
