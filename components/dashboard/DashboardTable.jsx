@@ -24,6 +24,20 @@ let data = [
   },
 ];
 
+const pagination = {
+  showTotal: (total, range) => (
+    <div className="w-full flex justify-between items-center">
+      <span className="font-poppins font-bold mr-96">
+        Total Orders: {total}
+      </span>
+      <span className="ml-80">
+        {range[0]}-{range[1]} of {total} items
+      </span>
+    </div>
+  ),
+  pageSize: 10,
+};
+
 const DashboardTable = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");

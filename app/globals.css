@@ -16,6 +16,20 @@
   line-height: "21.34px" !important;
 }
 
+.ant-pagination-item a {
+  color: black !important;
+  border: none !important;
+}
+
+.ant-pagination-item-active {
+  border: none !important;
+}
+
+.ant-pagination-item-active a {
+  background-color: #4c49ed !important;
+  color: white !important;
+}
+
 .spacer:hover {
   background-color: transparent !important;
   cursor: default !important;
