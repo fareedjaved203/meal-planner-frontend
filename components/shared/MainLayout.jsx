@@ -33,7 +33,7 @@ const items = [
         <span className="font-mulish">Placed Orders</span>
       </Link>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "20px" },
+    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "18px" },
   },
   {
     key: "3",
@@ -43,7 +43,7 @@ const items = [
         <span className="font-mulish">Completed Orders</span>
       </Link>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "20px" },
+    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "18px" },
   },
   {
     key: "4",
@@ -56,8 +56,12 @@ const items = [
     style: {
       whiteSpace: "normal",
       lineHeight: 1.375,
-      marginTop: "20px",
+      marginTop: "18px",
     },
+  },
+  {
+    key: "divider",
+    label: <Menu.Divider />,
   },
   {
     key: "5",
@@ -69,7 +73,7 @@ const items = [
         </Link>
       </>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "20px" },
+    style: { whiteSpace: "normal", lineHeight: 1 },
   },
   {
     key: "spacer",
