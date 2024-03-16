@@ -26,14 +26,9 @@ let data = [
 
 const pagination = {
   showTotal: (total, range) => (
-    <div className="w-full flex justify-between items-center">
-      <span className="font-poppins font-bold mr-96">
-        Total Orders: {total}
-      </span>
-      <span className="ml-80">
-        {range[0]}-{range[1]} of {total} items
-      </span>
-    </div>
+    <>
+      {range[0]}-{range[1]} of {total} items
+    </>
   ),
   pageSize: 10,
 };
@@ -235,6 +230,8 @@ const DashboardTable = () => {
       ),
     },
   ];
-  return <Table columns={columns} dataSource={[...data]} />;
+  return (
+    <Table columns={columns} dataSource={[...data]} pagination={pagination} />
+  );
 };
 export default DashboardTable;
