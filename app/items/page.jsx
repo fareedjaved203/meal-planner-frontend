@@ -14,7 +14,7 @@ const Items = () => {
               Add Item
               <span className="ml-4">
                 <Image
-                  src={"/message-add.png"}
+                  src={"/message-add.svg"}
                   width={20}
                   height={20}
                   alt="add-item"

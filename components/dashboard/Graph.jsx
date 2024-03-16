@@ -54,7 +54,7 @@ const Graph = () => {
             9 Dec 2022 - 7 Jan 2023{" "}
           </p>
           <span className="p-2 pr-0">
-            <Image src="/svg.png" width={20} height={20} alt="logo icon" />
+            <Image src="/svg.svg" width={25} height={25} alt="logo icon" />
           </span>
         </div>
       </div>

@@ -11,7 +11,7 @@ const DatePickerButton = () => {
           Select Date{" "}
         </p>
         <span className="ml-2">
-          <Image src="/svg-date.png" width={25} height={25} alt="logo icon" />
+          <Image src="/Frame.svg" width={22} height={22} alt="logo icon" />
         </span>
       </div>{" "}
     </>
