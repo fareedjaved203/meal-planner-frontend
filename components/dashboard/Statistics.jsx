@@ -11,7 +11,7 @@ const Statistics = () => {
       </div>
       <div className="flex flex-col">
         <div className="bg-gray-100 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 pl-0 pr-0">
-          <Image src="/Frame 44.png" width={70} height={70} alt="logo icon" />
+          <Image src="/Frame 44.svg" width={70} height={70} alt="logo icon" />
           <div className="flex flex-col">
             <div className="text-md leading-4 tracking-tighter text-gray-600">
               Top Sold Item
@@ -23,9 +23,11 @@ const Statistics = () => {
         </div>
         <div className="bg-green-200 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 pl-0 pr-0">
           <Image
-            src="/Frame 44 (1).png"
+            src="/Frame 44 (1).svg"
             width={70}
             height={70}
+            quality={100}
+            unoptimized
             alt="logo icon"
           />
           <div className="flex flex-col">
@@ -37,7 +39,7 @@ const Statistics = () => {
         </div>
         <div className="bg-orange-100 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 pl-0 pr-0">
           <Image
-            src="/Frame 44 (2).png"
+            src="/Frame 44 (2).svg"
             width={70}
             height={70}
             alt="logo icon"

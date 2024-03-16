@@ -22,7 +22,7 @@ const Summary = () => {
           </div>
           <div>
             <Image
-              src="/Frame 55.png"
+              src="/Frame 55.svg"
               width={40}
               height={40}
               alt="logo icon"
@@ -48,7 +48,7 @@ const Summary = () => {
           </div>
           <div>
             <Image
-              src="/Frame 56.png"
+              src="/Frame 56.svg"
               width={40}
               height={40}
               alt="logo icon"
@@ -75,7 +75,7 @@ const Summary = () => {
           <div>
             {" "}
             <Image
-              src="/Frame 57.png"
+              src="/Frame 57.svg"
               width={40}
               height={40}
               alt="logo icon"
@@ -102,7 +102,7 @@ const Summary = () => {
           <div>
             {" "}
             <Image
-              src="/Frame 58.png"
+              src="/Frame 58.svg"
               width={40}
               height={40}
               alt="logo icon"

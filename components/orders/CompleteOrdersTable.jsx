@@ -6,7 +6,7 @@ import Highlighter from "react-highlight-words";
 
 let data = [
   {
-    key: "1",
+    key: "#1",
     pid: "123",
     date: "23 Feb 2023",
     orderby: "example@gmail.com",
@@ -16,7 +16,7 @@ let data = [
     complete: true,
   },
   {
-    key: "2",
+    key: "#2",
     pid: "321",
     date: "23 Feb 2023",
     orderby: "example@gmail.com",
@@ -27,7 +27,7 @@ let data = [
   },
   // 10 more similar objects
   {
-    key: "3",
+    key: "#3",
     pid: "456",
     date: "24 Feb 2023",
     orderby: "anotherexample@gmail.com",
@@ -37,7 +37,7 @@ let data = [
     complete: false,
   },
   {
-    key: "4",
+    key: "#4",
     pid: "789",
     date: "25 Feb 2023",
     orderby: "yetanotherexample@gmail.com",
@@ -47,7 +47,7 @@ let data = [
     complete: true,
   },
   {
-    key: "5",
+    key: "#5",
     pid: "135",
     date: "26 Feb 2023",
     orderby: "user@example.com",
@@ -57,7 +57,7 @@ let data = [
     complete: false,
   },
   {
-    key: "6",
+    key: "#6",
     pid: "246",
     date: "27 Feb 2023",
     orderby: "user@example.com",
@@ -67,7 +67,7 @@ let data = [
     complete: true,
   },
   {
-    key: "7",
+    key: "#7",
     pid: "357",
     date: "28 Feb 2023",
     orderby: "test@example.com",
@@ -77,7 +77,7 @@ let data = [
     complete: false,
   },
   {
-    key: "8",
+    key: "#8",
     pid: "468",
     date: "01 Mar 2023",
     orderby: "test@example.com",
@@ -87,7 +87,7 @@ let data = [
     complete: true,
   },
   {
-    key: "9",
+    key: "#9",
     pid: "579",
     date: "02 Mar 2023",
     orderby: "admin@example.com",
@@ -97,7 +97,7 @@ let data = [
     complete: false,
   },
   {
-    key: "10",
+    key: "#10",
     pid: "680",
     date: "03 Mar 2023",
     orderby: "admin@example.com",
@@ -108,7 +108,7 @@ let data = [
   },
   // 10 more similar objects...
   {
-    key: "11",
+    key: "#11",
     pid: "781",
     date: "04 Mar 2023",
     orderby: "admin@example.com",
@@ -118,7 +118,7 @@ let data = [
     complete: false,
   },
   {
-    key: "12",
+    key: "#12",
     pid: "892",
     date: "05 Mar 2023",
     orderby: "admin@example.com",
@@ -128,7 +128,7 @@ let data = [
     complete: true,
   },
   {
-    key: "13",
+    key: "#13",
     pid: "903",
     date: "06 Mar 2023",
     orderby: "admin@example.com",
@@ -138,7 +138,7 @@ let data = [
     complete: false,
   },
   {
-    key: "14",
+    key: "#14",
     pid: "914",
     date: "07 Mar 2023",
     orderby: "admin@example.com",
@@ -148,7 +148,7 @@ let data = [
     complete: true,
   },
   {
-    key: "15",
+    key: "#15",
     pid: "925",
     date: "08 Mar 2023",
     orderby: "admin@example.com",
@@ -158,7 +158,7 @@ let data = [
     complete: false,
   },
   {
-    key: "16",
+    key: "#16",
     pid: "936",
     date: "09 Mar 2023",
     orderby: "admin@example.com",
@@ -168,7 +168,7 @@ let data = [
     complete: true,
   },
   {
-    key: "17",
+    key: "#17",
     pid: "947",
     date: "10 Mar 2023",
     orderby: "admin@example.com",
@@ -178,7 +178,7 @@ let data = [
     complete: false,
   },
   {
-    key: "18",
+    key: "#18",
     pid: "958",
     date: "11 Mar 2023",
     orderby: "admin@example.com",
@@ -188,7 +188,7 @@ let data = [
     complete: true,
   },
   {
-    key: "19",
+    key: "#19",
     pid: "969",
     date: "12 Mar 2023",
     orderby: "admin@example.com",
@@ -198,7 +198,7 @@ let data = [
     complete: false,
   },
   {
-    key: "20",
+    key: "#20",
     pid: "970",
     date: "13 Mar 2023",
     orderby: "admin@example.com",
@@ -211,14 +211,18 @@ let data = [
 
 const pagination = {
   showTotal: (total, range) => (
-    <div className="w-full flex justify-between items-center">
-      <span className="font-poppins font-bold mr-96">
-        Total Orders: {total}
-      </span>
-      <span className="ml-64">
-        {range[0]}-{range[1]} of {total} items
-      </span>
-    </div>
+    <>
+      {range[0]}-{range[1]} of {total} items
+    </>
+
+    // <div className="w-full flex justify-between items-center">
+    //   <span className="font-poppins font-bold mr-96">
+    //     Total Orders: {total}
+    //   </span>
+    //   <span className="ml-64">
+    //     {range[0]}-{range[1]} of {total} items
+    //   </span>
+    // </div>
   ),
   pageSize: 10,
 };
@@ -345,6 +349,15 @@ const CompleteOrdersTable = () => {
       dataIndex: "pid",
       key: "pid",
       width: "30%",
+      render: (text) => {
+        return {
+          props: {
+            style: { color: "gray" },
+            className: "pid",
+          },
+          children: <div>{text}</div>,
+        };
+      },
       ...getColumnSearchProps("pid"),
     },
     {
@@ -402,7 +415,12 @@ const CompleteOrdersTable = () => {
   ];
   return (
     <>
-      <Table columns={columns} dataSource={[...data]} pagination={pagination} />
+      <Table
+        columns={columns}
+        dataSource={[...data]}
+        pagination={pagination}
+        bordered
+      />
     </>
   );
 };

@@ -25,6 +25,10 @@
   border: none !important;
 }
 
+.pid {
+  color: gray !important;
+}
+
 .ant-pagination-item-active a {
   background-color: #4c49ed !important;
   color: white !important;

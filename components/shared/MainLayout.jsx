@@ -150,21 +150,13 @@ const MainLayout = ({ children }) => {
           backgroundColor: "white",
         }}
       >
-        <div className="flex items-center w-full justify-center p-4 pr-0 mt-8 pl-0">
-          <Image
-            src="/so-wallet-coin.png"
-            width={25}
-            height={25}
-            alt="logo icon"
-            className="mt-2 ml-4"
-          />
-          <div
-            className="mt-3 ml-1 mr-1 font-mulish"
-            style={{ fontSize: "21px", fontWeight: "900" }}
-          >
-            Meal Planner
-          </div>
-        </div>
+        <Image
+          src="/Logo.svg"
+          width={400}
+          height={400}
+          alt="logo icon"
+          className="mt-12"
+        />
         <Menu
           theme="light"
           mode="inline"
