@@ -179,7 +179,7 @@ const DashboardTable = () => {
         <>
           {record.complete ? (
             <>
-              <div className="inline-flex p-2 justify-center items-center font-bold bg-gray-100 text-green-700 border-green-700 cursor-pointer rounded text-xs">
+              <div className="inline-flex p-2 pt-1 pb-1 justify-center items-center font-bold bg-greenBtnBg text-greenBtnText cursor-pointer rounded text-md">
                 <Image src={"/Icon.png"} width={18} height={18} alt="image" />
                 <div
                   className="ml-2 font-semibold text-md ml-2"
@@ -191,7 +191,7 @@ const DashboardTable = () => {
             </>
           ) : (
             <>
-              <div className="inline-flex p-2 justify-center items-center font-bold bg-indigo-100 text-indigo-700 border-indigo-700 cursor-pointer rounded text-xs">
+              <div className="inline-flex p-2 pt-1 pb-1 justify-center items-center font-bold bg-lightSky text-purpleText cursor-pointer rounded text-md">
                 <Image
                   src={"/scan-barcode.png"}
                   width={20}

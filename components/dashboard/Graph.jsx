@@ -38,11 +38,21 @@ const Graph = () => {
     <>
       <div className="flex flex-col sm:flex-row justify-between p-4 font-mulish">
         <div className="flex flex-col sm:flex-row">
-          <div className="text-2xl font-bold pb-1 mr-4">Earnings</div>
+          <div
+            className="pb-1 mr-4 font-poppins"
+            style={{ fontSize: "28px", fontWeight: "700" }}
+          >
+            Earnings
+          </div>
           <MonthDropDown />
         </div>
         <div className="bg-graphDate pl-4 pr-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">
-          <p className="text-graphDateText">9 Dec 2022 - 7 Jan 2023 </p>
+          <p
+            className="text-graphDateText font-inter"
+            style={{ fontWeight: "600" }}
+          >
+            9 Dec 2022 - 7 Jan 2023{" "}
+          </p>
           <span className="p-2 pr-0">
             <Image src="/svg.png" width={20} height={20} alt="logo icon" />
           </span>
@@ -59,7 +69,6 @@ const Graph = () => {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis type="number" domain={[0, "dataMax + 1000"]} />
             <Tooltip />

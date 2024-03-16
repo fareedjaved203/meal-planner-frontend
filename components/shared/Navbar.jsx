@@ -17,7 +17,7 @@ const Navbar = () => {
         })
         .slice(0, 5);
       const meridian = now.getHours() >= 12 ? "PM" : "AM";
-      const formattedDate = now.toLocaleDateString("en-US", {
+      const formattedDate = now.toLocaleDateString("en-UK", {
         day: "numeric",
         month: "short",
         year: "numeric",
@@ -36,30 +36,35 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-2 leading-snug font-mulish">
-      <div className="flex flex-col items-start justify-start">
+      <div className="flex flex-col items-start justify-start font-poppins">
         <div
-          className="font-semibold text-lg leading-7 tracking-wider"
-          style={{ color: "#00261C" }}
+          className="font-semibold"
+          style={{ color: "#00261C", fontSize: "18px" }}
         >
           Hello {username}
         </div>
         <div
-          className="font-normal text-xs leading-4 tracking-tighter"
-          style={{ color: "#707EAE" }}
+          className="font-poppins"
+          style={{ color: "#707EAE", fontSize: "11px" }}
         >
           {currentTime}
         </div>
       </div>
       <div className="flex items-center pr-3">
-        <span className="mr-4 max-sm:hidden font-bold">{username}</span>
+        <span
+          className="mr-4 max-sm:hidden font-bold font-poppins"
+          style={{ fontSize: "16px" }}
+        >
+          {username}
+        </span>
         <Image
           src={
             "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
           }
-          width={40}
-          height={40}
+          width={50}
+          height={50}
           alt="logo icon"
-          className="w-8 h-8 rounded-full"
+          className="w-10 h-10 rounded-full"
         />
       </div>
     </nav>

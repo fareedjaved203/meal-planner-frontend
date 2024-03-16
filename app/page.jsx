@@ -8,15 +8,23 @@ const Home = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="min-h-screen min-w-full bg-gray-100 p-4 font-mulish">
+        <div className="min-h-screen min-w-full bg-gray-100 p-4">
           <Summary />
           <GraphAndStats />
           <div className="p-4 bg-white rounded m-4 mr-0 ml-0">
             <div className="flex flex-col sm:flex-row justify-between p-4">
-              <div className="text-2xl font-bold pb-1 mr-4">Orders Placed</div>
-              <Link href="/placed-orders">
-                <div className="text-gray-500">view all</div>
-              </Link>
+              <div
+                className="pb-1 mr-4 font-poppins"
+                style={{ fontSize: "28px", fontWeight: "700" }}
+              >
+                Orders Placed
+              </div>
+              <div
+                className="text-summaryTextColor font-inter"
+                style={{ fontSize: "17px" }}
+              >
+                view all
+              </div>
             </div>
             <div className="p-4">
               <DashboardTable />

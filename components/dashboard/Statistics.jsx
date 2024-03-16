@@ -3,7 +3,12 @@ import Image from "next/image";
 const Statistics = () => {
   return (
     <>
-      <div className="text-2xl font-bold pb-1">Statistics</div>
+      <div
+        className="pb-1 font-poppins"
+        style={{ fontSize: "28px", fontWeight: "700" }}
+      >
+        Statistics
+      </div>
       <div className="flex flex-col">
         <div className="bg-gray-100 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 pl-0 pr-0">
           <Image src="/Frame 44.png" width={70} height={70} alt="logo icon" />

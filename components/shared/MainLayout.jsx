@@ -149,12 +149,15 @@ const MainLayout = ({ children }) => {
         <div className="flex items-center w-full justify-center p-4 pr-0 mt-8 pl-0">
           <Image
             src="/so-wallet-coin.png"
-            width={30}
-            height={30}
+            width={25}
+            height={25}
             alt="logo icon"
             className="mt-2 ml-4"
           />
-          <div className="font-extrabold text-lg leading-7 m-3 mt-4 ml-1">
+          <div
+            className="mt-3 ml-1 mr-1 font-mulish"
+            style={{ fontSize: "21px", fontWeight: "900" }}
+          >
             Meal Planner
           </div>
         </div>

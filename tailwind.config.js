@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         mulish: ["Mulish", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         custom: "rgba(76, 73, 237, 0.1)",
@@ -19,6 +21,8 @@ module.exports = {
         summaryTextColor: "#A1A0BD",
         graphDate: "#F9F9F9",
         graphDateText: "#7E8299",
+        greenBtnBg: "#F4FFE3",
+        greenBtnText: "#00C67F",
       },
     },
   },
