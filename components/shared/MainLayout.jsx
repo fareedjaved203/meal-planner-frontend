@@ -20,7 +20,7 @@ const items = [
     icon: <MdDashboard style={{ fontSize: "20px" }} />,
     label: (
       <Link href="/">
-        <span className="text-gray-600">Dashboard</span>
+        <span className="font-mulish">Dashboard</span>
       </Link>
     ),
     style: { whiteSpace: "normal", lineHeight: 1.375 },
@@ -30,7 +30,7 @@ const items = [
     icon: <FaCartShopping style={{ fontSize: "20px" }} />,
     label: (
       <Link href="/placed-orders">
-        <span className="text-gray-600">Placed Orders</span>
+        <span className="font-mulish">Placed Orders</span>
       </Link>
     ),
     style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "20px" },
@@ -40,7 +40,7 @@ const items = [
     icon: <BsBookmarkCheckFill style={{ fontSize: "20px" }} />,
     label: (
       <Link href="/completed-orders">
-        <span className="text-gray-600">Completed Orders</span>
+        <span className="font-mulish">Completed Orders</span>
       </Link>
     ),
     style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "20px" },
@@ -50,7 +50,7 @@ const items = [
     icon: <FaBagShopping style={{ fontSize: "20px" }} />,
     label: (
       <Link href="/items">
-        <span className="text-gray-600">Items</span>
+        <span className="font-mulish">Items</span>
       </Link>
     ),
     style: {
@@ -65,7 +65,7 @@ const items = [
     label: (
       <>
         <Link href="/">
-          <span className="text-gray-600">Help</span>
+          <span className="font-mulish">Help</span>
         </Link>
       </>
     ),
@@ -89,7 +89,7 @@ const items = [
     className: "logout",
     label: (
       <Link href="/login">
-        <span className="text-gray-500">Logout</span>
+        <span className="font-mulish">Logout</span>
       </Link>
     ),
   },

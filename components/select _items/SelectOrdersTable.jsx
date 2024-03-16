@@ -209,7 +209,7 @@ let data = [
   },
 ];
 
-const CompleteOrdersTable = () => {
+const SelectOrdersTable = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
@@ -325,6 +325,22 @@ const CompleteOrdersTable = () => {
       ),
   });
 
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      console.log(
+        `selectedRowKeys: ${selectedRowKeys}`,
+        "selectedRows: ",
+        selectedRows
+      );
+    },
+    onSelect: (record, selected, selectedRows) => {
+      console.log(record, selected, selectedRows);
+    },
+    onSelectAll: (selected, selectedRows, changeRows) => {
+      console.log(selected, selectedRows, changeRows);
+    },
+  };
+
   const columns = [
     {
       title: "PID",
@@ -386,6 +402,14 @@ const CompleteOrdersTable = () => {
       ),
     },
   ];
-  return <Table columns={columns} dataSource={[...data]} />;
+  return (
+    <Table
+      columns={columns}
+      rowSelection={{
+        ...rowSelection,
+      }}
+      dataSource={[...data]}
+    />
+  );
 };
-export default CompleteOrdersTable;
+export default SelectOrdersTable;

@@ -7,7 +7,12 @@ const PlacedOrders = () => {
       <>
         <div className="bg-white m-6 rounded-lg p-4 pt-1 font-mulish">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold p-4 mt-4">Orders Placed</div>
+            <div
+              className="p-4 mt-2 font-poppins"
+              style={{ fontSize: "28px", fontWeight: "700" }}
+            >
+              Orders Placed
+            </div>
           </div>
           <div className="p-4 pt-0">
             <CompleteOrdersTable />

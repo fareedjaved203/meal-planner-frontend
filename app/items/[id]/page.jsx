@@ -6,17 +6,22 @@ const ItemsId = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
+        <div className="flex items-center justify-start w-full pl-4 mt-4 font-poppins">
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
-          <div className="font-bold ml-4 mr-4">Back</div>
+          <div className="font-bold ml-4 mr-4 font-poppins">Back</div>
           <div className="flex-grow pr-4 mr-4">
             <hr />
           </div>
         </div>
-        <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
-          <div className="text-2xl font-bold p-4 mt-4">Item Details</div>
+        <div className="bg-white m-4 rounded p-4 pt-3">
+          <div
+            className="p-4 font-poppins"
+            style={{ fontSize: "28px", fontWeight: "700" }}
+          >
+            Item Details
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
               <div className="font-bold">Name Line 1</div>
@@ -173,7 +178,7 @@ const ItemsId = () => {
             </div>
 
             <div className="flex justify-center items-center p-4">
-              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-indigo-700 font-semibold border border-dashed border-indigo-700 border-2">
+              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-purpleText font-semibold border border-dashed border-purpleText border-2">
                 Add Ingredients
               </div>
             </div>
@@ -224,14 +229,14 @@ const ItemsId = () => {
             </div>
 
             <div className="flex justify-center items-center p-4">
-              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-indigo-700 font-semibold border border-dashed border-indigo-700 border-2">
+              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-purpleText font-semibold border border-dashed border-purpleText border-2">
                 Add Ingredients
               </div>
             </div>
           </div>
 
           <div className="flex justify-center items-center mt-4 p-4">
-            <div className="bg-indigo-700 w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold">
+            <div className="bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold">
               Add Item
             </div>
           </div>

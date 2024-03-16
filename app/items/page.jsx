@@ -10,7 +10,7 @@ const Items = () => {
       <>
         <div className="flex justify-center items-center w-40 bg-lightSky font-semibold cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2 m-4">
           <Link href="/items/add-item">
-            <div className="text-purpleText w-full flex justify-center items-center">
+            <div className="text-purpleText w-full flex justify-center items-center font-inter">
               Add Item
               <span className="ml-4">
                 <Image
@@ -25,7 +25,12 @@ const Items = () => {
         </div>
         <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div className="flex justify-between items-center pr-4">
-            <div className="text-2xl font-bold p-4 mt-4">Your Items</div>
+            <div
+              className="p-4 font-poppins"
+              style={{ fontSize: "28px", fontWeight: "700" }}
+            >
+              Your Items
+            </div>
             <div className="mt-4">
               <DatePickerButton />
             </div>

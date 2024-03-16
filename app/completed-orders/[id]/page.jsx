@@ -9,16 +9,19 @@ const CompletedOrderId = () => {
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
-          <div className="font-bold ml-4 mr-4">Back</div>
+          <div className="font-bold ml-4 mr-4 font-poppins">Back</div>
           <div className="flex-grow pr-4 mr-4">
             <hr />
           </div>
         </div>
-        <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
-          <div className="text-2xl font-bold p-4 mt-4">
+        <div className="bg-white m-4 rounded p-4">
+          <div
+            className="p-4 font-poppins"
+            style={{ fontSize: "28px", fontWeight: "700" }}
+          >
             Completed Order Details
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full font-poppins">
             <div className="p-4">
               <div className="font-bold pb-4">PID</div>
               <div>
