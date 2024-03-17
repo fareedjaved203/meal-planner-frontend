@@ -56,11 +56,12 @@ const items = [
     style: {
       whiteSpace: "normal",
       lineHeight: 1.375,
-      marginTop: "18px",
+      marginTop: "18px", 
     },
   },
   {
     key: "divider",
+    className: "menu-divider",
     label: <Menu.Divider />,
   },
   {
@@ -77,24 +78,20 @@ const items = [
   },
   {
     key: "spacer",
-    label: (
-      <div style={{ flex: "1 1 auto", background: "none", cursor: "none" }} />
-    ),
+    label: <div style={{ flexGrow: 1 }} />,
     className: "spacer",
   },
-  {
-    key: "spacer",
-    label: <div style={{ flex: "1 1 auto", background: "none" }} />,
-    className: "spacer",
-  },
+  
   {
     key: "6",
     icon: <IoIosArrowRoundBack style={{ fontSize: "20px" }} />,
     className: "logout",
+    
     label: (
-      <Link href="/login">
+      <Link href="/login" >
         <span className="font-mulish">Logout</span>
       </Link>
+      
     ),
   },
 ];

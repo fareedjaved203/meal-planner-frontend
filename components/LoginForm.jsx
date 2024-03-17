@@ -28,13 +28,14 @@ const LoginForm = () => {
                 <span
                   className="font-mulish"
                   style={{
-                    fontWeight: 900,
-                    fontSize: "28.36px",
+                    fontWeight: 800,
+                    fontSize: "32.36px",
                     lineHeight: "35.6px",
                   }}
                 >
                   Meal Planner
                 </span>
+
               </div>
               <p
                 className="font-poppins my-3 pt-4"

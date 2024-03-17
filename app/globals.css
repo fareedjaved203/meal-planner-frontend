@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.my-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 
 .my-menu .ant-menu-item {
   color: #a1a0bd !important;
@@ -9,6 +17,14 @@
 .my-menu .ant-menu-item-selected {
   background-color: #e4e3ff !important;
   color: #4c49ed !important;
+}
+.my-menu .logout {
+  background-color: #4c49edc4 !important;
+  color: #ffffff !important;
+}
+.my-menu .logout:hover {
+  background-color: #4c49edf3 !important;
+  color: #ffffff !important;
 }
 .my-menu {
   font-size: "17px" !important;
@@ -23,6 +39,12 @@
 
 .ant-pagination-item-active {
   border: none !important;
+}
+
+/* Disables hover effects on the menu divider */
+.my-menu .menu-divider {
+  background-color: transparent !important; /* Keeps background transparent */
+  cursor: default !important; /* Resets cursor to default instead of pointer */
 }
 
 .pid {

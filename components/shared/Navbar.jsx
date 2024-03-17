@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-2 leading-snug font-mulish">
+    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-3 pb-2 leading-snug font-mulish">
       <div className="flex flex-col items-start justify-start font-poppins">
         <div
           className="font-semibold"
@@ -53,7 +53,7 @@ const Navbar = () => {
       <div className="flex items-center pr-3">
         <span
           className="mr-4 max-sm:hidden font-bold font-poppins"
-          style={{ fontSize: "16px" }}
+          style={{ fontSize: "16px",fontWeight:500 }}
         >
           {username}
         </span>
@@ -61,10 +61,10 @@ const Navbar = () => {
           src={
             "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
           }
-          width={50}
-          height={50}
+          width={65}
+          height={65}
           alt="logo icon"
-          className="w-10 h-10 rounded-full"
+          className="w-12 h-12 rounded-full"
         />
       </div>
     </nav>

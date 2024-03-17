@@ -39,8 +39,8 @@ const Graph = () => {
       <div className="flex flex-col sm:flex-row justify-between p-4 font-mulish">
         <div className="flex flex-col sm:flex-row">
           <div
-            className="pb-1 mr-4 font-poppins"
-            style={{ fontSize: "28px", fontWeight: "700" }}
+            className="pb-1 mr-4 font-mulish"
+            style={{ fontSize: "28px", fontWeight: "900" }}
           >
             Earnings
           </div>

@@ -15,8 +15,8 @@ const Summary = () => {
             Total Earnings
           </div>
           <div
-            className="text-2xl font-bold pb-2 font-poppins"
-            style={{ fontSize: "32px" }}
+            className="text-2xl font-bold pb-2 mb-2 font-mulish"
+            style={{ fontSize: "32px",fontWeight:900 }}
           >
             $1000
           </div>
@@ -41,8 +41,8 @@ const Summary = () => {
             Total Orders
           </div>
           <div
-            className="text-2xl font-bold pb-2 font-poppins"
-            style={{ fontSize: "32px" }}
+            className="text-2xl font-bold pb-2 font-mulish mb-2"
+            style={{ fontSize: "32px",fontWeight:900 }}
           >
             540
           </div>
@@ -67,8 +67,8 @@ const Summary = () => {
             Total Items
           </div>
           <div
-            className="text-2xl font-bold pb-2 font-poppins"
-            style={{ fontSize: "32px" }}
+            className="text-2xl font-bold pb-2 font-mulish mb-2"
+            style={{ fontSize: "32px" , fontWeight:900 }}
           >
             180
           </div>
@@ -85,17 +85,17 @@ const Summary = () => {
         </div>
         <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white ">
           <div
-            className="font-poppins text-summaryTextColor mb-1 pb-1"
+            className="font-mulish text-summaryTextColor mb-1 pb-1"
             style={{
               fontSize: "16px",
-              fontWeight: "600",
+              fontWeight: "900",
             }}
           >
             Completed Orders
           </div>
           <div
-            className="text-2xl font-bold pb-2 font-poppins"
-            style={{ fontSize: "32px" }}
+            className="text-2xl font-bold pb-2 font-mulish mb-2"
+            style={{ fontSize: "32px" , fontWeight:900}}
           >
             140
           </div>
