@@ -6,8 +6,8 @@ import Highlighter from "react-highlight-words";
 
 let data = [
   {
-    key: "#1",
-    pid: "123",
+    key: "1",
+    pid: "#123",
     date: "23 Feb 2023",
     orderby: "example@gmail.com",
     quantity: 30,
@@ -16,8 +16,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#2",
-    pid: "321",
+    key: "2",
+    pid: "#321",
     date: "23 Feb 2023",
     orderby: "example@gmail.com",
     quantity: 30,
@@ -27,8 +27,8 @@ let data = [
   },
   // 10 more similar objects
   {
-    key: "#3",
-    pid: "456",
+    key: "3",
+    pid: "#456",
     date: "24 Feb 2023",
     orderby: "anotherexample@gmail.com",
     quantity: 20,
@@ -37,8 +37,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#4",
-    pid: "789",
+    key: "4",
+    pid: "#789",
     date: "25 Feb 2023",
     orderby: "yetanotherexample@gmail.com",
     quantity: 40,
@@ -47,8 +47,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#5",
-    pid: "135",
+    key: "5",
+    pid: "#135",
     date: "26 Feb 2023",
     orderby: "user@example.com",
     quantity: 25,
@@ -57,8 +57,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#6",
-    pid: "246",
+    key: "6",
+    pid: "#246",
     date: "27 Feb 2023",
     orderby: "user@example.com",
     quantity: 35,
@@ -67,8 +67,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#7",
-    pid: "357",
+    key: "7",
+    pid: "#357",
     date: "28 Feb 2023",
     orderby: "test@example.com",
     quantity: 45,
@@ -77,8 +77,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#8",
-    pid: "468",
+    key: "8",
+    pid: "#468",
     date: "01 Mar 2023",
     orderby: "test@example.com",
     quantity: 30,
@@ -87,8 +87,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#9",
-    pid: "579",
+    key: "9",
+    pid: "#579",
     date: "02 Mar 2023",
     orderby: "admin@example.com",
     quantity: 40,
@@ -97,8 +97,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#10",
-    pid: "680",
+    key: "10",
+    pid: "#680",
     date: "03 Mar 2023",
     orderby: "admin@example.com",
     quantity: 20,
@@ -108,8 +108,8 @@ let data = [
   },
   // 10 more similar objects...
   {
-    key: "#11",
-    pid: "781",
+    key: "11",
+    pid: "#781",
     date: "04 Mar 2023",
     orderby: "admin@example.com",
     quantity: 35,
@@ -118,8 +118,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#12",
-    pid: "892",
+    key: "12",
+    pid: "#892",
     date: "05 Mar 2023",
     orderby: "admin@example.com",
     quantity: 28,
@@ -128,8 +128,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#13",
-    pid: "903",
+    key: "13",
+    pid: "#903",
     date: "06 Mar 2023",
     orderby: "admin@example.com",
     quantity: 33,
@@ -138,8 +138,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#14",
-    pid: "914",
+    key: "14",
+    pid: "#914",
     date: "07 Mar 2023",
     orderby: "admin@example.com",
     quantity: 22,
@@ -148,8 +148,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#15",
-    pid: "925",
+    key: "15",
+    pid: "#925",
     date: "08 Mar 2023",
     orderby: "admin@example.com",
     quantity: 27,
@@ -158,8 +158,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#16",
-    pid: "936",
+    key: "16",
+    pid: "#936",
     date: "09 Mar 2023",
     orderby: "admin@example.com",
     quantity: 38,
@@ -168,8 +168,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#17",
-    pid: "947",
+    key: "17",
+    pid: "#947",
     date: "10 Mar 2023",
     orderby: "admin@example.com",
     quantity: 31,
@@ -178,8 +178,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#18",
-    pid: "958",
+    key: "18",
+    pid: "#958",
     date: "11 Mar 2023",
     orderby: "admin@example.com",
     quantity: 26,
@@ -188,8 +188,8 @@ let data = [
     complete: true,
   },
   {
-    key: "#19",
-    pid: "969",
+    key: "19",
+    pid: "#969",
     date: "12 Mar 2023",
     orderby: "admin@example.com",
     quantity: 36,
@@ -198,8 +198,8 @@ let data = [
     complete: false,
   },
   {
-    key: "#20",
-    pid: "970",
+    key: "20",
+    pid: "#970",
     date: "13 Mar 2023",
     orderby: "admin@example.com",
     quantity: 29,
@@ -349,15 +349,7 @@ const CompleteOrdersTable = () => {
       dataIndex: "pid",
       key: "pid",
       width: "30%",
-      render: (text) => {
-        return {
-          props: {
-            style: { color: "gray" },
-            className: "pid",
-          },
-          children: <div>{text}</div>,
-        };
-      },
+      className: "pidColumn",
       ...getColumnSearchProps("pid"),
     },
     {

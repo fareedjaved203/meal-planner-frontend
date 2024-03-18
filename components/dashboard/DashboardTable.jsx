@@ -8,7 +8,7 @@ import Image from "next/image";
 let data = [
   {
     key: "1",
-    pid: "123",
+    pid: "#123",
     date: "23 Feb 2023",
     title: "Black Shirts",
     description: "we can write here anything...",
@@ -16,7 +16,7 @@ let data = [
   },
   {
     key: "2",
-    pid: "321",
+    pid: "#321",
     date: "23 Feb 2023",
     title: "Black Shirts",
     description: "we can write here anything...",
@@ -155,6 +155,7 @@ const DashboardTable = () => {
       dataIndex: "pid",
       key: "pid",
       width: "10%",
+      className: "pidColumn",
       ...getColumnSearchProps("pid"),
     },
     {

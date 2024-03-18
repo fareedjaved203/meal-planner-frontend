@@ -20,8 +20,8 @@ const LoginForm = () => {
               <div className="text-2xl mb-4 flex items-center">
                 <Image
                   src="/so-wallet-coin.svg"
-                  width={24}
-                  height={24}
+                  width={38}
+                  height={38}
                   alt="logo icon"
                   className="mr-2"
                 />

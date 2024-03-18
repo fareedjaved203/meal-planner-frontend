@@ -168,6 +168,8 @@ const ItemsTable = () => {
       dataIndex: "pid",
       key: "pid",
       width: "10%",
+      className: "pidColumn",
+
       ...getColumnSearchProps("pid"),
     },
     {

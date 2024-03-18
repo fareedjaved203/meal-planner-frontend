@@ -19,8 +19,8 @@
   color: #4c49ed !important;
 }
 .my-menu .logout {
-  background-color: #4c49edc4 !important;
-  color: #ffffff !important;
+  /* background-color: #4c49edc4 !important; */
+  /* color: #ffffff !important; */
 }
 .my-menu .logout:hover {
   background-color: #4c49edf3 !important;
@@ -67,4 +67,9 @@
 
 .ant-table-thead .ant-table-cell {
   background-color: rgba(76, 73, 237, 0.1) !important;
+  color: black !important;
+}
+
+.pidColumn{
+  color: #7a7a7a !important;
 }
