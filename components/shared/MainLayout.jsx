@@ -56,7 +56,7 @@ const items = [
     style: {
       whiteSpace: "normal",
       lineHeight: 1.375,
-      marginTop: "18px", 
+      marginTop: "18px",
     },
   },
   {
@@ -81,31 +81,25 @@ const items = [
     label: <div style={{ flexGrow: 1 }} />,
     className: "spacer",
   },
-  {
-    key: "spacer",
-    label: <div style={{ flexGrow: 1 }} />,
-    className: "spacer",
-  },
 
-  {
-    key: "spacer",
-    label: <div style={{ flexGrow: 1 }} />,
-    className: "spacer",
-  },
-  
+
+];
+
+const logout = [
   {
     key: "6",
     icon: <IoIosArrowRoundBack style={{ fontSize: "20px" }} />,
     className: "logout",
-    
+
     label: (
       <Link href="/login" >
         <span className="font-mulish">Logout</span>
       </Link>
-      
+
     ),
   },
-];
+
+]
 
 const MainLayout = ({ children }) => {
   const pathname = usePathname();
@@ -158,26 +152,55 @@ const MainLayout = ({ children }) => {
           backgroundColor: "white",
         }}
       >
-        <Image
-          src="/Logo.svg"
-          width={400}
-          height={400}
-          alt="logo icon"
-          className="mt-12"
-        />
-        <Menu
-          theme="light"
-          mode="inline"
-          selectedKeys={[selectedKey]}
-          className="my-menu"
-          style={{
-            height: "100%",
-            borderRight: 0,
-            marginTop: "30px",
-            padding: "10px",
-          }}
-          items={items}
-        />
+        <div className="text-2xl mb-4 flex items-center ml-4 mt-16">
+          <Image
+            src="/so-wallet-coin.svg"
+            width={28}
+            height={28}
+            alt="logo icon"
+            className="mr-2"
+          />
+          <span
+            className="font-mulish"
+            style={{
+              fontWeight: 800,
+              fontSize: "21px",
+              lineHeight: "35.6px",
+            }}
+          >
+            Meal Planner
+          </span>
+
+        </div>
+        <div style={{display:"flex",flexDirection:"column",justifyContent:"space-between",height:"80%"}}>
+
+          <Menu
+            theme="light"
+            mode="inline"
+            selectedKeys={[selectedKey]}
+            className="my-menu"
+            style={{
+              height: "58vh",
+              borderRight: 0,
+              marginTop: "30px",
+              padding: "10px",
+            }}
+            items={items}
+          />
+          <Menu
+            theme="light"
+            mode="inline"
+            selectedKeys={[selectedKey]}
+            className="my-menu"
+            style={{
+              height: "10vh",
+              borderRight: 0,
+              marginTop: "30px",
+              padding: "10px",
+            }}
+            items={logout}
+          />
+        </div>
       </Sider>
       <Layout
         style={{
