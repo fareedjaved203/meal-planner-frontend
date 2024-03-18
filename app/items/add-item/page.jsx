@@ -23,8 +23,8 @@ const AddItems = () => {
         <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div className="flex justify-between items-center pr-4">
             <div
-              className="p-4 font-poppins"
-              style={{ fontSize: "28px", fontWeight: "700" }}
+              className="p-4 font-mulish"
+              style={{ fontSize: "28px", fontWeight: "900" }}
             >
               Your Items
             </div>

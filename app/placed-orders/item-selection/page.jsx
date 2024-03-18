@@ -12,13 +12,13 @@ const PlacedOrders = () => {
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
-          <div className="font-bold ml-4 mr-4 font-poppins">Back</div>
+          <div className="font-bold ml-4 mr-4 font-mulish" style={{fontWeight:"900"}}>Back</div>
           <div className="flex items-center w-full pr-4">
             <hr className="flex-grow pr-4 mr-4 w-3/4" />
-            <div className="flex justify-center items-center w-40 bg-indigo-200 text-indigo-700 font-semibold border-indigo-700 cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2">
+            <div className="flex justify-center items-center w-44 bg-indigo-100 text-indigo-700 font-semibold border-indigo-700 cursor-pointer rounded p-1 pt-0 pb-0 h-14 px-2">
               <div
                 className="text-purpleText w-full flex justify-center items-center font-inter"
-                style={{ fontSize: "17px" }}
+                style={{ fontSize: "17px",paddingvertical: "9px" }}
               >
                 Apply
               </div>
@@ -28,8 +28,8 @@ const PlacedOrders = () => {
         <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div className="flex justify-between items-center m-4">
             <div
-              className="pb-1 mr-4 font-poppins"
-              style={{ fontSize: "28px", fontWeight: "700" }}
+              className="pb-1 mr-4 font-mulish"
+              style={{ fontSize: "28px", fontWeight: "900" }}
             >
               Select Items
             </div>

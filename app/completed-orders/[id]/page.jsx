@@ -9,36 +9,36 @@ const CompletedOrderId = () => {
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
-          <div className="font-bold ml-4 mr-4 font-poppins">Back</div>
+          <div className="font-bold ml-4 mr-4 font-mulish" style={{fontWeight:"900"}}>Back</div>
           <div className="flex-grow pr-4 mr-4">
             <hr />
           </div>
         </div>
         <div className="bg-white m-4 rounded p-4">
           <div
-            className="p-4 font-poppins"
-            style={{ fontSize: "28px", fontWeight: "700" }}
+            className="p-4 font-mulish"
+            style={{ fontSize: "28px", fontWeight: "900" }}
           >
             Completed Order Details
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full font-poppins">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full font-mulish">
             <div className="p-4">
-              <div className="font-bold pb-4">PID</div>
+              <div className="font-mulish pb-4" style={{fontWeight:"900",margin:"1.5%"}}>PID</div>
               <div>
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
-            <div className="p-4">
-              <div className="font-bold pb-4">Date Completed</div>
+            <div className="p-4" >
+              <div className="font-mulish pb-4" style={{fontWeight:"900",margin:"1.5%"}}>Date Completed</div>
               <div>
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
@@ -46,22 +46,22 @@ const CompletedOrderId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-bold pb-4">Ordered By</div>
+              <div className="font-bold pb-4 mb-2">Ordered By</div>
               <div>
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
             <div className="p-4">
-              <div className="font-bold pb-4">Quantity</div>
+              <div className="font-bold pb-4 mb-2">Quantity</div>
               <div>
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
@@ -69,22 +69,22 @@ const CompletedOrderId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-bold pb-4">Type</div>
+              <div className="font-bold pb-4 mb-2">Type</div>
               <div>
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
             <div className="p-4">
-              <div className="font-bold pb-4">Price</div>
+              <div className="font-bold pb-4 mb-2">Price</div>
               <div>
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
@@ -92,12 +92,12 @@ const CompletedOrderId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-bold pb-4">Status</div>
+              <div className="font-bold pb-4 mb-2">Status</div>
               <div>
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>

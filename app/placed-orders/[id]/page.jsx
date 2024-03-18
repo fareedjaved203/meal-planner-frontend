@@ -10,15 +10,15 @@ const PlacedOrderId = () => {
           <div>
             <IoIosArrowRoundBack className="text-3xl" />
           </div>
-          <div className="font-bold ml-4 mr-4 font-poppins">Order Details</div>
+          <div className="font-bold ml-4 mr-4 font-mulish" style={{fontWeight:"900"}}>Order Details</div>
           <div className="flex-grow pr-4 mr-4">
             <hr />
           </div>
         </div>
         <div className="bg-white m-4 rounded p-4 pt-1">
           <div
-            className="p-4 font-poppins mt-2 mb-4"
-            style={{ fontSize: "28px", fontWeight: "700" }}
+            className="p-4 font-mulish mt-2 mb-4"
+            style={{ fontSize: "28px", fontWeight: "900" }}
           >
             Predefined Order Details
           </div>
@@ -31,8 +31,8 @@ const PlacedOrderId = () => {
         </div>
         <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
           <div
-            className="p-4 font-poppins mt-2 mb-4"
-            style={{ fontSize: "28px", fontWeight: "700" }}
+            className="p-4 font-mulish mt-2 mb-4"
+            style={{ fontSize: "28px", fontWeight: "900" }}
           >
             Custom Order Details
           </div>

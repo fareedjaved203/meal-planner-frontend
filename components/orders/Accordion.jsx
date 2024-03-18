@@ -35,12 +35,12 @@ function Accordion({ predefined = false }) {
             onClick={() => toggleItem(index)}
           >
             <div className="flex justify-between w-full">
-              <h2 className="font-semibold ">
-                <span className="font-bold">Quantity</span> 2
+              <h2 className="font-poppins ">
+                <span className="font-mulish" style={{fontWeight:"900"}}>Quantity</span> 2
               </h2>
               <p style={{ fontSize: "18px" }}>Lorem Ipsum</p>
               <div>
-                <span className="font-bold">Price$</span> 150
+                <span className="font-mulish" style={{fontWeight:"900"}}>Price$</span> 150
               </div>
 
               <div>

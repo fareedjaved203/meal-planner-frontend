@@ -17,14 +17,14 @@ const ItemsId = () => {
         </div>
         <div className="bg-white m-4 rounded p-4 pt-3">
           <div
-            className="p-4 font-poppins"
-            style={{ fontSize: "28px", fontWeight: "700" }}
+            className="p-4 font-mulish"
+            style={{ fontSize: "28px", fontWeight: "900" }}
           >
             Item Details
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-bold">Name Line 1</div>
+              <div className="font-mulish" style={{fontWeight:"900"}}>Name Line 1</div>
               <p className="pb-4">
                 Enter the name or an addition to your recipe here (e.g.
                 spaghetti):
@@ -33,12 +33,12 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
             <div className="p-4">
-              <div className="font-bold">Name Line 2</div>
+              <div className="font-font-mulish" style={{fontWeight:"900"}}>Name Line 2</div>
               <p className="pb-4">
                 Enter the name or an addition to your recipe here (e.g.
                 Carbonara):
@@ -47,7 +47,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
@@ -55,7 +55,7 @@ const ItemsId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-bold">Preparation Time</div>
+              <div className="font-font-mulish" style={{fontWeight:"900"}}>Preparation Time</div>
               <p className="pb-4">
                 Enter the preparation time including time unit here (e.g. 30 min
                 / 1 hour):
@@ -64,12 +64,12 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
             <div className="p-4">
-              <div className="font-bold">Level of Spiciness</div>
+              <div className="font-font-mulish" style={{fontWeight:"900"}}>Level of Spiciness</div>
               <p className="pb-4">
                 Enter the level of spiciness here (e.g. mild / spicy / hot /
                 very hot):
@@ -78,7 +78,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
@@ -86,7 +86,7 @@ const ItemsId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-bold">Level of Difficulty</div>
+              <div className="font-font-mulish" style={{fontWeight:"900"}}>Level of Difficulty</div>
               <p className="pb-4">
                 Enter the level of difficulty for this recipe here (e.g. easy /
                 medium / hard):
@@ -95,12 +95,12 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
             <div className="p-4">
-              <div className="font-bold">Origin</div>
+              <div className="font-font-mulish" style={{fontWeight:"900"}}>Origin</div>
               <p className="pb-4">
                 Select the country of origin of the recipe (e.g. if you are not
                 sure, select World Dish or Continental):
@@ -109,7 +109,7 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="12 Dec 2023"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
@@ -117,7 +117,7 @@ const ItemsId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-bold">Diet</div>
+              <div className="font-font-mulish" style={{fontWeight:"900"}}>Diet</div>
               <p className="pb-4">
                 Enter here whether the dish corresponds to a specific diet or
                 which animal products are used (e.g. vegan, vegetarian, halal,
@@ -127,19 +127,19 @@ const ItemsId = () => {
                 <input
                   type="text"
                   value="test@gmail.com"
-                  className="bg-custom w-full rounded h-10 p-4"
+                  className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
           </div>
 
-          <div className="text-2xl font-bold p-4 mt-4">Ingredients</div>
+          <div className="text-2xl font-mulish p-4 mt-4" style={{fontWeight:"900"}}>Ingredients</div>
           <div>
             <div className="flex justify-center items-center p-4">
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-custom w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
                 src="/Group 11068.png"
@@ -160,7 +160,7 @@ const ItemsId = () => {
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-custom w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
                 src="/tick.png"
@@ -178,19 +178,19 @@ const ItemsId = () => {
             </div>
 
             <div className="flex justify-center items-center p-4">
-              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-purpleText font-semibold border border-dashed border-purpleText border-2">
+              <div className="bg-custom w-full rounded h-15 p-6 flex justify-center items-center text-purpleText font-semibold border border-dashed border-purpleText border-2">
                 Add Ingredients
               </div>
             </div>
           </div>
 
-          <div className="text-2xl font-bold p-4 mt-4">Steps</div>
+          <div className="text-2xl font-mulish p-4 mt-4" style={{fontWeight:"900"}}>Steps</div>
           <div>
             <div className="flex justify-center items-center p-4">
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-custom w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
                 src="/Group 11068.png"
@@ -211,7 +211,7 @@ const ItemsId = () => {
               <input
                 type="text"
                 value="test@gmail.com"
-                className="bg-custom w-[90%] rounded h-10 p-4"
+                className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
                 src="/tick.png"
@@ -229,7 +229,7 @@ const ItemsId = () => {
             </div>
 
             <div className="flex justify-center items-center p-4">
-              <div className="bg-custom w-full rounded h-15 p-4 flex justify-center items-center text-purpleText font-semibold border border-dashed border-purpleText border-2">
+              <div className="bg-custom w-full rounded h-15 p-6 flex justify-center items-center text-purpleText font-semibold border border-dashed border-purpleText border-2">
                 Add Ingredients
               </div>
             </div>

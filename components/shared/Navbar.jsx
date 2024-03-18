@@ -52,8 +52,8 @@ const Navbar = () => {
       </div>
       <div className="flex items-center pr-3">
         <span
-          className="mr-4 max-sm:hidden font-bold font-poppins"
-          style={{ fontSize: "16px",fontWeight:500 }}
+          className="mr-4 max-sm:hidden  font-poppins"
+          style={{ fontSize: "16px",fontWeight:600 }}
         >
           {username}
         </span>
@@ -64,7 +64,7 @@ const Navbar = () => {
           width={65}
           height={65}
           alt="logo icon"
-          className="w-12 h-12 rounded-full"
+          className="w-12 h-12 rounded-lg"
         />
       </div>
     </nav>

@@ -68,8 +68,9 @@
 .ant-table-thead .ant-table-cell {
   background-color: rgba(76, 73, 237, 0.1) !important;
   color: black !important;
+  font-weight: bolder;
 }
 
 .pidColumn{
-  color: #7a7a7a !important;
+  color: #999999  !important;
 }
