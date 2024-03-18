@@ -17,14 +17,7 @@
   background-color: #e4e3ff !important;
   color: #4c49ed !important;
 }
-.my-menu .logout {
-  /* background-color: #4c49edc4 !important; */
-  /* color: #ffffff !important; */
-}
-.my-menu .logout:hover {
-  background-color: #4c49edf3 !important;
-  color: #ffffff !important;
-}
+
 .my-menu {
   font-size: "17px" !important;
   font-weight: 800 !important;

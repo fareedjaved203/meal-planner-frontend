@@ -36,11 +36,17 @@ function Accordion({ predefined = false }) {
           >
             <div className="flex justify-between w-full">
               <h2 className="font-poppins ">
-                <span className="font-mulish" style={{fontWeight:"900"}}>Quantity</span> 2
+                <span className="font-mulish" style={{ fontWeight: "900" }}>
+                  Quantity
+                </span>{" "}
+                2
               </h2>
               <p style={{ fontSize: "18px" }}>Lorem Ipsum</p>
               <div>
-                <span className="font-mulish" style={{fontWeight:"900"}}>Price$</span> 150
+                <span className="font-mulish" style={{ fontWeight: "900" }}>
+                  Price$
+                </span>{" "}
+                150
               </div>
 
               <div>
@@ -61,7 +67,7 @@ function Accordion({ predefined = false }) {
               <div className="flex justify-between pr-4 pt-4">
                 <div className="flex pl-4 w-1/4 justify-center items-center">
                   <div className="flex justify-center items-center w-full bg-lightSky text-purpleText cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2">
-                    <Link href="/placed-orders/select-items">
+                    <Link href="/placed-orders/item-selection">
                       <div
                         className="text-purpleText w-full flex justify-center items-center font-inter"
                         style={{ fontWeight: "600", fontSize: "13px" }}

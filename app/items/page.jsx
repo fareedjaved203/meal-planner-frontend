@@ -10,8 +10,8 @@ const Items = () => {
       <>
         <div className="flex justify-center items-center w-40 bg-lightSky font-semibold cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2 m-4">
           <Link href="/items/add-item">
-            <div className="text-purpleText w-full flex justify-center items-center font-inter">
-              Add Item
+            <div className="text-purpleText w-full flex justify-center items-center">
+              Add Item{" "}
               <span className="ml-4">
                 <Image
                   src={"/message-add.svg"}
