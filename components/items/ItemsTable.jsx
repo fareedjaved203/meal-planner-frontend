@@ -211,7 +211,19 @@ const ItemsTable = () => {
     },
   ];
   return (
-    <Table columns={columns} dataSource={[...data]} pagination={pagination} />
+    <Table
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: (event) => {
+            router.push(`items/${record?.key}`);
+          },
+          className: "cursor-pointer",
+        };
+      }}
+      columns={columns}
+      dataSource={[...data]}
+      pagination={pagination}
+    />
   );
 };
 export default ItemsTable;

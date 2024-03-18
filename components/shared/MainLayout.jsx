@@ -23,7 +23,15 @@ const items = [
         <span className="font-mulish">Dashboard</span>
       </Link>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1.375 },
+    style: {
+      whiteSpace: "normal",
+      lineHeight: 1.375,
+      paddingLeft: "22px",
+      paddingRight: "15px",
+      paddingTop: "24px",
+      paddingBottom: "23px",
+      margin: "5px",
+    },
   },
   {
     key: "2",
@@ -33,7 +41,15 @@ const items = [
         <span className="font-mulish">Placed Orders</span>
       </Link>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "18px" },
+    style: {
+      whiteSpace: "normal",
+      lineHeight: 1.375,
+      paddingLeft: "22px",
+      paddingRight: "15px",
+      paddingTop: "24px",
+      paddingBottom: "23px",
+      margin: "5px",
+    },
   },
   {
     key: "3",
@@ -43,7 +59,15 @@ const items = [
         <span className="font-mulish">Completed Orders</span>
       </Link>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1.375, marginTop: "18px" },
+    style: {
+      whiteSpace: "normal",
+      lineHeight: 1.375,
+      paddingLeft: "22px",
+      paddingRight: "15px",
+      paddingTop: "24px",
+      paddingBottom: "23px",
+      margin: "5px",
+    },
   },
   {
     key: "4",
@@ -56,7 +80,11 @@ const items = [
     style: {
       whiteSpace: "normal",
       lineHeight: 1.375,
-      marginTop: "18px",
+      paddingLeft: "22px",
+      paddingRight: "15px",
+      paddingTop: "24px",
+      paddingBottom: "23px",
+      margin: "5px",
     },
   },
   {
@@ -74,15 +102,21 @@ const items = [
         </Link>
       </>
     ),
-    style: { whiteSpace: "normal", lineHeight: 1 },
+    style: {
+      whiteSpace: "normal",
+      lineHeight: 1,
+      paddingLeft: "22px",
+      paddingRight: "15px",
+      paddingTop: "24px",
+      paddingBottom: "23px",
+      margin: "5px",
+    },
   },
   {
     key: "spacer",
     label: <div style={{ flexGrow: 1 }} />,
     className: "spacer",
   },
-
-
 ];
 
 const logout = [
@@ -92,14 +126,12 @@ const logout = [
     className: "logout",
 
     label: (
-      <Link href="/login" >
+      <Link href="/login">
         <span className="font-mulish">Logout</span>
       </Link>
-
     ),
   },
-
-]
+];
 
 const MainLayout = ({ children }) => {
   const pathname = usePathname();
@@ -151,8 +183,9 @@ const MainLayout = ({ children }) => {
           bottom: 0,
           backgroundColor: "white",
         }}
+        width={256}
       >
-        <div className="text-2xl mb-4 flex items-center ml-4 mt-16">
+        <div className="text-2xl mb-4 flex items-center ml-8 mt-16">
           <Image
             src="/so-wallet-coin.svg"
             width={28}
@@ -170,10 +203,15 @@ const MainLayout = ({ children }) => {
           >
             Meal Planner
           </span>
-
         </div>
-        <div style={{display:"flex",flexDirection:"column",justifyContent:"space-between",height:"80%"}}>
-
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            height: "80%",
+          }}
+        >
           <Menu
             theme="light"
             mode="inline"
@@ -182,8 +220,9 @@ const MainLayout = ({ children }) => {
             style={{
               height: "58vh",
               borderRight: 0,
-              marginTop: "30px",
-              padding: "10px",
+              marginTop: "40px",
+              paddingLeft: "30px",
+              paddingRight: "30px",
             }}
             items={items}
           />
@@ -219,6 +258,7 @@ const MainLayout = ({ children }) => {
           style={{
             overflow: "initial",
             background: "#F8F8F8",
+            marginLeft: "55px",
           }}
         >
           {children}

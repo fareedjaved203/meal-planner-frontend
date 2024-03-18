@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const LoginForm = () => {
   return (
@@ -35,7 +36,6 @@ const LoginForm = () => {
                 >
                   Meal Planner
                 </span>
-
               </div>
               <p
                 className="font-poppins my-3 pt-4"
@@ -104,31 +104,33 @@ const LoginForm = () => {
               />
 
               <div className="w-full flex justify-center items-center mt-4">
-                <button
-                  type="submit"
-                  className="bg-purpleText text-white p-3 pr-4 mt-4 rounded-full relative w-36 flex justify-between items-center"
-                  style={{
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    fontWeight: 600,
-                  }}
-                >
-                  <span className="pl-3">Sign In</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="w-4 h-4 absolute right-6 top-1/2 transform -translate-y-1/2"
+                <Link href="/">
+                  <button
+                    type="submit"
+                    className="bg-purpleText text-white p-3 pr-4 mt-4 rounded-full relative w-36 flex justify-between items-center"
+                    style={{
+                      fontSize: "16px",
+                      lineHeight: "24px",
+                      fontWeight: 600,
+                    }}
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </button>
+                    <span className="pl-3">Sign In</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      className="w-4 h-4 absolute right-6 top-1/2 transform -translate-y-1/2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </Link>
               </div>
             </form>
           </div>

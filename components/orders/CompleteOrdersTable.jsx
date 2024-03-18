@@ -409,6 +409,14 @@ const CompleteOrdersTable = () => {
     <>
       <Table
         columns={columns}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: (event) => {
+              router.push(`placed-orders/${record?.key}`);
+            },
+            className: "cursor-pointer",
+          };
+        }}
         dataSource={[...data]}
         pagination={pagination}
         bordered

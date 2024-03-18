@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-3 pb-2 leading-snug font-mulish">
+    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-3 pb-2 ml-16 leading-snug font-mulish">
       <div className="flex flex-col items-start justify-start font-poppins">
         <div
           className="font-semibold"
@@ -53,7 +53,7 @@ const Navbar = () => {
       <div className="flex items-center pr-3">
         <span
           className="mr-4 max-sm:hidden  font-poppins"
-          style={{ fontSize: "16px",fontWeight:600 }}
+          style={{ fontSize: "16px", fontWeight: 600 }}
         >
           {username}
         </span>

@@ -4,6 +4,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox, Pagination } from "antd";
 import Highlighter from "react-highlight-words";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 let data = [
   {
@@ -34,6 +35,7 @@ const pagination = {
 };
 
 const DashboardTable = () => {
+  const router = useRouter();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
@@ -232,7 +234,19 @@ const DashboardTable = () => {
     },
   ];
   return (
-    <Table columns={columns} dataSource={[...data]} pagination={pagination} />
+    <Table
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: (event) => {
+            router.push(`placed-orders/${record?.key}`);
+          },
+          className: "cursor-pointer",
+        };
+      }}
+      columns={columns}
+      dataSource={[...data]}
+      pagination={pagination}
+    />
   );
 };
 export default DashboardTable;
