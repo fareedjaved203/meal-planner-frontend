@@ -72,8 +72,11 @@ const LoginForm = () => {
                 type="email"
                 id="email"
                 placeholder="Enter your email"
-                className="w-full p-2 rounded"
-                style={{ backgroundColor: "rgba(76, 73, 237, 0.1)" }}
+                className="w-full pl-2 rounded"
+                style={{
+                  backgroundColor: "rgba(76, 73, 237, 0.1)",
+                  height: "46px",
+                }}
               />
 
               <label
@@ -99,8 +102,11 @@ const LoginForm = () => {
                 type="password"
                 id="password"
                 placeholder="Enter your password"
-                className="w-full p-2 rounded"
-                style={{ backgroundColor: "rgba(76, 73, 237, 0.1)" }}
+                className="w-full pl-2 rounded"
+                style={{
+                  backgroundColor: "rgba(76, 73, 237, 0.1)",
+                  height: "46px",
+                }}
               />
 
               <div className="w-full flex justify-center items-center mt-4">

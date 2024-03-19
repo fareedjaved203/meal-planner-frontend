@@ -127,7 +127,9 @@ const logout = [
 
     label: (
       <Link href="/login">
-        <span className="font-mulish">Logout</span>
+        <span className="font-mulish" style={{ color: "#CCCBD8" }}>
+          Logout
+        </span>
       </Link>
     ),
   },
@@ -236,6 +238,7 @@ const MainLayout = ({ children }) => {
               borderRight: 0,
               marginTop: "30px",
               padding: "10px",
+              marginLeft: "17px",
             }}
             items={logout}
           />

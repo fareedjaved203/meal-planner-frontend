@@ -32,11 +32,14 @@
 .ant-pagination-item-active {
   border: none !important;
 }
-
 /* Disables hover effects on the menu divider */
 .my-menu .menu-divider {
   background-color: transparent !important; /* Keeps background transparent */
   cursor: default !important; /* Resets cursor to default instead of pointer */
+}
+
+.logout:hover {
+  background: none !important;
 }
 
 .pid {

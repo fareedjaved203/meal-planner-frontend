@@ -30,7 +30,12 @@ const data = [
 
 const CustomBar = (props) => {
   const borderRadius = 8;
-  return <Rectangle {...props} radius={[borderRadius, borderRadius, 0, 0]} />;
+  return (
+    <Rectangle
+      {...props}
+      radius={[borderRadius, borderRadius, borderRadius, borderRadius]}
+    />
+  );
 };
 
 const Graph = () => {
@@ -69,10 +74,18 @@ const Graph = () => {
               bottom: 5,
             }}
           >
-            <XAxis dataKey="name" />
-            <YAxis type="number" domain={[0, "dataMax + 1000"]} />
+            <XAxis dataKey="name" axisLine={false} tickLine={false} />
+            <YAxis
+              type="number"
+              domain={[0, "dataMax + 1000"]}
+              axisLine={false}
+              tickFormatter={(tick) => {
+                if (tick === 0) return "0";
+                return `${Math.floor(tick / 1000) * 20}k`;
+              }}
+              tickLine={false}
+            />
             <Tooltip />
-            <Legend />
             <Bar
               dataKey="uv"
               fill="#4C49ED"
