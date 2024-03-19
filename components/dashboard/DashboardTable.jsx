@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox, Pagination } from "antd";
 import Highlighter from "react-highlight-words";
@@ -36,8 +36,13 @@ const pagination = {
 
 const DashboardTable = () => {
   const router = useRouter();
+  const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
+
+  useEffect(() => {
+    setList([...data]);
+  }, []);
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -225,9 +230,16 @@ const DashboardTable = () => {
         <Checkbox
           checked={record.complete}
           onChange={(e) => {
-            const recordIndex = data.findIndex(
+            e.stopPropagation();
+            const newData = [...data];
+            const recordIndex = newData.findIndex(
               (item) => item.key === record.key
             );
+            newData[recordIndex] = {
+              ...newData[recordIndex],
+              complete: e.target.checked,
+            };
+            setList(newData);
           }}
         />
       ),
@@ -244,7 +256,7 @@ const DashboardTable = () => {
         };
       }}
       columns={columns}
-      dataSource={[...data]}
+      dataSource={[...list]}
       pagination={pagination}
     />
   );
