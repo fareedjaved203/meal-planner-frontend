@@ -1,20 +1,13 @@
 import RootLayout from "../../layout";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import Accordion from "../../../components/orders/Accordion";
+import BackButton from "../../../components/shared/BackButton";
 
 const PlacedOrderId = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
-          <div>
-            <IoIosArrowRoundBack className="text-3xl" />
-          </div>
-          <div className="font-bold ml-4 mr-4 font-mulish" style={{fontWeight:"900"}}>Order Details</div>
-          <div className="flex-grow pr-4 mr-4">
-            <hr />
-          </div>
-        </div>
+        <BackButton text="Order Details" />
         <div className="bg-white m-4 rounded p-4 pt-1">
           <div
             className="p-4 font-mulish mt-2 mb-4"
