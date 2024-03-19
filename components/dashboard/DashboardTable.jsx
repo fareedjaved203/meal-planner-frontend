@@ -192,9 +192,9 @@ const DashboardTable = () => {
       key: "qrcode",
       width: "20%",
       ...getColumnSearchProps("qrcode"),
-      render: (text, record) => (
+      render: (text, record, rowIndex) => (
         <>
-          {record.complete ? (
+          {rowIndex === 0 ? (
             <>
               <div className="inline-flex p-2 pt-1 pb-1 justify-center items-center font-bold bg-greenBtnBg text-greenBtnText cursor-pointer rounded text-md">
                 <Image src={"/Icon.svg"} width={18} height={18} alt="image" />
@@ -241,6 +241,7 @@ const DashboardTable = () => {
             };
             setList(newData);
           }}
+          onClick={(e) => e.stopPropagation()} // Add this line
         />
       ),
     },

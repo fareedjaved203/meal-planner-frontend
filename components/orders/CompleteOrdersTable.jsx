@@ -229,8 +229,8 @@ const pagination = {
 };
 
 const CompleteOrdersTable = ({ order = "placed-orders" }) => {
-  const [list, setList] = useState([]);
   const router = useRouter();
+  const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
