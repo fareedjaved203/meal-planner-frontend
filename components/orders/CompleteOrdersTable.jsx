@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
@@ -228,11 +228,16 @@ const pagination = {
   pageSize: 10,
 };
 
-const CompleteOrdersTable = () => {
+const CompleteOrdersTable = ({ order = "placed-orders" }) => {
+  const [list, setList] = useState([]);
   const router = useRouter();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+
+  useEffect(() => {
+    setList([...data]);
+  }, []);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -399,9 +404,16 @@ const CompleteOrdersTable = () => {
         <Checkbox
           checked={record.complete}
           onChange={(e) => {
-            const recordIndex = data.findIndex(
+            e.stopPropagation();
+            const newData = [...data];
+            const recordIndex = newData.findIndex(
               (item) => item.key === record.key
             );
+            newData[recordIndex] = {
+              ...newData[recordIndex],
+              complete: e.target.checked,
+            };
+            setList(newData);
           }}
         />
       ),
@@ -414,12 +426,15 @@ const CompleteOrdersTable = () => {
         onRow={(record, rowIndex) => {
           return {
             onClick: (event) => {
-              router.push(`placed-orders/${record?.key}`);
+              // Check if the event was triggered by a checkbox
+              if (event.target.type !== "checkbox") {
+                router.push(`${order}/${record?.key}`);
+              }
             },
             className: "cursor-pointer",
           };
         }}
-        dataSource={[...data]}
+        dataSource={[...list]}
         pagination={pagination}
         bordered
       />

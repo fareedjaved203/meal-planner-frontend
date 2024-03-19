@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
@@ -220,9 +220,14 @@ const pagination = {
 };
 
 const SelectOrdersTable = () => {
+  const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+
+  useEffect(() => {
+    setList([...data]);
+  }, []);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -404,9 +409,16 @@ const SelectOrdersTable = () => {
         <Checkbox
           checked={record.complete}
           onChange={(e) => {
-            const recordIndex = data.findIndex(
+            e.stopPropagation();
+            const newData = [...data];
+            const recordIndex = newData.findIndex(
               (item) => item.key === record.key
             );
+            newData[recordIndex] = {
+              ...newData[recordIndex],
+              complete: e.target.checked,
+            };
+            setList(newData);
           }}
         />
       ),
@@ -418,7 +430,7 @@ const SelectOrdersTable = () => {
       rowSelection={{
         ...rowSelection,
       }}
-      dataSource={[...data]}
+      dataSource={[...list]}
       pagination={pagination}
     />
   );
