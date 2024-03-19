@@ -1,20 +1,13 @@
 import RootLayout from "../../layout";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import BackButton from "../../../components/shared/BackButton";
 import Image from "next/image";
 
 const ItemsId = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="flex items-center justify-start w-full pl-4 mt-4 font-poppins">
-          <div>
-            <IoIosArrowRoundBack className="text-3xl" />
-          </div>
-          <div className="font-bold ml-4 mr-4 font-poppins">Back</div>
-          <div className="flex-grow pr-4 mr-4">
-            <hr />
-          </div>
-        </div>
+        <BackButton />
         <div className="bg-white m-4 rounded p-4 pt-3">
           <div
             className="p-4 font-mulish"
@@ -24,7 +17,9 @@ const ItemsId = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-mulish" style={{fontWeight:"900"}}>Name Line 1</div>
+              <div className="font-mulish" style={{ fontWeight: "900" }}>
+                Name Line 1
+              </div>
               <p className="pb-4">
                 Enter the name or an addition to your recipe here (e.g.
                 spaghetti):
@@ -38,7 +33,9 @@ const ItemsId = () => {
               </div>
             </div>
             <div className="p-4">
-              <div className="font-font-mulish" style={{fontWeight:"900"}}>Name Line 2</div>
+              <div className="font-font-mulish" style={{ fontWeight: "900" }}>
+                Name Line 2
+              </div>
               <p className="pb-4">
                 Enter the name or an addition to your recipe here (e.g.
                 Carbonara):
@@ -55,7 +52,9 @@ const ItemsId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-font-mulish" style={{fontWeight:"900"}}>Preparation Time</div>
+              <div className="font-font-mulish" style={{ fontWeight: "900" }}>
+                Preparation Time
+              </div>
               <p className="pb-4">
                 Enter the preparation time including time unit here (e.g. 30 min
                 / 1 hour):
@@ -69,7 +68,9 @@ const ItemsId = () => {
               </div>
             </div>
             <div className="p-4">
-              <div className="font-font-mulish" style={{fontWeight:"900"}}>Level of Spiciness</div>
+              <div className="font-font-mulish" style={{ fontWeight: "900" }}>
+                Level of Spiciness
+              </div>
               <p className="pb-4">
                 Enter the level of spiciness here (e.g. mild / spicy / hot /
                 very hot):
@@ -86,7 +87,9 @@ const ItemsId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-font-mulish" style={{fontWeight:"900"}}>Level of Difficulty</div>
+              <div className="font-font-mulish" style={{ fontWeight: "900" }}>
+                Level of Difficulty
+              </div>
               <p className="pb-4">
                 Enter the level of difficulty for this recipe here (e.g. easy /
                 medium / hard):
@@ -100,7 +103,9 @@ const ItemsId = () => {
               </div>
             </div>
             <div className="p-4">
-              <div className="font-font-mulish" style={{fontWeight:"900"}}>Origin</div>
+              <div className="font-font-mulish" style={{ fontWeight: "900" }}>
+                Origin
+              </div>
               <p className="pb-4">
                 Select the country of origin of the recipe (e.g. if you are not
                 sure, select World Dish or Continental):
@@ -117,7 +122,9 @@ const ItemsId = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full">
             <div className="p-4">
-              <div className="font-font-mulish" style={{fontWeight:"900"}}>Diet</div>
+              <div className="font-font-mulish" style={{ fontWeight: "900" }}>
+                Diet
+              </div>
               <p className="pb-4">
                 Enter here whether the dish corresponds to a specific diet or
                 which animal products are used (e.g. vegan, vegetarian, halal,
@@ -133,7 +140,12 @@ const ItemsId = () => {
             </div>
           </div>
 
-          <div className="text-2xl font-mulish p-4 mt-4" style={{fontWeight:"900"}}>Ingredients</div>
+          <div
+            className="text-2xl font-mulish p-4 mt-4"
+            style={{ fontWeight: "900" }}
+          >
+            Ingredients
+          </div>
           <div>
             <div className="flex justify-center items-center p-4">
               <input
@@ -184,7 +196,12 @@ const ItemsId = () => {
             </div>
           </div>
 
-          <div className="text-2xl font-mulish p-4 mt-4" style={{fontWeight:"900"}}>Steps</div>
+          <div
+            className="text-2xl font-mulish p-4 mt-4"
+            style={{ fontWeight: "900" }}
+          >
+            Steps
+          </div>
           <div>
             <div className="flex justify-center items-center p-4">
               <input

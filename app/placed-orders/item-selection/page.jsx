@@ -2,6 +2,7 @@ import RootLayout from "../../layout";
 import SelectOrdersTable from "../../../components/selectItems/SelectOrdersTable";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import DatePickerButton from "../../../components/shared/DatePickerButton";
+import BackButton from "../../../components/shared/BackButton";
 import Link from "next/link";
 
 const PlacedOrders = () => {
@@ -9,15 +10,7 @@ const PlacedOrders = () => {
     <RootLayout showNavbar={true}>
       <>
         <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
-          <div>
-            <IoIosArrowRoundBack className="text-3xl" />
-          </div>
-          <div
-            className="font-bold ml-4 mr-4 font-mulish"
-            style={{ fontWeight: "900" }}
-          >
-            Back
-          </div>
+          <BackButton text={"Lorem Ipsem (Add Items)"} />
           <div className="flex items-center w-full pr-4">
             <hr className="flex-grow pr-4 mr-4 w-3/4" />
             <Link href="/placed-orders">

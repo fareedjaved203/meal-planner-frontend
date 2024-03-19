@@ -1,3 +1,4 @@
+import BackButton from "../../../components/shared/BackButton";
 import RootLayout from "../../layout";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
@@ -5,15 +6,7 @@ const CompletedOrderId = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
-          <div>
-            <IoIosArrowRoundBack className="text-3xl" />
-          </div>
-          <div className="font-bold ml-4 mr-4 font-mulish" style={{fontWeight:"900"}}>Back</div>
-          <div className="flex-grow pr-4 mr-4">
-            <hr />
-          </div>
-        </div>
+        <BackButton />
         <div className="bg-white m-4 rounded p-4">
           <div
             className="p-4 font-mulish"
@@ -23,7 +16,12 @@ const CompletedOrderId = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full font-mulish">
             <div className="p-4">
-              <div className="font-mulish pb-4" style={{fontWeight:"900",margin:"1.5%"}}>PID</div>
+              <div
+                className="font-mulish pb-4"
+                style={{ fontWeight: "900", margin: "1.5%" }}
+              >
+                PID
+              </div>
               <div>
                 <input
                   type="text"
@@ -32,8 +30,13 @@ const CompletedOrderId = () => {
                 />
               </div>
             </div>
-            <div className="p-4" >
-              <div className="font-mulish pb-4" style={{fontWeight:"900",margin:"1.5%"}}>Date Completed</div>
+            <div className="p-4">
+              <div
+                className="font-mulish pb-4"
+                style={{ fontWeight: "900", margin: "1.5%" }}
+              >
+                Date Completed
+              </div>
               <div>
                 <input
                   type="text"
