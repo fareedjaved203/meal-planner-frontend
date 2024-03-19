@@ -36,14 +36,19 @@
 .my-menu .menu-divider {
   background-color: transparent !important; /* Keeps background transparent */
   cursor: default !important; /* Resets cursor to default instead of pointer */
+  font-weight: 800 !important;
 }
 
 .logout:hover {
   background: none !important;
 }
 
+.logout {
+  color: #cccbd8 !important;
+}
+
 .pid {
-  color: gray !important;
+  color: #999999 !important;
 }
 
 .ant-pagination-item-active a {

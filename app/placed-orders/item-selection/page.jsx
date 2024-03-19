@@ -42,7 +42,7 @@ const PlacedOrders = () => {
             </div>
             <div className="pl-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">
               <div
-                className="flex items-center bg-removeItem text-removeItemText p-4 pt-2 pb-2 rounded mr-4 font-inter"
+                className="flex items-center bg-removeItem text-removeItemText p-4 pt-2 pb-2 rounded mr-4 font-inter cursor-pointer"
                 style={{ fontSize: "12.35px", fontWeight: 600 }}
               >
                 Reset

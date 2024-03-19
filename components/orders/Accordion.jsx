@@ -35,18 +35,18 @@ function Accordion({ predefined = false }) {
             onClick={() => toggleItem(index)}
           >
             <div className="flex justify-between w-full">
-              <h2 className="font-poppins ">
-                <span className="font-mulish" style={{ fontWeight: "900" }}>
+              <div className="font-poppins ">
+                <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Quantity
                 </span>{" "}
-                2
-              </h2>
-              <p style={{ fontSize: "18px" }}>Lorem Ipsum</p>
-              <div>
-                <span className="font-mulish" style={{ fontWeight: "900" }}>
-                  Price$
+                <span style={{ fontWeight: "400", fontSize: "18px" }}>2</span>
+              </div>
+              <p style={{ fontSize: "22px" }}>Lorem Ipsum</p>
+              <div className="font-poppins ">
+                <span style={{ fontWeight: "700", fontSize: "18px" }}>
+                  Price $
                 </span>{" "}
-                150
+                <span style={{ fontWeight: "400", fontSize: "18px" }}>150</span>
               </div>
 
               <div>
@@ -63,7 +63,7 @@ function Accordion({ predefined = false }) {
               activeIndex === index ? "max-h-60" : "max-h-0"
             }`}
           >
-            {predefined && (
+            {predefined ? (
               <div className="flex justify-between pr-4 pt-4">
                 <div className="flex pl-4 w-1/4 justify-center items-center">
                   <div className="flex justify-center items-center w-full bg-lightSky text-purpleText cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2">
@@ -80,7 +80,7 @@ function Accordion({ predefined = false }) {
                   <div className="ml-4" />
                   <div className="flex justify-center items-center w-full bg-removeItem cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2">
                     <div
-                      className="text-removeItemText w-full flex justify-center items-center font-inter"
+                      className="text-removeItemText w-full flex justify-center items-center font-inter cursor-pointer"
                       style={{ fontWeight: "600", fontSize: "13px" }}
                     >
                       Remove Item
@@ -88,9 +88,26 @@ function Accordion({ predefined = false }) {
                   </div>
                 </div>
 
-                <div className="inline-flex p-2 pt-1 pb-1 justify-center items-center bg-lightSky text-purpleText cursor-pointer rounded">
+                <div className="inline-flex pl-2 pr-2 justify-center items-center bg-lightSky text-purpleText cursor-pointer rounded">
                   <Image
-                    src={"/scan-barcode.png"}
+                    src={"/scan-barcode.svg"}
+                    width={20}
+                    height={20}
+                    alt="image"
+                  />
+                  <div
+                    className="ml-2 font-inter"
+                    style={{ fontWeight: "600", fontSize: "13px" }}
+                  >
+                    Download QR
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex justify-end pr-4 pt-4">
+                <div className="inline-flex p-2 pt-2 pb-2 justify-center items-center bg-lightSky text-purpleText cursor-pointer rounded">
+                  <Image
+                    src={"/scan-barcode.svg"}
                     width={20}
                     height={20}
                     alt="image"

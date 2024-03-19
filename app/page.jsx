@@ -23,8 +23,12 @@ const Home = () => {
                 Orders Placed
               </div>
               <div
-                className="text-summaryTextColor font-inter"
-                style={{ fontSize: "17px" }}
+                className="text-summaryTextColor font-poppins"
+                style={{
+                  fontSize: "17px",
+                  marginRight: "4px",
+                  paddingTop: "10px",
+                }}
               >
                 view all
               </div>

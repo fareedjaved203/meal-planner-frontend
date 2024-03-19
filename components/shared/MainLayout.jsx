@@ -122,16 +122,21 @@ const items = [
 const logout = [
   {
     key: "6",
-    icon: <IoIosArrowRoundBack style={{ fontSize: "20px" }} />,
+    icon: <IoIosArrowRoundBack style={{ fontSize: "20px", color: "gray" }} />,
     className: "logout",
 
     label: (
-      <Link href="/login">
-        <span className="font-mulish" style={{ color: "#CCCBD8" }}>
-          Logout
-        </span>
-      </Link>
+      <>
+        <Link href="/login">
+          <span className="font-mulish" style={{ color: "#cccbd8" }}>
+            Logout
+          </span>
+        </Link>
+      </>
     ),
+    style: {
+      paddingRight: "15px",
+    },
   },
 ];
 
@@ -187,25 +192,27 @@ const MainLayout = ({ children }) => {
         }}
         width={256}
       >
-        <div className="text-2xl mb-4 flex items-center ml-8 mt-16">
-          <Image
-            src="/so-wallet-coin.svg"
-            width={28}
-            height={28}
-            alt="logo icon"
-            className="mr-2"
-          />
-          <span
-            className="font-mulish"
-            style={{
-              fontWeight: 800,
-              fontSize: "21px",
-              lineHeight: "35.6px",
-            }}
-          >
-            Meal Planner
-          </span>
-        </div>
+        <Link href="/" className="text-black hover:text-black focus:text-black">
+          <div className="text-2xl mb-4 flex items-center ml-8 mt-16">
+            <Image
+              src="/so-wallet-coin.svg"
+              width={28}
+              height={28}
+              alt="logo icon"
+              className="mr-2"
+            />
+            <span
+              className="font-mulish"
+              style={{
+                fontWeight: 800,
+                fontSize: "21px",
+                lineHeight: "35.6px",
+              }}
+            >
+              Meal Planner
+            </span>
+          </div>
+        </Link>
         <div
           style={{
             display: "flex",
@@ -238,7 +245,8 @@ const MainLayout = ({ children }) => {
               borderRight: 0,
               marginTop: "30px",
               padding: "10px",
-              marginLeft: "17px",
+              marginLeft: "22px",
+              marginRight: "20px",
             }}
             items={logout}
           />

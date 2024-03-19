@@ -53,18 +53,16 @@ const Navbar = () => {
       <div className="flex items-center pr-3">
         <span
           className="mr-4 max-sm:hidden  font-poppins"
-          style={{ fontSize: "16px", fontWeight: 600 }}
+          style={{ fontSize: "16px", fontWeight: 600, paddingRight: "5px" }}
         >
           {username}
         </span>
         <Image
-          src={
-            "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
-          }
+          src={"/Rectangle 338.svg"}
           width={65}
           height={65}
           alt="logo icon"
-          className="w-12 h-12 rounded-lg"
+          className="w-12 h-12 rounded-lg p-1"
         />
       </div>
     </nav>
