@@ -110,7 +110,7 @@
 }
 
 /* Selected date */
-.react-datepicker__day--selected {
+.react-datepicker__month-container .react-datepicker__day--selected {
   background-color: #4c49ed !important; /* Custom background color */
   border-radius: 50% !important; /* Make the selected date circular */
   color: white !important; /* Text color for selected date */
@@ -126,4 +126,8 @@
   padding: 5px;
   padding-right: 0;
   padding-top: 2px;
+}
+
+.month-dropdown {
+  border: none !important;
 }

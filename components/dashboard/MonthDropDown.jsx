@@ -28,7 +28,7 @@ const MonthDropDown = () => {
     <div className="relative inline-block text-left">
       <button
         type="button"
-        className="inline-flex justify-center font-inter w-full shadow-sm bg-lightSky rounded text-sm font-semibold text-purpleText pr-2 pl-2 pt-1 pb-1 mt-2"
+        className="inline-flex justify-center font-inter w-full shadow-sm bg-lightSky rounded text-sm font-semibold text-purpleText pr-2 pl-2 pt-1 pb-1 mt-2 month-dropdown"
         id="options-menu"
         aria-haspopup="true"
         aria-expanded="true"
