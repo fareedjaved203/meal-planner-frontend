@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap");
-
-@tailwind base;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap")
+  @tailwind base;
 @tailwind components;
 @tailwind utilities;
 .my-menu {
@@ -77,4 +77,53 @@
 
 .ant-layout-sider-children {
   width: "800px" !important;
+}
+
+/* Calendar header */
+.react-datepicker__header {
+  background-color: white !important; /* White background for the header */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.react-datepicker__current-month {
+  color: #828282 !important; /* Text color for month */
+  margin: 0; /* Remove default margin */
+}
+
+.react-datepicker__month {
+  padding: 15px; /* Adjust the padding value as needed */
+}
+
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--next {
+  fill: black !important; /* Indicator color */
+}
+
+.react-datepicker__day-name {
+  font-size: 11px; /* Adjust the font size value as needed */
+}
+
+.react-datepicker__day {
+  font-size: 13.9px;
+}
+
+/* Selected date */
+.react-datepicker__day--selected {
+  background-color: #4c49ed !important; /* Custom background color */
+  border-radius: 50% !important; /* Make the selected date circular */
+  color: white !important; /* Text color for selected date */
+}
+
+/* Hover effect */
+.react-datepicker__day:hover {
+  background-color: #f0f0f0 !important; /* Example hover date background color */
+}
+
+.custom-calendar {
+  border: none !important;
+  padding: 5px;
+  padding-right: 0;
+  padding-top: 2px;
 }

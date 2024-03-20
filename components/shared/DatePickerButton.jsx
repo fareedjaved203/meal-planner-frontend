@@ -1,11 +1,35 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const DatePickerButton = () => {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const buttonRef = useRef(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setShowDatePicker(false);
+  };
+
+  const handleButtonClick = () => {
+    setShowDatePicker(!showDatePicker);
+  };
+
+  const buttonPosition = buttonRef.current
+    ? buttonRef.current.getBoundingClientRect()
+    : { left: 0, bottom: 0 };
+
+  const calendarTopPosition = buttonPosition.bottom + 40;
+
   return (
-    <>
-      <div className="flex bg-indigo-100 justify-center items-center p-4 pt-1 pb-1 rounded font-mulish">
+    <div style={{ position: "relative", display: "inline-block" }}>
+      <div
+        className="flex bg-indigo-100 justify-center items-center p-4 pt-0 pb-0 rounded font-mulish"
+        onClick={handleButtonClick}
+      >
         <p
           className="text-purpleText font-inter cursor-pointer"
           style={{ fontSize: "12.35px", fontWeight: 600 }}
@@ -16,7 +40,26 @@ const DatePickerButton = () => {
           <Image src="/Frame.svg" width={22} height={22} alt="logo icon" />
         </span>
       </div>
-    </>
+      {showDatePicker && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 1000,
+            right: "0",
+            top: buttonPosition.bottom,
+            top: `${calendarTopPosition}px`,
+          }}
+          className="custom-calendar"
+        >
+          <DatePicker
+            selected={selectedDate}
+            onChange={handleDateChange}
+            inline
+            calendarClassName="custom-calendar"
+          />
+        </div>
+      )}
+    </div>
   );
 };
 
