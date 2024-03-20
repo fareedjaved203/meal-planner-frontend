@@ -22,16 +22,18 @@ const Home = () => {
               >
                 Orders Placed
               </div>
-              <div
-                className="text-summaryTextColor font-poppins"
-                style={{
-                  fontSize: "17px",
-                  marginRight: "4px",
-                  paddingTop: "10px",
-                }}
-              >
-                view all
-              </div>
+              <Link href="/placed-orders">
+                <div
+                  className="text-summaryTextColor font-poppins"
+                  style={{
+                    fontSize: "17px",
+                    marginRight: "4px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  view all
+                </div>
+              </Link>
             </div>
             <div className="p-4">
               <DashboardTable />
