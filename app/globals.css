@@ -140,3 +140,11 @@
 .login-input {
   border: none;
 }
+
+.ant-table-selection-column .ant-checkbox-inner {
+  outline: none !important;
+}
+
+.ant-table-selection-column .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #4c49ed !important;
+}

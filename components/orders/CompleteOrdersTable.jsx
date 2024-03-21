@@ -212,21 +212,16 @@ let data = [
 
 const pagination = {
   showTotal: (total, range) => (
-    <span
-      className="font-poppins"
-      style={{ fontWeight: 500, fontSize: "12px" }}
-    >
-      {range[0]}-{range[1]} of items
-    </span>
-
-    // <div className="w-full flex justify-between items-center">
-    //   <span className="font-poppins font-bold mr-96">
-    //     Total Orders: {total}
-    //   </span>
-    //   <span className="ml-64">
-    //     {range[0]}-{range[1]} of {total} items
-    //   </span>
-    // </div>
+    <div className="font-poppins">
+      <span style={{ fontSize: "16px", fontWeight: "500", color: "#232638" }}>
+        Total Orders: {total}
+      </span>
+      <span
+        style={{ fontSize: "12px", fontWeight: "500", marginLeft: "620px" }}
+      >
+        {range[0]}-{range[1]} of items
+      </span>
+    </div>
   ),
   pageSize: 10,
 };
@@ -358,7 +353,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
       title: "PID",
       dataIndex: "pid",
       key: "pid",
-      width: "30%",
+      width: "10%",
       className: "pidColumn",
       ...getColumnSearchProps("pid"),
     },
@@ -425,6 +420,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
   return (
     <>
       <Table
+        style={{ width: "100%" }}
         columns={columns}
         onRow={(record, rowIndex) => {
           return {

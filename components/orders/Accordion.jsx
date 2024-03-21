@@ -63,7 +63,7 @@ function Accordion({ predefined = false }) {
           </div>
           <div
             className={`overflow-hidden transition-max-height duration-500 ${
-              activeIndex === index ? "max-h-60" : "max-h-0"
+              activeIndex === index ? "max-h-100" : "max-h-0"
             }`}
           >
             {predefined ? (
@@ -125,7 +125,7 @@ function Accordion({ predefined = false }) {
               </div>
             )}
 
-            <div className="p-5">
+            <div className="p-4">
               <SelectOrdersTable />
             </div>
           </div>

@@ -45,12 +45,13 @@ const DatePickerButton = () => {
         <div
           style={{
             position: "absolute",
-            zIndex: 1000,
+            zIndex: 9999,
             right: "0",
             top: buttonPosition.bottom,
             top: `${calendarTopPosition}px`,
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", // Adjust the shadow values as needed
           }}
-          className="custom-calendar"
+          // className="custom-calendar"
         >
           <DatePicker
             selected={selectedDate}
