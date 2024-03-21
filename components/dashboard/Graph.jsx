@@ -14,18 +14,18 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "Jan", uv: 4000 },
-  { name: "Feb", uv: 3000 },
-  { name: "Mar", uv: 2000 },
-  { name: "Apr", uv: 2780 },
-  { name: "May", uv: 1890 },
-  { name: "Jun", uv: 2390 },
-  { name: "Jul", uv: 3490 },
-  { name: "Aug", uv: 2000 },
-  { name: "Sep", uv: 2780 },
-  { name: "Oct", uv: 1890 },
-  { name: "Nov", uv: 2390 },
-  { name: "Dec", uv: 3490 },
+  { name: "Jan", uv: 70000 },
+  { name: "Feb", uv: 30000 },
+  { name: "Mar", uv: 50000 },
+  { name: "Apr", uv: 37800 },
+  { name: "May", uv: 48900 },
+  { name: "Jun", uv: 73900 },
+  { name: "Jul", uv: 54900 },
+  { name: "Aug", uv: 40000 },
+  { name: "Sep", uv: 77800 },
+  { name: "Oct", uv: 68900 },
+  { name: "Nov", uv: 53900 },
+  { name: "Dec", uv: 64900 },
 ];
 
 const CustomBar = (props) => {
@@ -79,17 +79,19 @@ const Graph = () => {
               axisLine={false}
               tickLine={false}
               tick={{ fill: "black" }}
+              padding={{ left: 0, right: 0 }} // Add padding here
             />
             <YAxis
               type="number"
-              domain={[0, "dataMax + 1000"]}
+              domain={[0, 80000]}
               axisLine={false}
               tickFormatter={(tick) => {
                 if (tick === 0) return "0";
-                return `${Math.floor(tick / 1000) * 20}k`;
+                return `${Math.floor(tick / 10000) * 20}k`;
               }}
               tickLine={false}
               tick={{ fill: "black" }}
+              padding={{ top: 10, bottom: 10 }} // And here
             />
             <Tooltip />
             <Bar

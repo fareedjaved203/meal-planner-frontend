@@ -40,9 +40,12 @@ const data = [
 
 const pagination = {
   showTotal: (total, range) => (
-    <>
-      {range[0]}-{range[1]} of {total} items
-    </>
+    <span
+      className="font-poppins"
+      style={{ fontWeight: 500, fontSize: "12px" }}
+    >
+      {range[0]}-{range[1]} of items
+    </span>
   ),
   pageSize: 10,
 };

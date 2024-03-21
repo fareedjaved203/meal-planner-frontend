@@ -154,18 +154,13 @@ const ItemsId = () => {
                 className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
-                src="/Group 11068.png"
+                src="/Group 11068.svg"
                 width={40}
                 height={40}
-                className="ml-2"
+                className="ml-2 mr-2"
                 alt="image"
               />
-              <Image
-                src="/close-square.png"
-                width={50}
-                height={50}
-                alt="image"
-              />
+              <Image src="/close.svg" width={40} height={40} alt="image" />
             </div>
 
             <div className="flex justify-center items-center p-4">
@@ -175,18 +170,13 @@ const ItemsId = () => {
                 className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
-                src="/tick.png"
+                src="/tick.svg"
                 width={40}
                 height={40}
-                className="ml-2"
+                className="ml-2 mr-2"
                 alt="image"
               />
-              <Image
-                src="/close-square.png"
-                width={50}
-                height={50}
-                alt="image"
-              />
+              <Image src="/close.svg" width={40} height={40} alt="image" />
             </div>
 
             <div className="flex justify-center items-center p-4">
@@ -210,18 +200,13 @@ const ItemsId = () => {
                 className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
-                src="/Group 11068.png"
+                src="/Group 11068.svg"
                 width={40}
                 height={40}
-                className="ml-2"
+                className="ml-2 mr-2"
                 alt="image"
               />
-              <Image
-                src="/close-square.png"
-                width={50}
-                height={50}
-                alt="image"
-              />
+              <Image src="/close.svg" width={40} height={40} alt="image" />
             </div>
 
             <div className="flex justify-center items-center p-4">
@@ -231,18 +216,13 @@ const ItemsId = () => {
                 className="bg-custom w-[92%] rounded h-10 p-7"
               />
               <Image
-                src="/tick.png"
+                src="/tick.svg"
                 width={40}
                 height={40}
-                className="ml-2"
+                className="ml-2 mr-2"
                 alt="image"
               />
-              <Image
-                src="/close-square.png"
-                width={50}
-                height={50}
-                alt="image"
-              />
+              <Image src="/close.svg" width={40} height={40} alt="image" />
             </div>
 
             <div className="flex justify-center items-center p-4">

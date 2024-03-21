@@ -27,7 +27,7 @@ const DatePickerButton = () => {
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
       <div
-        className="flex justify-center items-center p-4 pt-0 pb-0 rounded font-mulish"
+        className="flex justify-center items-center p-4 py-2 rounded-md font-mulish"
         onClick={handleButtonClick}
         style={{ backgroundColor: "#E4E3FF" }}
       >
