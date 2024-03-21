@@ -27,7 +27,7 @@ const DatePickerButton = () => {
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
       <div
-        className="flex justify-center items-center p-4 py-2 rounded-md font-mulish"
+        className="flex justify-center items-center p-4 py-2 rounded font-mulish"
         onClick={handleButtonClick}
         style={{ backgroundColor: "#E4E3FF" }}
       >
@@ -38,7 +38,7 @@ const DatePickerButton = () => {
           Select Date
         </p>
         <span className="ml-2">
-          <Image src="/Frame.svg" width={22} height={22} alt="logo icon" />
+          <Image src="/Frame.svg" width={18} height={18} alt="logo icon" />
         </span>
       </div>
       {showDatePicker && (
@@ -49,7 +49,8 @@ const DatePickerButton = () => {
             right: "0",
             top: buttonPosition.bottom,
             top: `${calendarTopPosition}px`,
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", // Adjust the shadow values as needed
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+            borderRadius: "5px",
           }}
           // className="custom-calendar"
         >
