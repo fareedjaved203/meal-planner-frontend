@@ -7,7 +7,7 @@ const CompletedOrders = () => {
   return (
     <RootLayout showNavbar={true}>
       <>
-        <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
+        <div className="bg-white m-4 rounded-lg p-4 pt-1 font-mulish">
           <div className="flex justify-between items-center pr-4">
             <div
               className="text-2xl font-bold p-4 mt-4 font-mulish"

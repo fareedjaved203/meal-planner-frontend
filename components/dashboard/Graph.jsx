@@ -74,7 +74,12 @@ const Graph = () => {
               bottom: 5,
             }}
           >
-            <XAxis dataKey="name" axisLine={false} tickLine={false} />
+            <XAxis
+              dataKey="name"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fill: "black" }}
+            />
             <YAxis
               type="number"
               domain={[0, "dataMax + 1000"]}
@@ -84,6 +89,7 @@ const Graph = () => {
                 return `${Math.floor(tick / 1000) * 20}k`;
               }}
               tickLine={false}
+              tick={{ fill: "black" }}
             />
             <Tooltip />
             <Bar

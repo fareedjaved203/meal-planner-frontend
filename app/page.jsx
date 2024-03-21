@@ -14,7 +14,7 @@ const Home = () => {
         >
           <Summary />
           <GraphAndStats />
-          <div className="p-4 bg-white rounded m-4 mr-0 ml-0">
+          <div className="p-4 bg-white rounded-lg m-4 mr-0 ml-0">
             <div className="flex flex-col sm:flex-row justify-between p-4">
               <div
                 className="pb-1 mr-4 font-mulish"

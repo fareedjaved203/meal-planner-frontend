@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-3 pb-2 ml-16 leading-snug font-mulish">
+    <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-1 pb-2 ml-16 leading-snug font-mulish">
       <div className="flex flex-col items-start justify-start font-poppins">
         <div
           className="font-semibold"

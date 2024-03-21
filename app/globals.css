@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap")
-  @tailwind base;
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 .my-menu {
@@ -32,10 +32,10 @@
 .ant-pagination-item-active {
   border: none !important;
 }
-/* Disables hover effects on the menu divider */
+
 .my-menu .menu-divider {
-  background-color: transparent !important; /* Keeps background transparent */
-  cursor: default !important; /* Resets cursor to default instead of pointer */
+  background-color: transparent !important;
+  cursor: default !important;
   font-weight: 800 !important;
 }
 
@@ -79,46 +79,43 @@
   width: "800px" !important;
 }
 
-/* Calendar header */
 .react-datepicker__header {
-  background-color: white !important; /* White background for the header */
+  background-color: white !important;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
 .react-datepicker__current-month {
-  color: #828282 !important; /* Text color for month */
-  margin: 0; /* Remove default margin */
+  color: #828282 !important;
+  margin: 0;
 }
 
 .react-datepicker__month {
-  padding: 15px; /* Adjust the padding value as needed */
+  padding: 15px;
 }
 
 .react-datepicker__navigation--previous,
 .react-datepicker__navigation--next {
-  fill: black !important; /* Indicator color */
+  fill: black !important;
 }
 
 .react-datepicker__day-name {
-  font-size: 11px; /* Adjust the font size value as needed */
+  font-size: 11px;
 }
 
 .react-datepicker__day {
   font-size: 13.9px;
 }
 
-/* Selected date */
 .react-datepicker__month-container .react-datepicker__day--selected {
-  background-color: #4c49ed !important; /* Custom background color */
-  border-radius: 50% !important; /* Make the selected date circular */
-  color: white !important; /* Text color for selected date */
+  background-color: #4c49ed !important;
+  border-radius: 50% !important;
+  color: white !important;
 }
 
-/* Hover effect */
 .react-datepicker__day:hover {
-  background-color: #f0f0f0 !important; /* Example hover date background color */
+  background-color: #f0f0f0 !important;
 }
 
 .custom-calendar {
@@ -130,4 +127,8 @@
 
 .month-dropdown {
   border: none !important;
+}
+
+.login-input {
+  border: none;
 }

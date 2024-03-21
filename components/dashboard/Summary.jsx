@@ -4,7 +4,7 @@ const Summary = () => {
   return (
     <>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-        <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white">
+        <div className="flex-1 w-full p-3 rounded-lg flex flex-col items-start bg-white">
           <div
             className="font-poppins text-summaryTextColor mb-1 pb-1"
             style={{
@@ -31,7 +31,7 @@ const Summary = () => {
             />
           </div>
         </div>
-        <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white">
+        <div className="flex-1 w-full p-3 rounded-lg flex flex-col items-start bg-white">
           <div
             className="font-poppins text-summaryTextColor mb-1 pb-1"
             style={{
@@ -57,7 +57,7 @@ const Summary = () => {
             />
           </div>
         </div>
-        <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white">
+        <div className="flex-1 w-full p-3 rounded-lg flex flex-col items-start bg-white">
           <div
             className="font-poppins text-summaryTextColor mb-1 pb-1"
             style={{
@@ -84,7 +84,7 @@ const Summary = () => {
             />
           </div>
         </div>
-        <div className="flex-1 w-full p-3 rounded flex flex-col items-start bg-white ">
+        <div className="flex-1 w-full p-3 rounded-lg flex flex-col items-start bg-white ">
           <div
             className="font-poppins text-summaryTextColor mb-1 pb-1"
             style={{
