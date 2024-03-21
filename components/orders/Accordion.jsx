@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
 import SelectOrdersTable from "../selectItems/SelectOrdersTable";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
+import { IoIosArrowDropupCircle } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,19 +31,20 @@ function Accordion({ predefined = false }) {
       style={{ backgroundColor: "#F8F8F8" }}
     >
       {data.map((item, index) => (
-        <div key={index} className="border-b border-gray-200">
+        <div key={index} className="border-b border-gray-200 rounded-lg">
           <div
-            className="flex justify-between items-center p-5 cursor-pointer"
+            className="flex justify-between items-center pl-6 pr-6 cursor-pointer rounded-lg"
+            style={{ height: "93px" }}
             onClick={() => toggleItem(index)}
           >
-            <div className="flex justify-between w-full">
+            <div className="flex justify-between items-center w-full">
               <div className="font-poppins ">
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Quantity
                 </span>{" "}
                 <span style={{ fontWeight: "400", fontSize: "18px" }}>2</span>
               </div>
-              <p style={{ fontSize: "22px" }}>Lorem Ipsum</p>
+              <p style={{ fontSize: "22px" }}>Lorem Ipsum Set 1</p>
               <div className="font-poppins ">
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Price $
@@ -51,9 +54,9 @@ function Accordion({ predefined = false }) {
 
               <div>
                 {activeIndex === index ? (
-                  <FaChevronCircleUp className="text-2xl" />
+                  <IoIosArrowDropupCircle style={{ fontSize: "25px" }} />
                 ) : (
-                  <FaChevronCircleDown className="text-2xl" />
+                  <IoIosArrowDropdownCircle style={{ fontSize: "25px" }} />
                 )}
               </div>
             </div>
