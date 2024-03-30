@@ -11,8 +11,13 @@ import { MdDashboard } from "react-icons/md";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 import { IoIosHelpCircle } from "react-icons/io";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { logoutUserApi } from "@/api/auth/authApi";
 
 const { Header, Content, Footer, Sider } = Layout;
+
+const logoutHandler = async () => {
+  const data = await logoutUserApi();
+};
 
 const items = [
   {
@@ -128,7 +133,11 @@ const logout = [
     label: (
       <>
         <Link href="/login">
-          <span className="font-mulish" style={{ color: "#cccbd8" }}>
+          <span
+            className="font-mulish"
+            style={{ color: "#cccbd8" }}
+            onClick={logoutHandler}
+          >
             Logout
           </span>
         </Link>

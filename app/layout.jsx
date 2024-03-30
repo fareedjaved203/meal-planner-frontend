@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Mulish, Inter, Poppins } from "next/font/google";
 import "./globals.css";
@@ -6,6 +5,9 @@ import "@fontsource/mulish";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import MainLayout from "../components/shared/MainLayout";
 import PropTypes from "prop-types";
+import { Toaster } from "react-hot-toast";
+import store from "../store/store";
+import { StoreProvider } from "../store/StoreProvider";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -33,7 +35,14 @@ const RootLayout = ({ children, showNavbar = false }) => {
     >
       <body>
         <AntdRegistry>
-          {showNavbar ? <MainLayout>{children}</MainLayout> : <>{children}</>}
+          <StoreProvider>
+            {showNavbar ? (
+              <MainLayout>{children} </MainLayout>
+            ) : (
+              <>{children}</>
+            )}
+            <Toaster />
+          </StoreProvider>
         </AntdRegistry>
       </body>
     </html>

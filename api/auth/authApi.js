@@ -12,7 +12,7 @@ export const registerUserApi = async (userData) => {
 
 export const loginUserApi = async (userData) => {
   try {
-    const data = await apiService.request("/login", "POST", userData);
+    const data = await apiService.request("/users/login", "POST", userData);
     return data;
   } catch (error) {
     console.log(error.message);
@@ -22,7 +22,7 @@ export const loginUserApi = async (userData) => {
 
 export const logoutUserApi = async () => {
   try {
-    const data = await apiService.request("/logout", "POST");
+    const data = await apiService.request("/users/logout", "POST");
     return data;
   } catch (error) {
     console.log(error.message);
@@ -32,7 +32,7 @@ export const logoutUserApi = async () => {
 
 export const userDetailApi = async () => {
   try {
-    const data = await apiService.request("/user", "GET");
+    const data = await apiService.request("/users/user", "GET");
     return data;
   } catch (error) {
     console.log(error.message);
@@ -42,7 +42,11 @@ export const userDetailApi = async () => {
 
 export const forgotPasswordApi = async (email) => {
   try {
-    const data = await apiService.request("/password/forgot", "POST", email);
+    const data = await apiService.request(
+      "/users/password/forgot",
+      "POST",
+      email
+    );
     return data;
   } catch (error) {
     console.log(error.message);
@@ -53,7 +57,7 @@ export const forgotPasswordApi = async (email) => {
 export const resetPasswordApi = async (email, resetId) => {
   try {
     const data = await apiService.request(
-      `/password/reset/${resetId}`,
+      `/users/password/reset/${resetId}`,
       "PUT",
       email
     );
