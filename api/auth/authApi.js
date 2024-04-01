@@ -1,22 +1,12 @@
 import apiService from "../apiService";
 
-export const registerUserApi = async (userData) => {
-  try {
-    const data = await apiService.request("/register", "POST", userData);
-    return data;
-  } catch (error) {
-    console.log(error.message);
-    throw new Error(error.message);
-  }
-};
-
 export const loginUserApi = async (userData) => {
   try {
     const data = await apiService.request("/users/login", "POST", userData);
     return data;
   } catch (error) {
-    console.log(error.message);
-    throw new Error(error.message);
+    console.log(error);
+    throw new Error(error);
   }
 };
 

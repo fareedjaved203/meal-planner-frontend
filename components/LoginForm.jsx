@@ -1,24 +1,40 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { loginUserApi } from "@/api/auth/authApi";
+import { message } from "antd";
+import setCookie from "../lib/setCookie";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
 
   const login = async () => {
-    const formData = new FormData();
-    formData.append("email", email);
-    formData.append("password", password);
-    console.log(email);
-    console.log(password);
-    const data = await loginUserApi({ email, password });
-    console.log(data);
+    setLoading(true);
+
+    try {
+      const data = await loginUserApi({ email, password });
+      if (data.success) {
+        setCookie("token", data.accessToken, 1);
+        messageApi.success(data?.message);
+        router.push("/");
+      } else {
+        messageApi.error(data?.message);
+      }
+      console.log(data);
+    } catch (error) {
+      messageApi.error("Incorrect details");
+    }
+    setLoading(false);
   };
+
   return (
     <>
+      {contextHolder}
       <div className=" h-screen flex flex-col md:flex-row h-screen items-center justify-center">
         <div className="bg-gradient-to-r from-indigo-600 to-blue-800 w-1/2 p-4 pl-0 h-screen max-sm:hidden flex items-center justify-start">
           <Image
@@ -131,14 +147,19 @@ const LoginForm = () => {
               <div className="w-full flex justify-center items-center mt-4">
                 <button
                   onClick={login}
-                  className="bg-purpleText text-white p-3 pr-4 mt-4 rounded-full relative w-36 flex justify-between items-center"
+                  disabled={loading}
+                  className={`bg-purpleText text-white p-3 pr-4 mt-4 rounded-full relative w-36 flex justify-between items-center ${
+                    loading ? "opacity-50" : ""
+                  }`}
                   style={{
                     fontSize: "16px",
                     lineHeight: "24px",
                     fontWeight: 600,
                   }}
                 >
-                  <span className="pl-3">Sign In</span>
+                  <span className="pl-3">
+                    {loading ? "Loading..." : "Sign In"}
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -147,9 +168,9 @@ const LoginForm = () => {
                     className="w-4 h-4 absolute right-6 top-1/2 transform -translate-y-1/2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>

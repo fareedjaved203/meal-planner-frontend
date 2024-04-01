@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
-import { Layout, Menu, theme, Divider } from "antd";
+import { Layout, Menu, theme, message } from "antd";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaBagShopping } from "react-icons/fa6";
 import { MdDashboard } from "react-icons/md";
@@ -12,12 +12,10 @@ import { BsBookmarkCheckFill } from "react-icons/bs";
 import { IoIosHelpCircle } from "react-icons/io";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { logoutUserApi } from "@/api/auth/authApi";
+import { useRouter } from "next/navigation";
+import deleteCookie from "../../lib/deleteCookie";
 
 const { Header, Content, Footer, Sider } = Layout;
-
-const logoutHandler = async () => {
-  const data = await logoutUserApi();
-};
 
 const items = [
   {
@@ -124,15 +122,36 @@ const items = [
   },
 ];
 
-const logout = [
-  {
-    key: "6",
-    icon: <IoIosArrowRoundBack style={{ fontSize: "20px", color: "gray" }} />,
-    className: "logout",
+const MainLayout = ({ children }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [path, setPath] = useState("");
+  const [messageApi, contextHolder] = message.useMessage();
 
-    label: (
-      <>
-        <Link href="/login">
+  const [selectedKey, setSelectedKey] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("path") : ""
+  );
+
+  const logoutHandler = async () => {
+    const data = await logoutUserApi();
+    if (data.success) {
+      deleteCookie("token");
+      messageApi.success(data.message);
+      router.push("/login");
+    } else {
+      messageApi.error("Something went wrong");
+    }
+    console.log(data);
+  };
+
+  const logout = [
+    {
+      key: "6",
+      icon: <IoIosArrowRoundBack style={{ fontSize: "20px", color: "gray" }} />,
+      className: "logout",
+
+      label: (
+        <>
           <span
             className="font-mulish"
             style={{ color: "#cccbd8" }}
@@ -140,22 +159,13 @@ const logout = [
           >
             Logout
           </span>
-        </Link>
-      </>
-    ),
-    style: {
-      paddingRight: "15px",
+        </>
+      ),
+      style: {
+        paddingRight: "15px",
+      },
     },
-  },
-];
-
-const MainLayout = ({ children }) => {
-  const pathname = usePathname();
-  const [path, setPath] = useState("");
-  const [selectedKey, setSelectedKey] = useState(
-    typeof window !== "undefined" ? localStorage.getItem("path") : ""
-  );
-  console.log(pathname);
+  ];
 
   useEffect(() => {
     const data = localStorage.getItem("path");
@@ -189,6 +199,7 @@ const MainLayout = ({ children }) => {
   } = theme.useToken();
   return (
     <Layout hasSider className="font-mulish">
+      {contextHolder}
       <Sider
         style={{
           overflow: "hidden",

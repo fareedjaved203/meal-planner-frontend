@@ -25,8 +25,15 @@ const apiService = {
 
     try {
       const response = await fetch(`${BASE_URL}${url}`, options);
-      const responseData = await response.json();
-      return responseData;
+
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const responseData = await response.json();
+        return responseData;
+      } else {
+        console.error("Error: Expected JSON but received", contentType);
+        throw new Error(`Expected JSON but received ${contentType}`);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
       throw new Error(error.message);
