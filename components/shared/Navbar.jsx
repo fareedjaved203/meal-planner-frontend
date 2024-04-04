@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const username = "Fareed Javed";
+  const user = useSelector((state) => state.auth.user);
+  const username = user?.name;
   const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {

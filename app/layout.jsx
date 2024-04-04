@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { Toaster } from "react-hot-toast";
 import store from "../store/store";
 import { StoreProvider } from "../store/StoreProvider";
+import LoginProtectedRoute from "../hooks/LoginProtectedRoute";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -34,16 +35,18 @@ const RootLayout = ({ children, showNavbar = false }) => {
       className={`${mulish.className} ${inter.className} ${poppins.className}`}
     >
       <body>
-        <AntdRegistry>
-          <StoreProvider>
-            {showNavbar ? (
-              <MainLayout>{children} </MainLayout>
-            ) : (
-              <>{children}</>
-            )}
-            <Toaster />
-          </StoreProvider>
-        </AntdRegistry>
+        <StoreProvider>
+          <LoginProtectedRoute>
+            <AntdRegistry>
+              {showNavbar ? (
+                <MainLayout>{children} </MainLayout>
+              ) : (
+                <>{children}</>
+              )}
+              <Toaster />
+            </AntdRegistry>
+          </LoginProtectedRoute>
+        </StoreProvider>
       </body>
     </html>
   );

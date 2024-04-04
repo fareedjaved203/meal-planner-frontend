@@ -136,6 +136,7 @@ const MainLayout = ({ children }) => {
     const data = await logoutUserApi();
     if (data.success) {
       deleteCookie("token");
+      localStorage.removeItem("user");
       messageApi.success(data.message);
       router.push("/login");
     } else {

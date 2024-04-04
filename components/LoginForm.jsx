@@ -3,11 +3,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { loginUserApi } from "@/api/auth/authApi";
+import { useDispatch } from "react-redux";
+import { onLogin } from "../store/slices/userSlice";
 import { message } from "antd";
 import setCookie from "../lib/setCookie";
 
 const LoginForm = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
@@ -21,6 +24,7 @@ const LoginForm = () => {
       if (data.success) {
         setCookie("token", data.accessToken, 1);
         messageApi.success(data?.message);
+        dispatch(onLogin(data));
         router.push("/");
       } else {
         messageApi.error(data?.message);
@@ -93,7 +97,7 @@ const LoginForm = () => {
             </div>
             <div className="flex flex-col items-start mt-8 font-poppins">
               <label
-                for="email"
+                htmlFor="email"
                 className="mb-2"
                 style={{ color: "rgba(0, 0, 0, 0.7)", fontSize: "16px" }}
               >

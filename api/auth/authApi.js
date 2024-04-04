@@ -15,8 +15,8 @@ export const logoutUserApi = async () => {
     const data = await apiService.request("/users/logout", "POST");
     return data;
   } catch (error) {
-    console.log(error.message);
-    throw new Error(error.message);
+    console.log(error);
+    throw new Error(error);
   }
 };
 

@@ -1,18 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
+import setCookie from "../../lib/setCookie";
+import getCookie from "../../lib/getCookie";
+import deleteCookie from "../../lib/deleteCookie";
+import Cookies from "js-cookie";
 
 const initialState = {
   user: null,
+  isLoggedIn: false,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action) => {
+    onLogin: (state, action) => {
+      console.log(action.payload);
+      const expiryTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      Cookies.set("token", action.payload.accessToken, { expires: 7 });
+      localStorage.setItem("user", JSON.stringify(action.payload?.user));
+
       state.user = action.payload;
+      state.isLoggedIn = true;
+    },
+    onReload: (state) => {
+      const data = localStorage.getItem("user");
+      if (data) {
+        try {
+          state.user = JSON.parse(data);
+        } catch (error) {
+          console.error("Error parsing user data from cookies", error);
+        }
+        state.isLoggedIn = true;
+      }
+    },
+    onLogout: (state) => {
+      deleteCookie("token");
+      localStorage.removeItem("user");
+      state.user = null;
+      state.isLoggedIn = false;
     },
   },
 });
 
-export const { setUser } = authSlice.actions;
+export const { onLogin, onLogout, onReload } = authSlice.actions;
+
 export default authSlice.reducer;
