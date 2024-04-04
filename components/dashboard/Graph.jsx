@@ -1,32 +1,16 @@
 "use client";
-import MonthDropDown from "./MonthDropDown";
-import Image from "next/image";
+import { useState } from "react";
+import { Tabs } from "antd";
 import {
   BarChart,
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   Rectangle,
   ResponsiveContainer,
 } from "recharts";
-
-const data = [
-  { name: "Jan", uv: 70000 },
-  { name: "Feb", uv: 30000 },
-  { name: "Mar", uv: 50000 },
-  { name: "Apr", uv: 37800 },
-  { name: "May", uv: 48900 },
-  { name: "Jun", uv: 73900 },
-  { name: "Jul", uv: 54900 },
-  { name: "Aug", uv: 40000 },
-  { name: "Sep", uv: 77800 },
-  { name: "Oct", uv: 68900 },
-  { name: "Nov", uv: 53900 },
-  { name: "Dec", uv: 64900 },
-];
+const { TabPane } = Tabs;
 
 const CustomBar = (props) => {
   const borderRadius = 8;
@@ -38,31 +22,88 @@ const CustomBar = (props) => {
   );
 };
 
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const dayNames = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const dailyData = Array.from({ length: 7 }, (_, i) => ({
+  name: dayNames[i],
+  uv: Math.floor(Math.random() * 10000),
+}));
+const monthlyData = Array.from({ length: 12 }, (_, i) => ({
+  name: monthNames[i],
+  uv: Math.floor(Math.random() * 10000),
+}));
+const yearlyData = Array.from({ length: 5 }, (_, i) => ({
+  name: 2019 + i,
+  uv: Math.floor(Math.random() * 10000),
+}));
+
 const Graph = () => {
+  const [data, setData] = useState(monthlyData);
+
+  const handleTabChange = (key) => {
+    switch (key) {
+      case "1":
+        setData(dailyData);
+        break;
+      case "2":
+        setData(monthlyData);
+        break;
+      case "3":
+        setData(yearlyData);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between p-4 font-mulish">
-        <div className="flex flex-col sm:flex-row">
+        <div className="flex flex-col sm:flex-row justify-between w-full">
           <div
             className="pb-1 mr-4 font-mulish"
             style={{ fontSize: "28px", fontWeight: "900" }}
           >
             Earnings
           </div>
-          <MonthDropDown />
-        </div>
-        <div className="bg-graphDate pl-4 pr-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">
-          <p
-            className="text-graphDateText font-inter"
-            style={{ fontWeight: "600" }}
-          >
-            9 Dec 2022 - 7 Jan 2023{" "}
-          </p>
-          <span className="p-2 pr-0">
-            <Image src="/svg.svg" width={25} height={25} alt="logo icon" />
-          </span>
+          {/* <MonthDropDown /> */}
+          <Tabs defaultActiveKey="2" onChange={handleTabChange}>
+            <TabPane tab="Daily" key="1">
+              {/* The chart will automatically update when the data state changes */}
+            </TabPane>
+            <TabPane tab="Monthly" key="2">
+              {/* The chart will automatically update when the data state changes */}
+            </TabPane>
+            <TabPane tab="Yearly" key="3">
+              {/* The chart will automatically update when the data state changes */}
+            </TabPane>
+          </Tabs>
         </div>
       </div>
+
       <div>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart
@@ -83,11 +124,11 @@ const Graph = () => {
             />
             <YAxis
               type="number"
-              domain={[0, 80000]}
+              domain={[0, 8000]}
               axisLine={false}
               tickFormatter={(tick) => {
                 if (tick === 0) return "0";
-                return `${Math.floor(tick / 10000) * 20}k`;
+                return `${Math.floor(tick / 1000) * 20}k`;
               }}
               tickLine={false}
               tick={{ fill: "black" }}

@@ -1,8 +1,8 @@
 import RootLayout from "./layout";
 import Summary from "../components/dashboard/Summary";
 import GraphAndStats from "../components/dashboard/GraphAndStats";
-import DashboardTable from "../components/dashboard/DashboardTable";
 import Link from "next/link";
+import PlacedOrdersTable from "../components/orders/PlacedOrdersTable";
 
 const Home = () => {
   return (
@@ -36,7 +36,7 @@ const Home = () => {
               </Link>
             </div>
             <div className="p-4">
-              <DashboardTable />
+              <PlacedOrdersTable limit={2} />
             </div>
           </div>
         </div>

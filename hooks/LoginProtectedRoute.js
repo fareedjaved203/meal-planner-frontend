@@ -1,17 +1,19 @@
 "use client";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const LoginProtectedRoute = ({ children }) => {
-  const user = localStorage.getItem("user");
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
-      router.push("/login");
+    if (typeof window !== "undefined") {
+      const user = window.localStorage.getItem("user");
+
+      if (!user) {
+        router.push("/login");
+      }
     }
-  }, [user]);
+  }, []);
 
   return <>{children}</>;
 };
