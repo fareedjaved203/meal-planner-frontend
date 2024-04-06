@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "png.pngtree.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "https://kitchen-compass.com/admin/api/2024-01/orders.json",
+        pathname: "**",
+      },
     ],
   },
 };

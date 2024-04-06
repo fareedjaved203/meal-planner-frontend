@@ -4,45 +4,52 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
+import getData from "../../lib/getData";
 
-const PlacedOrdersTable = ({ limit = 10 }) => {
+const PlacedOrdersTable = ({ data }) => {
   const router = useRouter();
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(data);
+  const [orders, setOrders] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
 
-  useEffect(() => {
-    setList([...data]);
-  }, []);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
 
-  let data = [
-    {
-      key: "1",
-      pid: "#123",
-      date: "23 Feb 2023",
-      orderby: "example@gmail.com",
-      quantity: 30,
-      type: "Custom",
-      price: 4200,
-      complete: false,
-    },
-    {
-      key: "2",
-      pid: "#321",
-      date: "23 Feb 2023",
-      orderby: "example@gmail.com",
-      quantity: 30,
-      type: "Custom",
-      price: 4000,
-      complete: false,
-    },
-  ];
+  const mappedOrders = data.orders.map((order) => {
+    let type;
+    const hasProperties = order.line_items.some(
+      (item) => item.properties.length > 0
+    );
+    console.log(order.line_items);
+    if (hasProperties) {
+      type = order.line_items.every((item) => item.properties.length > 0)
+        ? "Custom Order Details"
+        : "Both Custom and Predefined";
+    } else {
+      type = "Predefined Order Details";
+    }
+
+    const date = new Date(order?.processed_at);
+    const formattedDate = date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+
+    return {
+      pid: order?.id,
+      date: formattedDate,
+      orderby: order?.customer?.email,
+      quantity: order?.line_items?.length,
+      type: type,
+      price: order?.total_line_items_price,
+    };
+  });
 
   const pagination = {
     showTotal: (total, range) => (
@@ -173,6 +180,7 @@ const PlacedOrdersTable = ({ limit = 10 }) => {
       width: "10%",
       className: "pidColumn",
       ...getColumnSearchProps("pid"),
+      render: (text) => `#${text}`,
     },
     {
       title: "Date",
@@ -192,7 +200,7 @@ const PlacedOrdersTable = ({ limit = 10 }) => {
       title: "Quantity",
       dataIndex: "quantity",
       key: "quantity",
-      width: "20%",
+      width: "10%",
       ...getColumnSearchProps("quantity"),
       sorter: (a, b) => a.quantity - b.quantity,
     },
@@ -200,7 +208,7 @@ const PlacedOrdersTable = ({ limit = 10 }) => {
       title: "Type",
       dataIndex: "type",
       key: "type",
-      width: "20%",
+      width: "30%",
       ...getColumnSearchProps("type"),
     },
     {
@@ -249,7 +257,7 @@ const PlacedOrdersTable = ({ limit = 10 }) => {
             className: "cursor-pointer",
           };
         }}
-        dataSource={[...list]}
+        dataSource={[...mappedOrders]}
         pagination={pagination}
         bordered
       />

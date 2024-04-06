@@ -3,8 +3,10 @@ import Summary from "../components/dashboard/Summary";
 import GraphAndStats from "../components/dashboard/GraphAndStats";
 import Link from "next/link";
 import PlacedOrdersTable from "../components/orders/PlacedOrdersTable";
+import getData from "../lib/getData";
 
-const Home = () => {
+const Home = async () => {
+  const data = await getData();
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -36,7 +38,7 @@ const Home = () => {
               </Link>
             </div>
             <div className="p-4">
-              <PlacedOrdersTable limit={2} />
+              <PlacedOrdersTable data={data} />
             </div>
           </div>
         </div>
