@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import setCookie from "../../lib/setCookie";
-import getCookie from "../../lib/getCookie";
 import deleteCookie from "../../lib/deleteCookie";
 import Cookies from "js-cookie";
 

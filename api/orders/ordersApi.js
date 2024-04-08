@@ -1,4 +1,8 @@
 import apiService from "../apiService";
+import { useDispatch } from "react-redux";
+import { onSave } from "../../store/slices/orderSlice";
+
+const dispatch = useDispatch();
 
 export const postOrderApi = async (orderData) => {
   try {
@@ -13,6 +17,8 @@ export const postOrderApi = async (orderData) => {
 export const getOrdersApi = async () => {
   try {
     const data = await apiService.request("/orders/order", "GET");
+    console.log(data);
+    // dispatch(onSave(data.data))
     return data;
   } catch (error) {
     console.log(error);

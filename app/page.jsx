@@ -4,9 +4,11 @@ import GraphAndStats from "../components/dashboard/GraphAndStats";
 import Link from "next/link";
 import PlacedOrdersTable from "../components/orders/PlacedOrdersTable";
 import getData from "../lib/getData";
+import { getOrdersApi } from "../api/orders/ordersApi";
 
 const Home = async () => {
   const data = await getData();
+  const order = await getOrdersApi();
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -38,7 +40,7 @@ const Home = async () => {
               </Link>
             </div>
             <div className="p-4">
-              <PlacedOrdersTable data={data} />
+              <PlacedOrdersTable data={data} completedOrders={order} />
             </div>
           </div>
         </div>

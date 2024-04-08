@@ -6,7 +6,7 @@ import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import getData from "../../lib/getData";
 
-const PlacedOrdersTable = ({ data }) => {
+const PlacedOrdersTable = ({ data, completedOrders }) => {
   const router = useRouter();
   const [list, setList] = useState(data);
   const [orders, setOrders] = useState([]);
@@ -20,36 +20,39 @@ const PlacedOrdersTable = ({ data }) => {
     setSearchedColumn(dataIndex);
   };
 
-  const mappedOrders = data.orders.map((order) => {
-    let type;
-    const hasProperties = order.line_items.some(
-      (item) => item.properties.length > 0
-    );
-    console.log(order.line_items);
-    if (hasProperties) {
-      type = order.line_items.every((item) => item.properties.length > 0)
-        ? "Custom Order Details"
-        : "Both Custom and Predefined";
-    } else {
-      type = "Predefined Order Details";
-    }
+  const mappedOrders = data.orders
+    .map((order) => {
+      let type;
+      const hasProperties = order.line_items.some(
+        (item) => item.properties.length > 0
+      );
+      if (hasProperties) {
+        type = order.line_items.every((item) => item.properties.length > 0)
+          ? "Custom Order Details"
+          : "Both Custom and Predefined";
+      } else {
+        type = "Predefined Order Details";
+      }
 
-    const date = new Date(order?.processed_at);
-    const formattedDate = date.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
+      const date = new Date(order?.processed_at);
+      const formattedDate = date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+
+      return {
+        pid: order?.id,
+        date: formattedDate,
+        orderby: order?.customer?.email,
+        quantity: order?.line_items?.length,
+        type: type,
+        price: order?.total_line_items_price,
+      };
+    })
+    .filter((order) => {
+      return order.id !== completedOrders.pid;
     });
-
-    return {
-      pid: order?.id,
-      date: formattedDate,
-      orderby: order?.customer?.email,
-      quantity: order?.line_items?.length,
-      type: type,
-      price: order?.total_line_items_price,
-    };
-  });
 
   const pagination = {
     showTotal: (total, range) => (

@@ -1,5 +1,5 @@
 import RootLayout from "../layout";
-import CompleteOrdersTable from "../../components/orders/CompleteOrdersTable";
+import PlacedOrdersTable from "../../components/orders/PlacedOrdersTable";
 
 const PlacedOrders = () => {
   return (
@@ -15,7 +15,7 @@ const PlacedOrders = () => {
             </div>
           </div>
           <div className="p-4 pt-0">
-            <CompleteOrdersTable />
+            <PlacedOrdersTable />
           </div>
         </div>
       </>
