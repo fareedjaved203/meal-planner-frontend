@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Space, Table, Checkbox } from "antd";
+import { Button, Input, Space, Table, Checkbox, message } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import getData from "../../lib/getData";
@@ -12,57 +12,58 @@ const PlacedOrdersTable = ({ data }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [list, setList] = useState(data);
-  const [orders, setOrders] = useState([]);
   const [mappedOrders, setMappedOrders] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
+  const [messageApi, contextHolder] = message.useMessage();
   const searchInput = useRef(null);
 
   useEffect(() => {
+    let orders;
     const getOrders = async () => {
-      const data = await getOrdersApi();
-      setOrders(data?.orders);
+      const completedOrders = await getOrdersApi();
+
+      const filteredData = data.orders?.map((order) => {
+        let type;
+        const hasProperties = order.line_items?.some(
+          (item) => item?.properties?.length > 0
+        );
+        if (hasProperties) {
+          type = order?.line_items?.every(
+            (item) => item?.properties?.length > 0
+          )
+            ? "Custom Order Details"
+            : "Both Custom and Predefined";
+        } else {
+          type = "Predefined Order Details";
+        }
+
+        const date = new Date(order?.processed_at);
+        const formattedDate = date.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+
+        return {
+          pid: order?.id,
+          date: formattedDate,
+          orderby: order?.customer?.email,
+          quantity: order?.line_items?.length,
+          type: type,
+          price: order?.total_line_items_price,
+        };
+      });
+      const filteredOrders = filteredData.filter(
+        (mappedOrder) =>
+          !completedOrders?.orders?.some(
+            (order) => order.pid === mappedOrder?.pid.toString()
+          )
+      );
+      setMappedOrders(filteredOrders);
     };
     getOrders();
-
-    const filteredData = data.orders.map((order) => {
-      let type;
-      const hasProperties = order.line_items.some(
-        (item) => item.properties.length > 0
-      );
-      if (hasProperties) {
-        type = order.line_items.every((item) => item.properties.length > 0)
-          ? "Custom Order Details"
-          : "Both Custom and Predefined";
-      } else {
-        type = "Predefined Order Details";
-      }
-
-      const date = new Date(order?.processed_at);
-      const formattedDate = date.toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      });
-
-      return {
-        pid: order?.id,
-        date: formattedDate,
-        orderby: order?.customer?.email,
-        quantity: order?.line_items?.length,
-        type: type,
-        price: order?.total_line_items_price,
-      };
-    });
-    setMappedOrders(filteredData);
   }, []);
-
-  // useEffect(() => {
-  //   const filteredOrders = mappedOrders.filter(
-  //     (mappedOrder) => !orders.some((order) => order.pid === mappedOrder.id)
-  //   );
-  //   setMappedOrders(filteredOrders);
-  // }, [orders]);
 
   const postOrder = async (item) => {
     const data = await postOrderApi(item);
@@ -265,6 +266,7 @@ const PlacedOrdersTable = ({ data }) => {
             };
             newData = newData.filter((item, index) => index !== recordIndex);
             setMappedOrders(newData);
+            messageApi.success("Order Moved to Completed Orders");
           }}
         />
       ),
@@ -272,6 +274,7 @@ const PlacedOrdersTable = ({ data }) => {
   ];
   return (
     <>
+      {contextHolder}
       <Table
         style={{ width: "100%" }}
         columns={columns}

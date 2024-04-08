@@ -1,11 +1,8 @@
 import RootLayout from "../layout";
 import CompleteOrdersTable from "../../components/orders/CompleteOrdersTable";
 import DatePickerButton from "../../components/shared/DatePickerButton";
-import { useSelector } from "react-redux";
 
 const CompletedOrders = () => {
-  // const orders = useSelector((state) => state.orders.orders);
-  // console.log(orders);
   return (
     <RootLayout showNavbar={true}>
       <>
