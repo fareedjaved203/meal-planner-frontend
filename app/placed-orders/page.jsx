@@ -1,7 +1,9 @@
 import RootLayout from "../layout";
 import PlacedOrdersTable from "../../components/orders/PlacedOrdersTable";
+import getData from "../../lib/getData";
 
-const PlacedOrders = () => {
+const PlacedOrders = async () => {
+  const data = await getData();
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -15,7 +17,7 @@ const PlacedOrders = () => {
             </div>
           </div>
           <div className="p-4 pt-0">
-            <PlacedOrdersTable />
+            <PlacedOrdersTable data={data} />
           </div>
         </div>
       </>

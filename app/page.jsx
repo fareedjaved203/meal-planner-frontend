@@ -8,7 +8,6 @@ import { getOrdersApi } from "../api/orders/ordersApi";
 
 const Home = async () => {
   const data = await getData();
-  const order = await getOrdersApi();
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -40,7 +39,7 @@ const Home = async () => {
               </Link>
             </div>
             <div className="p-4">
-              <PlacedOrdersTable data={data} completedOrders={order} />
+              <PlacedOrdersTable data={data} />
             </div>
           </div>
         </div>

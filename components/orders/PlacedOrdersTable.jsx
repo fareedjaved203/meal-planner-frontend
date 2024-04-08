@@ -5,23 +5,27 @@ import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import getData from "../../lib/getData";
+import { useDispatch } from "react-redux";
+import { getOrdersApi, postOrderApi } from "@/api/orders/ordersApi";
 
-const PlacedOrdersTable = ({ data, completedOrders }) => {
+const PlacedOrdersTable = ({ data }) => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [list, setList] = useState(data);
   const [orders, setOrders] = useState([]);
+  const [mappedOrders, setMappedOrders] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
 
-  const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    confirm();
-    setSearchText(selectedKeys[0]);
-    setSearchedColumn(dataIndex);
-  };
+  useEffect(() => {
+    const getOrders = async () => {
+      const data = await getOrdersApi();
+      setOrders(data?.orders);
+    };
+    getOrders();
 
-  const mappedOrders = data.orders
-    .map((order) => {
+    const filteredData = data.orders.map((order) => {
       let type;
       const hasProperties = order.line_items.some(
         (item) => item.properties.length > 0
@@ -49,10 +53,27 @@ const PlacedOrdersTable = ({ data, completedOrders }) => {
         type: type,
         price: order?.total_line_items_price,
       };
-    })
-    .filter((order) => {
-      return order.id !== completedOrders.pid;
     });
+    setMappedOrders(filteredData);
+  }, []);
+
+  // useEffect(() => {
+  //   const filteredOrders = mappedOrders.filter(
+  //     (mappedOrder) => !orders.some((order) => order.pid === mappedOrder.id)
+  //   );
+  //   setMappedOrders(filteredOrders);
+  // }, [orders]);
+
+  const postOrder = async (item) => {
+    const data = await postOrderApi(item);
+    console.log(data);
+  };
+
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
+  };
 
   const pagination = {
     showTotal: (total, range) => (
@@ -231,15 +252,19 @@ const PlacedOrdersTable = ({ data, completedOrders }) => {
           checked={record.complete}
           onChange={(e) => {
             e.stopPropagation();
-            const newData = [...data];
+            let newData = [...mappedOrders];
             const recordIndex = newData.findIndex(
-              (item) => item.key === record.key
+              (item) => item.pid === record.pid
             );
+            const item = newData[recordIndex];
+            console.log(item);
+            postOrder(item);
             newData[recordIndex] = {
               ...newData[recordIndex],
               complete: e.target.checked,
             };
-            setList(newData);
+            newData = newData.filter((item, index) => index !== recordIndex);
+            setMappedOrders(newData);
           }}
         />
       ),
