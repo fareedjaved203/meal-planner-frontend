@@ -18,50 +18,77 @@ const DatePickerButton = () => {
     setShowDatePicker(!showDatePicker);
   };
 
+  const handleReset = () => {
+    setSelectedDate(null);
+  };
+
   const buttonPosition = buttonRef.current
     ? buttonRef.current.getBoundingClientRect()
     : { left: 0, bottom: 0 };
 
   const calendarTopPosition = buttonPosition.bottom + 40;
 
+  const dateObject =
+    selectedDate && !isNaN(new Date(selectedDate))
+      ? new Date(selectedDate)
+      : null;
+  const formattedDate = dateObject
+    ? `${dateObject.getFullYear()}-${String(dateObject.getMonth() + 1).padStart(
+        2,
+        "0"
+      )}-${String(dateObject.getDate()).padStart(2, "0")}`
+    : "Select Date";
+
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
-      <div
-        className="flex justify-center items-center p-4 py-2 rounded font-mulish"
-        onClick={handleButtonClick}
-        style={{ backgroundColor: "#E4E3FF" }}
-      >
-        <p
-          className="text-purpleText font-inter cursor-pointer"
-          style={{ fontSize: "12.35px", fontWeight: 600 }}
-        >
-          Select Date
-        </p>
-        <span className="ml-2">
-          <Image src="/Frame.svg" width={18} height={18} alt="logo icon" />
-        </span>
+    <div style={{ position: "relative" }} className="flex">
+      <div>
+        {selectedDate && (
+          <div
+            onClick={handleReset}
+            className="flex items-center bg-removeItem text-removeItemText p-4 pt-2 pb-2 rounded mr-4 font-inter cursor-pointer"
+            style={{ fontSize: "12.35px", fontWeight: 600 }}
+          >
+            Reset
+          </div>
+        )}
       </div>
-      {showDatePicker && (
+      <div style={{ position: "relative", display: "inline-block" }}>
         <div
-          style={{
-            position: "absolute",
-            zIndex: 9999,
-            right: "0",
-            top: buttonPosition.bottom,
-            top: `${calendarTopPosition}px`,
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
-            borderRadius: "5px",
-          }}
-          // className="custom-calendar"
+          className="flex justify-center items-center p-4 py-2 rounded font-mulish"
+          onClick={handleButtonClick}
+          style={{ backgroundColor: "#E4E3FF" }}
         >
-          <DatePicker
-            selected={selectedDate}
-            onChange={handleDateChange}
-            inline
-            calendarClassName="custom-calendar"
-          />
+          <p
+            className="text-purpleText font-inter cursor-pointer"
+            style={{ fontSize: "12.35px", fontWeight: 600 }}
+          >
+            {formattedDate}
+          </p>
+          <span className="ml-2">
+            <Image src="/Frame.svg" width={18} height={18} alt="logo icon" />
+          </span>
         </div>
-      )}
+        {showDatePicker && (
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 9999,
+              right: "0",
+              top: buttonPosition.bottom,
+              top: `${calendarTopPosition}px`,
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+              borderRadius: "5px",
+            }}
+          >
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              inline
+              calendarClassName="custom-calendar"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

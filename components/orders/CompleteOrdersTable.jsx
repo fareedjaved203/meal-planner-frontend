@@ -35,11 +35,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
       const data = await getOrdersApi();
       const formattedOrders = data?.orders.map((order) => {
         const date = new Date(order?.date);
-        const formattedDate = date.toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        });
+        let formattedDate = date.toISOString().slice(0, 10);
         return { ...order, date: formattedDate };
       });
       setList(formattedOrders);

@@ -16,11 +16,7 @@ const CompleteOrderDetails = () => {
 
       let date = new Date(orderData.date);
 
-      let formattedDate = date.toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      });
+      let formattedDate = date.toISOString().slice(0, 10);
 
       orderData.date = formattedDate;
 

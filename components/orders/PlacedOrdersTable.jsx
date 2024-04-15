@@ -39,11 +39,7 @@ const PlacedOrdersTable = ({ data }) => {
         }
 
         const date = new Date(order?.processed_at);
-        const formattedDate = date.toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        });
+        let formattedDate = date.toISOString().slice(0, 10);
 
         return {
           pid: order?.id,
