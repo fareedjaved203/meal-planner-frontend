@@ -2,9 +2,12 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
+import { useDispatch } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
+import { onDate } from "../../store/slices/dateSlice";
 
 const DatePickerButton = () => {
+  const dispatch = useDispatch()
   const [selectedDate, setSelectedDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const buttonRef = useRef(null);
@@ -20,7 +23,7 @@ const DatePickerButton = () => {
         ).padStart(2, "0")}-${String(dateObject.getDate()).padStart(2, "0")}`
       : "Select Date";
 
-    localStorage.setItem("date", formattedDate);
+    dispatch(onDate(formattedDate))
   };
 
   const handleButtonClick = () => {
@@ -29,6 +32,7 @@ const DatePickerButton = () => {
 
   const handleReset = () => {
     setSelectedDate(null);
+    dispatch(onDate(""))
   };
 
   const buttonPosition = buttonRef.current

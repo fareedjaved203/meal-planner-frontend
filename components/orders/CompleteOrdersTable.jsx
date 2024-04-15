@@ -11,11 +11,11 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
   const router = useRouter();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
-  const [selectedDate, setSelectedDate] = useState(
-    localStorage.getItem("date") || ""
-  );
   const searchInput = useRef(null);
   const [list, setList] = useState([]);
+
+
+  const date = useSelector((state) => state.date.date);
 
   const pagination = {
     showTotal: (total, range) => (
@@ -33,36 +33,40 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
     pageSize: 10,
   };
 
+  const getOrders = async () => {
+    const data = await getOrdersApi();
+    const formattedOrders = data?.orders.map((order) => {
+      const date = new Date(order?.date);
+      let formattedDate = date.toISOString().slice(0, 10);
+      return { ...order, date: formattedDate };
+    });
+    setList(formattedOrders);
+  };
+  
   useEffect(() => {
-    const getOrders = async () => {
-      const data = await getOrdersApi();
-      const formattedOrders = data?.orders.map((order) => {
-        const date = new Date(order?.date);
-        let formattedDate = date.toISOString().slice(0, 10);
-        return { ...order, date: formattedDate };
-      });
-      setList(formattedOrders);
-    };
     getOrders();
   }, []);
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setSelectedDate(localStorage.getItem("date"));
-      console.log(localStorage.getItem("date"));
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+  useEffect(()=>{
+    if(date){
+      const data = list.filter((item)=>{
+        return item.date == date
+      })
+      console.log(data)
+      setList(data)
+    }
+    else{
+    getOrders();
+    }
+  },[date])
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    confirm();
+    if(confirm){
+      confirm();
+    }
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
+    console.log(confirm)
     console.log(selectedKeys[0]);
     console.log(dataIndex);
   };
@@ -151,12 +155,6 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
       />
     ),
     onFilter: (value, record) => {
-      // If dataIndex is 'date' and selectedDate is provided, use it for filtering
-      if (dataIndex === "date" && selectedDate) {
-        console.log(selectedDate);
-        return record[dataIndex] === selectedDate;
-      }
-      // Otherwise, use the default filtering method
       return record[dataIndex]
         .toString()
         .toLowerCase()
@@ -236,19 +234,6 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
       render: (text, record, onChange) => (
         <Checkbox
           checked={true}
-          // checked={record.complete}
-          // onChange={(e) => {
-          //   e.stopPropagation();
-          //   const newData = [...data];
-          //   const recordIndex = newData.findIndex(
-          //     (item) => item.pid === record.pid
-          //   );
-          //   newData[recordIndex] = {
-          //     ...newData[recordIndex],
-          //     complete: e.target.checked,
-          //   };
-          //   setList(newData);
-          // }}
         />
       ),
     },
