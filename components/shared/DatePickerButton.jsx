@@ -12,6 +12,15 @@ const DatePickerButton = () => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setShowDatePicker(false);
+
+    const dateObject = date && !isNaN(new Date(date)) ? new Date(date) : null;
+    const formattedDate = dateObject
+      ? `${dateObject.getFullYear()}-${String(
+          dateObject.getMonth() + 1
+        ).padStart(2, "0")}-${String(dateObject.getDate()).padStart(2, "0")}`
+      : "Select Date";
+
+    localStorage.setItem("date", formattedDate);
   };
 
   const handleButtonClick = () => {

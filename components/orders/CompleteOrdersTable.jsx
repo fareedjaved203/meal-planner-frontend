@@ -11,6 +11,9 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
   const router = useRouter();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
+  const [selectedDate, setSelectedDate] = useState(
+    localStorage.getItem("date") || ""
+  );
   const searchInput = useRef(null);
   const [list, setList] = useState([]);
 
@@ -43,10 +46,25 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
     getOrders();
   }, []);
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setSelectedDate(localStorage.getItem("date"));
+      console.log(localStorage.getItem("date"));
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
+    console.log(selectedKeys[0]);
+    console.log(dataIndex);
   };
   const handleReset = (clearFilters) => {
     clearFilters();
@@ -132,8 +150,18 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
         }}
       />
     ),
-    onFilter: (value, record) =>
-      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+    onFilter: (value, record) => {
+      // If dataIndex is 'date' and selectedDate is provided, use it for filtering
+      if (dataIndex === "date" && selectedDate) {
+        console.log(selectedDate);
+        return record[dataIndex] === selectedDate;
+      }
+      // Otherwise, use the default filtering method
+      return record[dataIndex]
+        .toString()
+        .toLowerCase()
+        .includes(value.toLowerCase());
+    },
     onFilterDropdownOpenChange: (visible) => {
       if (visible) {
         setTimeout(() => searchInput.current?.select(), 100);
@@ -176,8 +204,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
       title: "Order By",
       dataIndex: "orderby",
       key: "orderby",
-      filters: [{ text: "example@gmail.com", value: "example@gmail.com" }],
-      onFilter: (value, record) => record.orderby.indexOf(value) === 0,
+      ...getColumnSearchProps("orderby"),
     },
     {
       title: "Quantity",

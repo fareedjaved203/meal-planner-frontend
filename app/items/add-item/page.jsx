@@ -28,7 +28,15 @@ const AddItems = () => {
             >
               Your Items
             </div>
-            <DatePickerButton />
+            <div className="pl-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">
+              <div
+                className="flex items-center bg-removeItem text-removeItemText p-4 pt-2 pb-2 rounded mr-4 font-inter"
+                style={{ fontSize: "12.35px", fontWeight: 600 }}
+              >
+                Reset
+              </div>
+              <DatePickerButton />
+            </div>
           </div>
           <div className="p-4 pt-0">
             <ItemsTable />
