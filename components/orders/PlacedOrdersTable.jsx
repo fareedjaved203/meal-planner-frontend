@@ -277,8 +277,9 @@ const PlacedOrdersTable = ({ data }) => {
         onRow={(record, rowIndex) => {
           return {
             onClick: (event) => {
+              console.log(record)
               if (event.target.type !== "checkbox") {
-                router.push(`${order}/${record?.key}`);
+                router.push(`/placed-orders/${record?.pid}`);
               }
             },
             className: "cursor-pointer",

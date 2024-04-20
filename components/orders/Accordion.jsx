@@ -14,7 +14,7 @@ const data = [
   // Add more items here...
 ];
 
-function Accordion({ predefined = false }) {
+function Accordion({ predefined = false, orders=[] }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleItem = (index) => {
@@ -126,7 +126,8 @@ function Accordion({ predefined = false }) {
             )}
 
             <div className="p-4">
-              <SelectOrdersTable />
+            {predefined ? (<SelectOrdersTable orders={orders?.orders} type="predefined"/>):(<SelectOrdersTable orders={orders?.orders} type="custom"/>)}
+              
             </div>
           </div>
         </div>

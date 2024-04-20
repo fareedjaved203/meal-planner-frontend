@@ -3,40 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
-import { useRouter } from "next/navigation";
+import { useParams } from 'next/navigation'
 
-const data = [
-  {
-    key: "20",
-    pid: "#970",
-    date: "23 Feb 2023",
-    numberline1: "Black Shirts",
-    numberline2: "Black Shirts",
-    levelspiciness: "mild",
-    diet: "sour",
-    origin: "Continental",
-  },
-  {
-    key: "40",
-    pid: "#1980",
-    date: "23 Feb 2023",
-    numberline1: "Red Dress",
-    numberline2: "Evening Gown",
-    levelspiciness: "N/A",
-    diet: "N/A",
-    origin: "European",
-  },
-  {
-    key: "60",
-    pid: "#2990",
-    date: "23 Feb 2023",
-    numberline1: "Sports Shoes",
-    numberline2: "Running Shoes",
-    levelspiciness: "N/A",
-    diet: "N/A",
-    origin: "Asian",
-  },
-];
+
 
 const pagination = {
   showTotal: (total, range) => (
@@ -50,15 +19,53 @@ const pagination = {
   pageSize: 10,
 };
 
-const SelectOrdersTable = () => {
+const SelectOrdersTable = (orders=[], type) => {
+  const params = useParams().id;
   const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
 
   useEffect(() => {
-    setList([...data]);
+    const getOrders = async () => {
+      console.log(params)
+      const order = orders?.orders?.find((order) => order.id == params);
+    
+      if (order) {
+        const date = new Date(order?.processed_at);
+        let formattedDate = date.toISOString().slice(0, 10);
+    
+        const lineItemsProperties = order?.line_items?.reduce((result, item) => {
+          if (item.properties && item.properties.length > 0) {
+            result.push({
+              numberline1: item.properties[0]?.value,
+              numberline2: item.properties[1]?.value,
+              levelspiciness: item.properties[3]?.value,
+              diet: item.properties[5]?.value,
+              origin: item.properties[6]?.value,
+            });
+          }
+          return result;
+        }, []);
+            
+        const filteredData = {
+          pid: order?.id,
+          date: formattedDate,
+          numberline1: lineItemsProperties[0].numberline1,
+          numberline2: lineItemsProperties[0].numberline2,
+          levelspiciness: lineItemsProperties[0].levelspiciness,
+          diet: lineItemsProperties[0].diet,
+          origin: lineItemsProperties[0].origin,
+        };
+    
+        setList([filteredData])
+      }
+    };
+    
+    getOrders();
   }, []);
+  
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -196,6 +203,8 @@ const SelectOrdersTable = () => {
       className: "pidColumn",
 
       ...getColumnSearchProps("pid"),
+      render: (text) => `#${text}`,
+
     },
     {
       title: "Date",

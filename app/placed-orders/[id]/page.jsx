@@ -2,8 +2,10 @@ import RootLayout from "../../layout";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import Accordion from "../../../components/orders/Accordion";
 import BackButton from "../../../components/shared/BackButton";
+import getData from "@/lib/getData";
 
-const PlacedOrderId = () => {
+const PlacedOrderId = async() => {
+  const data = await getData();
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -16,10 +18,7 @@ const PlacedOrderId = () => {
             Predefined Order Details
           </div>
           <div className="mr-4 pr-4 mb-4">
-            <Accordion predefined={true} />
-          </div>
-          <div className="mr-4 pr-4 mb-4">
-            <Accordion predefined={true} />
+            <Accordion predefined={true}/>
           </div>
           <div
             className="p-4 font-mulish mt-2 mb-4"
@@ -28,10 +27,7 @@ const PlacedOrderId = () => {
             Custom Order Details
           </div>
           <div className="mr-4 pr-4 mb-4">
-            <Accordion />
-          </div>
-          <div className="mr-4 pr-4 mb-4">
-            <Accordion />
+            <Accordion orders={data}/>
           </div>
         </div>
       </>
