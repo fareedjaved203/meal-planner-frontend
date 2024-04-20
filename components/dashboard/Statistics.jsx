@@ -1,6 +1,25 @@
 import Image from "next/image";
 
-const Statistics = ({data}) => {
+const Statistics = ({data, completedOrders}) => {
+  const totalPrice = data.orders.reduce((total, order) => {
+    const price = Number(order.total_line_items_price);
+    return isNaN(price) ? total : total + price;
+  }, 0).toFixed(2);
+  
+  const averageSellingPrice = (totalPrice / data.orders.length).toFixed(2);
+
+  const completionRate = ((completedOrders.orders.length/data.orders.length)*100).toFixed(1);
+
+// Assuming data is your main object
+let names = data.orders.flatMap(order => order.line_items.map(item => item.name));
+
+let nameCounts = names.reduce((acc, name) => {
+  acc[name] = (acc[name] || 0) + 1;
+  return acc;
+}, {});
+
+let mostOccurringName = Object.keys(nameCounts).reduce((a, b) => nameCounts[a] > nameCounts[b] ? a : b);
+
   return (
     <>
       <div
@@ -10,7 +29,7 @@ const Statistics = ({data}) => {
         Statistics
       </div>
       <div className="flex flex-col">
-        <div className="bg-gray-100 rounded-lg flex flex-row items-center m-1 rounded justify-start p-2 pl-0 pr-0">
+        <div className="bg-gray-100 rounded-lg flex flex-row items-center m-1 rounded justify-start p-2">
           <Image
             src="/Frame 44.svg"
             width={70}
@@ -26,11 +45,11 @@ const Statistics = ({data}) => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400 }}
             >
-              Black T Shirt
+              {mostOccurringName}
             </div>
           </div>
         </div>
-        <div className="bg-green-200 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 pl-0 pr-0">
+        <div className="bg-green-200 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2">
           <Image
             src="/Frame 44 (1).svg"
             width={70}
@@ -46,11 +65,11 @@ const Statistics = ({data}) => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400 }}
             >
-              $35
+              ${averageSellingPrice}
             </div>
           </div>
         </div>
-        <div className="bg-orange-100 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 pl-0 pr-0">
+        <div className="bg-orange-100 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2">
           <Image
             src="/Frame 44 (2).svg"
             width={70}
@@ -66,7 +85,7 @@ const Statistics = ({data}) => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400 }}
             >
-              90%
+              {completionRate}%
             </div>
           </div>
         </div>
