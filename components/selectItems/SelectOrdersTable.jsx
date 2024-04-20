@@ -19,7 +19,7 @@ const pagination = {
   pageSize: 10,
 };
 
-const SelectOrdersTable = (orders=[], type) => {
+const SelectOrdersTable = (orders=[]) => {
   const params = useParams().id;
   const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -28,7 +28,6 @@ const SelectOrdersTable = (orders=[], type) => {
 
   useEffect(() => {
     const getOrders = async () => {
-      console.log(params)
       const order = orders?.orders?.find((order) => order.id == params);
     
       if (order) {

@@ -1,6 +1,20 @@
 import Image from "next/image";
 
-const Summary = () => {
+const Summary = ({data, completedOrders}) => {
+  const earnings = data.orders.reduce((order, item) => {
+    return order + Number(item.total_line_items_price);
+  }, 0);
+  
+  const earningsParts = earnings.toFixed(2).split('.');
+  const wholePart = earningsParts[0];
+  const decimalPart = earningsParts[1];
+
+  const totalOrders = data?.orders?.length
+
+  const totalItems = data.orders.reduce((total, order) => {
+    return total + order.line_items.length;
+  }, 0);
+
   return (
     <>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
@@ -19,7 +33,8 @@ const Summary = () => {
             className="text-2xl font-bold pb-2 mb-2 font-mulish"
             style={{ fontSize: "32px", fontWeight: 900 }}
           >
-            $18532 <span style={{ color: "#AFADFE" }}>.52</span>
+          ${wholePart}
+    <span style={{ color: "#AFADFE" }}>.{decimalPart}</span>
           </div>
           <div>
             <Image
@@ -45,7 +60,7 @@ const Summary = () => {
             className="text-2xl font-bold pb-2 font-mulish mb-2"
             style={{ fontSize: "32px", fontWeight: 900 }}
           >
-            540
+            {totalOrders}
           </div>
           <div>
             <Image
@@ -71,7 +86,7 @@ const Summary = () => {
             className="text-2xl font-bold pb-2 font-mulish mb-2"
             style={{ fontSize: "32px", fontWeight: 900 }}
           >
-            180
+            {totalItems}
           </div>
           <div>
             {" "}
@@ -98,7 +113,7 @@ const Summary = () => {
             className="text-2xl font-bold pb-2 font-mulish mb-2"
             style={{ fontSize: "32px", fontWeight: 900 }}
           >
-            140
+            {completedOrders?.orders?.length}
           </div>
           <div>
             {" "}

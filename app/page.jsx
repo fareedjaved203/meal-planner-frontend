@@ -8,6 +8,8 @@ import { getOrdersApi } from "../api/orders/ordersApi";
 
 const Home = async () => {
   const data = await getData();
+  const completedOrders = await getOrdersApi();
+  console.log(completedOrders)
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -15,8 +17,8 @@ const Home = async () => {
           className="min-h-screen min-w-full bg-gray-100 p-4"
           suppressHydrationWarning={true}
         >
-          <Summary />
-          <GraphAndStats />
+          <Summary data={data} completedOrders={completedOrders}/>
+          <GraphAndStats data={data} completedOrders={completedOrders}/>
           <div className="p-4 bg-white rounded-lg m-4 mr-0 ml-0">
             <div className="flex flex-col sm:flex-row justify-between p-4">
               <div

@@ -60,7 +60,7 @@ const yearlyData = Array.from({ length: 5 }, (_, i) => ({
   uv: Math.floor(Math.random() * 10000),
 }));
 
-const Graph = () => {
+const Graph = ({orderData}) => {
   const [data, setData] = useState(monthlyData);
 
   const handleTabChange = (key) => {

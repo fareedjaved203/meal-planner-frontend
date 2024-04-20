@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Statistics = () => {
+const Statistics = ({data}) => {
   return (
     <>
       <div
