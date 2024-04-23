@@ -10,15 +10,18 @@ const Statistics = ({data, completedOrders}) => {
 
   const completionRate = ((completedOrders.orders.length/data.orders.length)*100).toFixed(1);
 
-// Assuming data is your main object
-let names = data.orders.flatMap(order => order.line_items.map(item => item.name));
+let values = data.orders.flatMap(order => 
+  order.line_items.flatMap(item => 
+    item.properties ? item?.properties[0]?.value : []
+  )
+);
 
-let nameCounts = names.reduce((acc, name) => {
-  acc[name] = (acc[name] || 0) + 1;
+let valueCounts = values.reduce((acc, value) => {
+  acc[value] = (acc[value] || 0) + 1;
   return acc;
 }, {});
 
-let mostOccurringName = Object.keys(nameCounts).reduce((a, b) => nameCounts[a] > nameCounts[b] ? a : b);
+let mostOccurringName = Object.keys(valueCounts).reduce((a, b) => valueCounts[a] > valueCounts[b] ? a : b);
 
   return (
     <>
