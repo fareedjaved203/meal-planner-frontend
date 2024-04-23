@@ -4,7 +4,7 @@ import Accordion from "../../../components/orders/Accordion";
 import BackButton from "../../../components/shared/BackButton";
 import getData from "@/lib/getData";
 
-const PlacedOrderId = async() => {
+const PlacedOrderId = async () => {
   const data = await getData();
   return (
     <RootLayout showNavbar={true}>
@@ -18,7 +18,7 @@ const PlacedOrderId = async() => {
             Predefined Order Details
           </div>
           <div className="mr-4 pr-4 mb-4">
-            <Accordion predefined={true}/>
+            <Accordion orders={data} predefined={true} />
           </div>
           <div
             className="p-4 font-mulish mt-2 mb-4"
@@ -27,7 +27,7 @@ const PlacedOrderId = async() => {
             Custom Order Details
           </div>
           <div className="mr-4 pr-4 mb-4">
-            <Accordion orders={data}/>
+            <Accordion orders={data} predefined={false} />
           </div>
         </div>
       </>
