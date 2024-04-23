@@ -1,5 +1,6 @@
 import RootLayout from "../layout";
 import PlacedOrdersTable from "../../components/orders/PlacedOrdersTable";
+import DatePickerButton from "../../components/shared/DatePickerButton";
 import getData from "../../lib/getData";
 
 const PlacedOrders = async () => {
@@ -14,6 +15,9 @@ const PlacedOrders = async () => {
               style={{ fontSize: "28px", fontWeight: "900" }}
             >
               Orders Placed
+            </div>
+            <div className="mt-4 mr-4">
+              <DatePickerButton />
             </div>
           </div>
           <div className="p-4 pt-0">

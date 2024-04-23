@@ -5,7 +5,7 @@ import { Button, Input, Space, Table, Checkbox, message } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import getData from "../../lib/getData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getOrdersApi, postOrderApi } from "@/api/orders/ordersApi";
 
 const PlacedOrdersTable = ({ data }) => {
@@ -17,49 +17,65 @@ const PlacedOrdersTable = ({ data }) => {
   const [searchedColumn, setSearchedColumn] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
   const searchInput = useRef(null);
+  const [tempArray, setTemp] = useState([]);
+  const date = useSelector((state) => state.date.date);
+
+  const getOrders = async () => {
+    const completedOrders = await getOrdersApi();
+
+    const filteredData = data.orders?.map((order) => {
+      let type;
+      const hasProperties = order.line_items?.some(
+        (item) => item?.properties?.length > 0
+      );
+      if (hasProperties) {
+        type = order?.line_items?.every(
+          (item) => item?.properties?.length > 0
+        )
+          ? "Custom Order Details"
+          : "Both Custom and Predefined";
+      } else {
+        type = "Predefined Order Details";
+      }
+
+      const date = new Date(order?.processed_at);
+      let formattedDate = date.toISOString().slice(0, 10);
+
+      return {
+        pid: order?.id,
+        date: formattedDate,
+        orderby: order?.customer?.email,
+        quantity: order?.line_items?.length,
+        type: type,
+        price: order?.total_line_items_price,
+      };
+    });
+    const filteredOrders = filteredData.filter(
+      (mappedOrder) =>
+        !completedOrders?.orders?.some(
+          (order) => order.pid === mappedOrder?.pid.toString()
+        )
+    );
+    setMappedOrders(filteredOrders);
+    setTemp(filteredOrders)
+  };
 
   useEffect(() => {
-    let orders;
-    const getOrders = async () => {
-      const completedOrders = await getOrdersApi();
-
-      const filteredData = data.orders?.map((order) => {
-        let type;
-        const hasProperties = order.line_items?.some(
-          (item) => item?.properties?.length > 0
-        );
-        if (hasProperties) {
-          type = order?.line_items?.every(
-            (item) => item?.properties?.length > 0
-          )
-            ? "Custom Order Details"
-            : "Both Custom and Predefined";
-        } else {
-          type = "Predefined Order Details";
-        }
-
-        const date = new Date(order?.processed_at);
-        let formattedDate = date.toISOString().slice(0, 10);
-
-        return {
-          pid: order?.id,
-          date: formattedDate,
-          orderby: order?.customer?.email,
-          quantity: order?.line_items?.length,
-          type: type,
-          price: order?.total_line_items_price,
-        };
-      });
-      const filteredOrders = filteredData.filter(
-        (mappedOrder) =>
-          !completedOrders?.orders?.some(
-            (order) => order.pid === mappedOrder?.pid.toString()
-          )
-      );
-      setMappedOrders(filteredOrders);
-    };
     getOrders();
   }, []);
+
+  useEffect(()=>{
+    if(date){
+      const data = tempArray.filter((item)=>{
+        return item.date == date
+      })
+      console.log(data)
+      setMappedOrders(data)
+    }
+    else{
+    getOrders();
+    }
+  },[date])
 
   const postOrder = async (item) => {
     const data = await postOrderApi(item);
