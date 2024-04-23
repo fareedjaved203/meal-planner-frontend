@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
-import { useParams } from 'next/navigation'
-
-
+import { useParams } from "next/navigation";
+import { getItemsApi } from "@/api/items/itemsApi";
+import { useSelector } from "react-redux";
 
 const pagination = {
   showTotal: (total, range) => (
@@ -19,51 +19,41 @@ const pagination = {
   pageSize: 10,
 };
 
-const SelectOrdersTable = (orders=[]) => {
+const SelectOrdersTable = (orders = []) => {
   const params = useParams().id;
   const [list, setList] = useState([]);
+  const [tempArray, setTemp] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const date = useSelector((state) => state.date.date);
+
+  const getItems = async () => {
+    const data = await getItemsApi();
+    console.log(data);
+    data.items.forEach((item) => {
+      const date = new Date(item.createdAt);
+      item.createdAt = date.toISOString().split("T")[0];
+    });
+    setList(data.items);
+    setTemp(data.items);
+  };
 
   useEffect(() => {
-    const getOrders = async () => {
-      const order = orders?.orders?.find((order) => order.id == params);
-    
-      if (order) {
-        const date = new Date(order?.processed_at);
-        let formattedDate = date.toISOString().slice(0, 10);
-    
-        const lineItemsProperties = order?.line_items?.reduce((result, item) => {
-          if (item.properties && item.properties.length > 0) {
-            result.push({
-              numberline1: item.properties[0]?.value,
-              numberline2: item.properties[1]?.value,
-              levelspiciness: item.properties[3]?.value,
-              diet: item.properties[5]?.value,
-              origin: item.properties[6]?.value,
-            });
-          }
-          return result;
-        }, []);
-            
-        const filteredData = {
-          pid: order?.id,
-          date: formattedDate,
-          numberline1: lineItemsProperties[0].numberline1,
-          numberline2: lineItemsProperties[0].numberline2,
-          levelspiciness: lineItemsProperties[0].levelspiciness,
-          diet: lineItemsProperties[0].diet,
-          origin: lineItemsProperties[0].origin,
-        };
-    
-        setList([filteredData])
-      }
-    };
-    
-    getOrders();
+    getItems();
   }, []);
-  
+
+  useEffect(() => {
+    if (date) {
+      const data = tempArray.filter((item) => {
+        return item.createdAt == date;
+      });
+      console.log(data);
+      setList(data);
+    } else {
+      getItems();
+    }
+  }, [date]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -196,42 +186,41 @@ const SelectOrdersTable = (orders=[]) => {
   const columns = [
     {
       title: "PID",
-      dataIndex: "pid",
-      key: "pid",
+      dataIndex: "_id",
+      key: "_id",
       width: "10%",
       className: "pidColumn",
 
-      ...getColumnSearchProps("pid"),
+      ...getColumnSearchProps("_id"),
       render: (text) => `#${text}`,
-
     },
     {
       title: "Date",
-      dataIndex: "date",
-      key: "date",
+      dataIndex: "createdAt",
+      key: "createdAt",
       width: "20%",
-      ...getColumnSearchProps("date"),
+      ...getColumnSearchProps("createdAt"),
     },
     {
-      title: "Number Line 1",
-      dataIndex: "numberline1",
-      key: "numberline1",
+      title: "Name Line 1",
+      dataIndex: "nameLine1",
+      key: "nameLine1",
       width: "20%",
-      ...getColumnSearchProps("numberline1"),
+      ...getColumnSearchProps("nameLine1"),
     },
     {
-      title: "Number Line 2",
-      dataIndex: "numberline2",
-      key: "numberline2",
+      title: "Name Line 2",
+      dataIndex: "nameLine2",
+      key: "nameLine2",
       width: "20%",
-      ...getColumnSearchProps("numberline2"),
+      ...getColumnSearchProps("nameLine2"),
     },
     {
       title: "Level Spiciness",
-      dataIndex: "levelspiciness",
-      key: "levelspiciness",
+      dataIndex: "spiciness",
+      key: "spiciness",
       width: "20%",
-      ...getColumnSearchProps("levelspiciness"),
+      ...getColumnSearchProps("spiciness"),
     },
     {
       title: "Diet",

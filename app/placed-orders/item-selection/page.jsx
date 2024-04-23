@@ -10,7 +10,7 @@ const PlacedOrders = () => {
     <RootLayout showNavbar={true}>
       <>
         <div className="flex items-center justify-start w-full pl-4 mt-4 font-mulish">
-          <BackButton text={"Lorem Ipsem (Add Items)"} />
+          <BackButton text={"Back"} />
           <div className="flex items-center w-full pr-4">
             <hr className="flex-grow pr-4 mr-4 w-3/4" />
             <Link href="/placed-orders">
@@ -34,12 +34,6 @@ const PlacedOrders = () => {
               Select Items
             </div>
             <div className="pl-4 flex justify-center items-center rounded-md mt-4 sm:mt-0">
-              <div
-                className="flex items-center bg-removeItem text-removeItemText p-4 pt-2 pb-2 rounded mr-4 font-inter cursor-pointer"
-                style={{ fontSize: "12.35px", fontWeight: 600 }}
-              >
-                Reset
-              </div>
               <DatePickerButton />
             </div>
           </div>

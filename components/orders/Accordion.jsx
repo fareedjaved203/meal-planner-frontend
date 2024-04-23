@@ -14,7 +14,7 @@ const data = [
   // Add more items here...
 ];
 
-function Accordion({ predefined = false, orders=[] }) {
+function Accordion({ predefined = false, orders = [] }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleItem = (index) => {
@@ -81,9 +81,9 @@ function Accordion({ predefined = false, orders=[] }) {
                   </div>
 
                   <div className="ml-4" />
-                  <div className="flex justify-center items-center w-full bg-removeItem cursor-pointer rounded p-1 pt-0 pb-0 h-10 px-2">
+                  <div className="flex justify-center items-center w-full bg-removeItem cursor-pointer rounded p-1 pt-0 pb-0 h-10">
                     <div
-                      className="text-removeItemText w-full flex justify-center items-center font-inter cursor-pointer"
+                      className="text-removeItemText w-full flex justify-center items-center font-inter cursor-pointer w-full whitespace-nowrap"
                       style={{ fontWeight: "600", fontSize: "13px" }}
                     >
                       Remove Item
@@ -126,8 +126,11 @@ function Accordion({ predefined = false, orders=[] }) {
             )}
 
             <div className="p-4">
-            {predefined ? (<SelectOrdersTable orders={orders?.orders} type="predefined"/>):(<SelectOrdersTable orders={orders?.orders} type="custom"/>)}
-              
+              {predefined ? (
+                <SelectOrdersTable orders={orders?.orders} type="predefined" />
+              ) : (
+                <SelectOrdersTable orders={orders?.orders} type="custom" />
+              )}
             </div>
           </div>
         </div>
