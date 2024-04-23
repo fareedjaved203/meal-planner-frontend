@@ -8,6 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import CustomOrderTable from "../selectItems/CustomOrderTable";
 import { useParams } from "next/navigation";
+import { getPredefinedApi } from "@/api/predefined/predefinedApi";
+import PredefinedOrdersTable from "../selectItems/PredefinedOrdersTable";
 
 function Accordion({ predefined = false, orders = [] }) {
   const params = useParams().id;
@@ -15,7 +17,9 @@ function Accordion({ predefined = false, orders = [] }) {
   const [customOrder, setCustomOrder] = useState([]);
   const [predefinedOrder, setPredefinedOrder] = useState([]);
 
-  const toggleItem = (index) => {
+  const toggleItem = (pid, index) => {
+    localStorage.setItem("orderId", params);
+    localStorage.setItem("pid", pid);
     if (index === activeIndex) {
       setActiveIndex(null);
     } else {
@@ -46,11 +50,6 @@ function Accordion({ predefined = false, orders = [] }) {
     }
   }, []);
 
-  const setPid = (pid) => {
-    console.log("pid", pid);
-    localStorage.setItem("pid", pid);
-  };
-
   return (
     <div
       className="w-full rounded pl-4 pr-4 ml-4 font-poppins"
@@ -61,7 +60,7 @@ function Accordion({ predefined = false, orders = [] }) {
           <div
             className="flex justify-between items-center pl-6 pr-6 cursor-pointer rounded-lg"
             style={{ height: "93px" }}
-            onClick={() => toggleItem(index)}
+            onClick={() => toggleItem(item.id, index)}
           >
             <div className="flex justify-between items-center w-full">
               <div className="font-poppins ">
@@ -84,10 +83,7 @@ function Accordion({ predefined = false, orders = [] }) {
                 {activeIndex === index ? (
                   <IoIosArrowDropupCircle style={{ fontSize: "25px" }} />
                 ) : (
-                  <IoIosArrowDropdownCircle
-                    style={{ fontSize: "25px" }}
-                    onClick={() => setPid(item.id)}
-                  />
+                  <IoIosArrowDropdownCircle style={{ fontSize: "25px" }} />
                 )}
               </div>
             </div>
@@ -138,7 +134,7 @@ function Accordion({ predefined = false, orders = [] }) {
             </div>
 
             <div className="p-4">
-              <SelectOrdersTable orders={orders?.orders} type="predefined" />
+              <PredefinedOrdersTable orders={orders.orders} />
             </div>
           </div>
         </div>

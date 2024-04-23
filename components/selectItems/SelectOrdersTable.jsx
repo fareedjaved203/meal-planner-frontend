@@ -44,6 +44,7 @@ const SelectOrdersTable = (orders = []) => {
 
   useEffect(() => {
     if (date) {
+      console.log(tempArray);
       const data = tempArray.filter((item) => {
         return item.createdAt == date;
       });

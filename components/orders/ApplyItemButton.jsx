@@ -7,13 +7,13 @@ const ApplyItemButton = () => {
     isLoading(true);
     const data = localStorage.getItem("rows");
     const pid = localStorage.getItem("pid");
+    const orderId = localStorage.getItem("orderId");
     const rows = JSON.parse(data);
-    console.log(rows);
-    const formData = new FormData();
-    formData.append("predefined", rows);
-    formData.append("pid", pid);
-    const saveData = await postPredefinedApi({ predefined: rows, pid });
-    console.log(saveData);
+    await postPredefinedApi({
+      predefined: rows,
+      pid,
+      orderId,
+    });
     localStorage.removeItem("rows");
     isLoading(false);
   };
