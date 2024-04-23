@@ -6,6 +6,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { IoIosArrowDropupCircle } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
+import CustomOrderTable from "../selectItems/CustomOrderTable";
 
 const data = [
   {
@@ -129,7 +130,7 @@ function Accordion({ predefined = false, orders = [] }) {
               {predefined ? (
                 <SelectOrdersTable orders={orders?.orders} type="predefined" />
               ) : (
-                <SelectOrdersTable orders={orders?.orders} type="custom" />
+                <CustomOrderTable orders={orders?.orders} type="custom" />
               )}
             </div>
           </div>
