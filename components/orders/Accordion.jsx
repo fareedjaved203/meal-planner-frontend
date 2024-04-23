@@ -46,6 +46,11 @@ function Accordion({ predefined = false, orders = [] }) {
     }
   }, []);
 
+  const setPid = (pid) => {
+    console.log("pid", pid);
+    localStorage.setItem("pid", pid);
+  };
+
   return (
     <div
       className="w-full rounded pl-4 pr-4 ml-4 font-poppins"
@@ -79,7 +84,10 @@ function Accordion({ predefined = false, orders = [] }) {
                 {activeIndex === index ? (
                   <IoIosArrowDropupCircle style={{ fontSize: "25px" }} />
                 ) : (
-                  <IoIosArrowDropdownCircle style={{ fontSize: "25px" }} />
+                  <IoIosArrowDropdownCircle
+                    style={{ fontSize: "25px" }}
+                    onClick={() => setPid(item.id)}
+                  />
                 )}
               </div>
             </div>

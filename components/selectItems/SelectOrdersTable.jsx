@@ -20,7 +20,6 @@ const pagination = {
 };
 
 const SelectOrdersTable = (orders = []) => {
-  const params = useParams().id;
   const [list, setList] = useState([]);
   const [tempArray, setTemp] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -169,17 +168,15 @@ const SelectOrdersTable = (orders = []) => {
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-      console.log(
-        `selectedRowKeys: ${selectedRowKeys}`,
-        "selectedRows: ",
-        selectedRows
-      );
+      console.log("selectedRows: ", selectedRows);
     },
     onSelect: (record, selected, selectedRows) => {
-      console.log(record, selected, selectedRows);
+      console.log(selectedRows);
+      localStorage.setItem("rows", JSON.stringify(selectedRows));
     },
     onSelectAll: (selected, selectedRows, changeRows) => {
-      console.log(selected, selectedRows, changeRows);
+      console.log(selectedRows);
+      localStorage.setItem("rows", JSON.stringify(selectedRows));
     },
   };
 
@@ -240,6 +237,7 @@ const SelectOrdersTable = (orders = []) => {
   ];
   return (
     <Table
+      rowKey={(record) => record._id}
       columns={columns}
       rowSelection={{
         ...rowSelection,

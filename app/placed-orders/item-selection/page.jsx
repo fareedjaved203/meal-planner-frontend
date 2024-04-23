@@ -4,6 +4,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import DatePickerButton from "../../../components/shared/DatePickerButton";
 import BackButton from "../../../components/shared/BackButton";
 import Link from "next/link";
+import ApplyItemButton from "@/components/orders/ApplyItemButton";
 
 const PlacedOrders = () => {
   return (
@@ -13,16 +14,7 @@ const PlacedOrders = () => {
           <BackButton text={"Back"} />
           <div className="flex items-center w-full pr-4">
             <hr className="flex-grow pr-4 mr-4 w-3/4" />
-            <Link href="/placed-orders">
-              <div className="flex justify-center items-center w-44 bg-indigo-100 text-indigo-700 font-semibold border-indigo-700 cursor-pointer rounded p-1 pt-0 pb-0 h-14 px-2">
-                <div
-                  className="text-purpleText w-full flex justify-center items-center font-inter"
-                  style={{ fontSize: "17px", paddingvertical: "9px" }}
-                >
-                  Apply
-                </div>
-              </div>
-            </Link>
+            <ApplyItemButton />
           </div>
         </div>
         <div className="bg-white m-4 rounded p-4 pt-1 font-mulish">
