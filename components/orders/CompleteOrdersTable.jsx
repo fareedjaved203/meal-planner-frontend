@@ -13,7 +13,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
   const [list, setList] = useState([]);
-
+  const [tempArray, setTemp] = useState([]);
 
   const date = useSelector((state) => state.date.date);
 
@@ -41,6 +41,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
       return { ...order, date: formattedDate };
     });
     setList(formattedOrders);
+    setTemp(formattedOrders);
   };
   
   useEffect(() => {
@@ -49,7 +50,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
 
   useEffect(()=>{
     if(date){
-      const data = list.filter((item)=>{
+      const data = tempArray.filter((item)=>{
         return item.date == date
       })
       console.log(data)

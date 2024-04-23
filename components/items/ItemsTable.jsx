@@ -5,6 +5,7 @@ import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import { getItemsApi } from "@/api/items/itemsApi";
+import { useSelector } from "react-redux";
 
 const pagination = {
   showTotal: (total, range) => (
@@ -20,19 +21,40 @@ const pagination = {
 
 const ItemsTable = () => {
   const router = useRouter();
+  const date = useSelector((state) => state.date.date);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
   const [items, setItems] = useState([]);
+  const [tempArray, setTemp] = useState([]);
+
+  const getItems = async()=>{
+    const data = await getItemsApi();
+    console.log(data);
+    data.items.forEach((item)=>{
+      const date = new Date(item.createdAt);
+      item.createdAt = date.toISOString().split('T')[0];
+    })
+    setItems(data.items);
+    setTemp(data.items);
+  }
 
   useEffect(()=>{
-    const getItems = async()=>{
-      const data = await getItemsApi();
-      console.log(data);
-      setItems(data.items);
-    }
     getItems();
   },[])
+
+  useEffect(()=>{
+    if(date){
+      const data = tempArray.filter((item)=>{
+        return item.createdAt == date
+      })
+      console.log(data)
+      setItems(data)
+    }
+    else{
+    getItems();
+    }
+  },[date])
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -163,11 +185,6 @@ const ItemsTable = () => {
       key: "createdAt",
       width: "12%",
       ...getColumnSearchProps("createdAt"),
-      render: (text) => {
-        const date = new Date(text);
-        const formattedDate = date.toISOString().split('T')[0];
-        return formattedDate;
-      },
     },
     {
       title: "Name Line 1",
