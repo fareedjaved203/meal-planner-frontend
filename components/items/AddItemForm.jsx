@@ -1,6 +1,7 @@
 "use client";
 import React, {useState} from "react";
 import Image from "next/image";
+import { postItemApi } from "@/api/items/itemsApi";
 
 const AddItemForm=()=> {
   const [nameLine1, setNameLine1] = useState('');
@@ -70,6 +71,8 @@ const AddItemForm=()=> {
       ingredients: mappedIngredients
     };
     console.log(formData);
+    const data = await postItemApi(formData);
+    console.log(data);
   };
   return (
     <>

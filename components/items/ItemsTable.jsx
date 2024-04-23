@@ -1,42 +1,10 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
-
-const data = [
-  {
-    key: "20",
-    pid: "#970",
-    date: "23 Feb 2023",
-    numberline1: "Black Shirts",
-    numberline2: "Black Shirts",
-    levelspiciness: "mild",
-    diet: "sour",
-    origin: "Continental",
-  },
-  {
-    key: "40",
-    pid: "#1980",
-    date: "23 Feb 2023",
-    numberline1: "Red Dress",
-    numberline2: "Evening Gown",
-    levelspiciness: "N/A",
-    diet: "N/A",
-    origin: "European",
-  },
-  {
-    key: "60",
-    pid: "#2990",
-    date: "23 Feb 2023",
-    numberline1: "Sports Shoes",
-    numberline2: "Running Shoes",
-    levelspiciness: "N/A",
-    diet: "N/A",
-    origin: "Asian",
-  },
-];
+import { getItemsApi } from "@/api/items/itemsApi";
 
 const pagination = {
   showTotal: (total, range) => (
@@ -55,6 +23,17 @@ const ItemsTable = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const [items, setItems] = useState([]);
+
+  useEffect(()=>{
+    const getItems = async()=>{
+      const data = await getItemsApi();
+      console.log(data);
+      setItems(data.items);
+    }
+    getItems();
+  },[])
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -170,37 +149,43 @@ const ItemsTable = () => {
   const columns = [
     {
       title: "PID",
-      dataIndex: "pid",
-      key: "pid",
-      width: "10%",
+      dataIndex: "_id",
+      key: "_id",
+      width: "8%",
       className: "pidColumn",
+      ...getColumnSearchProps("_id"),
+      render: (text) => `#${text}`,
 
-      ...getColumnSearchProps("pid"),
     },
     {
       title: "Date",
-      dataIndex: "date",
-      key: "date",
-      width: "10%",
-      ...getColumnSearchProps("date"),
+      dataIndex: "createdAt",
+      key: "createdAt",
+      width: "12%",
+      ...getColumnSearchProps("createdAt"),
+      render: (text) => {
+        const date = new Date(text);
+        const formattedDate = date.toISOString().split('T')[0];
+        return formattedDate;
+      },
     },
     {
-      title: "Number Line 1",
-      dataIndex: "numberline1",
-      key: "numberline1",
-      ...getColumnSearchProps("numberline1"),
+      title: "Name Line 1",
+      dataIndex: "nameLine1",
+      key: "nameLine1",
+      ...getColumnSearchProps("nameLine1"),
     },
     {
-      title: "Number Line 2",
-      dataIndex: "numberline2",
-      key: "numberline2",
-      ...getColumnSearchProps("numberline2"),
+      title: "Name Line 2",
+      dataIndex: "nameLine2",
+      key: "nameLine2",
+      ...getColumnSearchProps("nameLine2"),
     },
     {
       title: "Level Spiciness",
-      dataIndex: "levelspiciness",
-      key: "levelspiciness",
-      ...getColumnSearchProps("levelspiciness"),
+      dataIndex: "spiciness",
+      key: "spiciness",
+      ...getColumnSearchProps("spiciness"),
     },
     {
       title: "Diet",
@@ -220,13 +205,13 @@ const ItemsTable = () => {
       onRow={(record, rowIndex) => {
         return {
           onClick: (event) => {
-            router.push(`items/${record?.key}`);
+            router.push(`items/${record?._id}`);
           },
           className: "cursor-pointer",
         };
       }}
       columns={columns}
-      dataSource={[...data]}
+      dataSource={[...items]}
       pagination={pagination}
     />
   );

@@ -12,7 +12,6 @@ export const postOrderApi = async (orderData) => {
 export const getOrdersApi = async () => {
   try {
     const data = await apiService.request("/orders/order", "GET");
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

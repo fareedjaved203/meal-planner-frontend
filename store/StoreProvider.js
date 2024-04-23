@@ -13,7 +13,6 @@ const ChildComponent = ({ children }) => {
     dispatch(onReload());
     const orders = async () => {
       const data = await getOrdersApi();
-      console.log(data);
       if (data) {
         dispatch(onSave(data.orders));
       }

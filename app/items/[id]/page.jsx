@@ -1,6 +1,6 @@
 import RootLayout from "../../layout";
 import BackButton from "../../../components/shared/BackButton";
-import UpdateItemForm from "@/components/items/updateItemForm";
+import UpdateItemForm from "@/components/items/UpdateItemForm";
 
 const ItemsId = () => {
   return (

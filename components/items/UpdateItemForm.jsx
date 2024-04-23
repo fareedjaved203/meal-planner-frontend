@@ -1,8 +1,13 @@
 "use client"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
+import { useParams } from 'next/navigation'
+import { getSingleItemApi, updateItemApi } from "@/api/items/itemsApi";
 
 const UpdateItemForm = ()=>{
+
+  const params = useParams().id;
+
   const [nameLine1, setNameLine1] = useState('');
   const [nameLine2, setNameLine2] = useState('');
   const [preparationTime, setPreparationTime] = useState('');
@@ -12,6 +17,23 @@ const UpdateItemForm = ()=>{
   const [diet, setDiet] = useState('');
   const [ingredients, setIngredients] = useState([{ value: '', input: false }]);
   const [steps, setSteps] = useState([{ value: '', input: false }]);
+
+  useEffect(()=>{
+    const getItem = async()=>{
+      const data = await getSingleItemApi(params);
+      console.log(data)
+      setNameLine1(data.item?.nameLine1)
+      setNameLine2(data.item?.nameLine2)
+      setPreparationTime(data.item?.preparationTime)
+      setSpiciness(data.item?.spiciness)
+      setDifficulty(data.item?.difficulty)
+      setDiet(data.item?.diet)
+      setOrigin(data.item?.origin)
+      setIngredients(data.item?.ingredients?.map(ingredient => ({ ...ingredient, input: false })));
+      setSteps(data.item?.steps?.map(step => ({ ...step, input: false })));
+    }
+    getItem();
+  },[])
 
   const addIngredient = () => {
     setIngredients([...ingredients, { value: '', input: false }]);
@@ -70,6 +92,8 @@ const UpdateItemForm = ()=>{
       ingredients: mappedIngredients
     };
     console.log(formData);
+    const data = await updateItemApi(params, formData);
+    console.log(data);
   };
     return(
         <>
@@ -93,8 +117,8 @@ const UpdateItemForm = ()=>{
               <input
                   type="text"
                   value={nameLine1}
-                  onChange={(e) => setNameLine1(e.target.value)}
-                  className="bg-custom w-full rounded h-10 p-7"
+                  onChange={(e) => setNameLine2(e.target.value)}
+              className="bg-custom w-full rounded h-10 p-7"
                 />
               </div>
             </div>
