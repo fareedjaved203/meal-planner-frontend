@@ -221,6 +221,7 @@ const MainLayout = ({ children }) => {
               height={28}
               alt="logo icon"
               className="mr-2"
+              priority={false}
             />
             <span
               className="font-mulish"

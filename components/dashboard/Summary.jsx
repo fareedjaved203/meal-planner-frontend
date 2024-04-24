@@ -1,15 +1,15 @@
 import Image from "next/image";
 
-const Summary = ({data, completedOrders}) => {
+const Summary = ({ data, completedOrders }) => {
   const earnings = data.orders.reduce((order, item) => {
     return order + Number(item.total_line_items_price);
   }, 0);
-  
-  const earningsParts = earnings.toFixed(2).split('.');
+
+  const earningsParts = earnings.toFixed(2).split(".");
   const wholePart = earningsParts[0];
   const decimalPart = earningsParts[1];
 
-  const totalOrders = data?.orders?.length
+  const totalOrders = data?.orders?.length;
 
   const totalItems = data.orders.reduce((total, order) => {
     return total + order.line_items.length;
@@ -33,8 +33,8 @@ const Summary = ({data, completedOrders}) => {
             className="text-2xl font-bold pb-2 mb-2 font-mulish"
             style={{ fontSize: "32px", fontWeight: 900 }}
           >
-          ${wholePart}
-    <span style={{ color: "#AFADFE" }}>.{decimalPart}</span>
+            ${wholePart}
+            <span style={{ color: "#AFADFE" }}>.{decimalPart}</span>
           </div>
           <div>
             <Image
@@ -43,6 +43,7 @@ const Summary = ({data, completedOrders}) => {
               height={40}
               alt="logo icon"
               className="mr-2"
+              priority={false}
             />
           </div>
         </div>
@@ -69,6 +70,7 @@ const Summary = ({data, completedOrders}) => {
               height={40}
               alt="logo icon"
               className="mr-2"
+              priority={false}
             />
           </div>
         </div>
@@ -96,6 +98,7 @@ const Summary = ({data, completedOrders}) => {
               height={40}
               alt="logo icon"
               className="mr-2"
+              priority={false}
             />
           </div>
         </div>
@@ -123,6 +126,7 @@ const Summary = ({data, completedOrders}) => {
               height={40}
               alt="logo icon"
               className="mr-2"
+              priority={false}
             />
           </div>
         </div>

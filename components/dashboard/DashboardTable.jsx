@@ -200,7 +200,13 @@ const DashboardTable = () => {
           {rowIndex === 0 ? (
             <>
               <div className="inline-flex p-2 pt-1 pb-1 justify-center items-center font-bold bg-greenBtnBg text-greenBtnText cursor-pointer rounded text-md">
-                <Image src={"/Icon.svg"} width={18} height={18} alt="image" />
+                <Image
+                  src={"/Icon.svg"}
+                  width={18}
+                  height={18}
+                  alt="image"
+                  priority={false}
+                />
                 <div
                   className="ml-2 font-semibold text-md ml-2"
                   style={{ color: "#00C67F" }}
@@ -217,6 +223,7 @@ const DashboardTable = () => {
                   width={20}
                   height={20}
                   alt="image"
+                  priority={false}
                 />
                 <div className="font-semibold ml-2">Generated QR</div>
               </div>

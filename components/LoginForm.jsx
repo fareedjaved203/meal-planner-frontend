@@ -47,6 +47,7 @@ const LoginForm = () => {
             height={400}
             alt="logo icon"
             className="mr-2"
+            priority={false}
           />
         </div>
 
@@ -60,6 +61,7 @@ const LoginForm = () => {
                   height={38}
                   alt="logo icon"
                   className="mr-2"
+                  priority={false}
                 />
                 <span
                   className="font-mulish"
@@ -72,7 +74,7 @@ const LoginForm = () => {
                   Meal Planner
                 </span>
               </div>
-              <p
+              <div
                 className="font-poppins my-3 pt-4"
                 style={{
                   color: "rgba(0, 0, 0, 0.5)",
@@ -82,7 +84,7 @@ const LoginForm = () => {
                 }}
               >
                 Welcome Back!!!
-              </p>
+              </div>
 
               <div
                 className="font-poppins"

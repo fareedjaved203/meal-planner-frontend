@@ -9,9 +9,9 @@ const ErrorPage = () => {
             <h2 className="font-extrabold text-9xl text-gray-600 dark:text-gray-100">
               <span className="sr-only">Error</span>404
             </h2>
-            <p className="text-2xl md:text-3xl dark:text-gray-300">
+            <div className="text-2xl md:text-3xl dark:text-gray-300">
               page not found
-            </p>
+            </div>
             <Link
               href="/"
               className="px-8 py-4 text-xl font-semibold rounded bg-indigo-600 text-gray-50 hover:text-gray-200"

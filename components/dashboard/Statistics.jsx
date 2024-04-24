@@ -1,27 +1,34 @@
 import Image from "next/image";
 
-const Statistics = ({data, completedOrders}) => {
-  const totalPrice = data.orders.reduce((total, order) => {
-    const price = Number(order.total_line_items_price);
-    return isNaN(price) ? total : total + price;
-  }, 0).toFixed(2);
-  
+const Statistics = ({ data, completedOrders }) => {
+  const totalPrice = data.orders
+    .reduce((total, order) => {
+      const price = Number(order.total_line_items_price);
+      return isNaN(price) ? total : total + price;
+    }, 0)
+    .toFixed(2);
+
   const averageSellingPrice = (totalPrice / data.orders.length).toFixed(2);
 
-  const completionRate = ((completedOrders.orders.length/data.orders.length)*100).toFixed(1);
+  const completionRate = (
+    (completedOrders.orders.length / data.orders.length) *
+    100
+  ).toFixed(1);
 
-let values = data.orders.flatMap(order => 
-  order.line_items.flatMap(item => 
-    item.properties ? item?.properties[0]?.value : []
-  )
-);
+  let values = data.orders.flatMap((order) =>
+    order.line_items.flatMap((item) =>
+      item.properties ? item?.properties[0]?.value : []
+    )
+  );
 
-let valueCounts = values.reduce((acc, value) => {
-  acc[value] = (acc[value] || 0) + 1;
-  return acc;
-}, {});
+  let valueCounts = values.reduce((acc, value) => {
+    acc[value] = (acc[value] || 0) + 1;
+    return acc;
+  }, {});
 
-let mostOccurringName = Object.keys(valueCounts).reduce((a, b) => valueCounts[a] > valueCounts[b] ? a : b);
+  let mostOccurringName = Object.keys(valueCounts).reduce((a, b) =>
+    valueCounts[a] > valueCounts[b] ? a : b
+  );
 
   return (
     <>
@@ -39,15 +46,11 @@ let mostOccurringName = Object.keys(valueCounts).reduce((a, b) => valueCounts[a]
             height={70}
             alt="logo icon"
             className="mt-1"
+            priority={false}
           />
-          <div className="flex flex-col">
-            <div className="text-md leading-4 tracking-tighter text-gray-600">
-              Top Sold Item
-            </div>
-            <div
-              className="text-lg leading-6 tracking-wider"
-              style={{ fontWeight: 400 }}
-            >
+          <div className="flex flex-col w-[65%]">
+            <div className="text-md text-gray-600">Top Sold Item</div>
+            <div className="text-lg break-words" style={{ fontWeight: 400 }}>
               {mostOccurringName}
             </div>
           </div>
@@ -59,11 +62,10 @@ let mostOccurringName = Object.keys(valueCounts).reduce((a, b) => valueCounts[a]
             height={70}
             alt="logo icon"
             className="mt-1"
+            priority={false}
           />
           <div className="flex flex-col">
-            <div className="text-md leading-4 tracking-tighter text-gray-600">
-              Average Selling Price
-            </div>
+            <div className="text-md text-gray-600">Average Selling Price</div>
             <div
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400 }}
@@ -79,11 +81,10 @@ let mostOccurringName = Object.keys(valueCounts).reduce((a, b) => valueCounts[a]
             height={70}
             alt="logo icon"
             className="mt-1"
+            priority={false}
           />
           <div className="flex flex-col">
-            <div className="text-md leading-4 tracking-tighter text-gray-600">
-              Completion Rate
-            </div>
+            <div className="text-md text-gray-600">Completion Rate</div>
             <div
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400 }}

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { Tabs } from "antd";
 import {
   BarChart,
@@ -10,6 +10,9 @@ import {
   Rectangle,
   ResponsiveContainer,
 } from "recharts";
+import { getOrdersApi } from "@/api/orders/ordersApi";
+import { groupBy, sumBy } from "lodash";
+
 const { TabPane } = Tabs;
 
 const CustomBar = (props) => {
@@ -47,37 +50,85 @@ const dayNames = [
   "Saturday",
 ];
 
-const dailyData = Array.from({ length: 7 }, (_, i) => ({
-  name: dayNames[i],
-  uv: Math.floor(Math.random() * 10000),
-}));
-const monthlyData = Array.from({ length: 12 }, (_, i) => ({
-  name: monthNames[i],
-  uv: Math.floor(Math.random() * 10000),
-}));
-const yearlyData = Array.from({ length: 5 }, (_, i) => ({
-  name: 2019 + i,
-  uv: Math.floor(Math.random() * 10000),
-}));
+const Graph = ({ orderData }) => {
+  const [data, setData] = useState([]);
+  const [orders, setOrders] = useState([]);
 
-const Graph = ({orderData}) => {
-  const [data, setData] = useState(monthlyData);
+  useEffect(() => {
+    const getOrders = async () => {
+      const data = await getOrdersApi();
+      data.orders.forEach((order) => {
+        let date = new Date(order.createdAt);
+        order.createdAt = date.toISOString().split("T")[0];
+      });
+      setOrders(data.orders);
+    };
+    getOrders();
+  }, []);
 
-  const handleTabChange = (key) => {
-    switch (key) {
-      case "1":
-        setData(dailyData);
-        break;
-      case "2":
-        setData(monthlyData);
-        break;
-      case "3":
-        setData(yearlyData);
-        break;
-      default:
-        break;
-    }
-  };
+  const dailyData = useMemo(() => {
+    let daily = dayNames.map((day) => ({ name: day, uv: 0 }));
+
+    Object.entries(groupBy(orders, "createdAt")).forEach(([date, orders]) => {
+      let dayName = dayNames[new Date(date).getDay()];
+      let dayData = daily.find((d) => d.name === dayName);
+      if (dayData) {
+        dayData.uv = sumBy(orders, (order) => parseFloat(order.price));
+      }
+    });
+
+    return daily;
+  }, [orders]);
+
+  const monthlyData = useMemo(() => {
+    let monthly = monthNames.map((month) => ({ name: month, uv: 0 }));
+
+    Object.entries(
+      groupBy(orders, (order) => new Date(order.createdAt).getMonth())
+    ).forEach(([month, orders]) => {
+      let monthName = monthNames[month];
+      let monthData = monthly.find((m) => m.name === monthName);
+      if (monthData) {
+        monthData.uv = sumBy(orders, (order) => parseFloat(order.price));
+      }
+    });
+
+    return monthly;
+  }, [orders]);
+
+  const yearlyData = useMemo(() => {
+    return Object.entries(
+      groupBy(orders, (order) => new Date(order.createdAt).getFullYear())
+    ).map(([year, orders]) => ({
+      name: year,
+      uv: sumBy(orders, (order) => parseFloat(order.price)),
+    }));
+  }, [orders]);
+
+  useEffect(() => {
+    setData(monthlyData);
+  }, [monthlyData]);
+
+  const handleTabChange = useCallback(
+    (key) => {
+      switch (key) {
+        case "1":
+          setData(dailyData);
+          break;
+        case "2":
+          setData(monthlyData);
+          break;
+        case "3":
+          setData(yearlyData);
+          break;
+        default:
+          break;
+      }
+    },
+    [dailyData, monthlyData, yearlyData]
+  );
+
+  const maxUV = Math.max(...data.map((item) => item.uv));
 
   return (
     <>
@@ -89,17 +140,10 @@ const Graph = ({orderData}) => {
           >
             Earnings
           </div>
-          {/* <MonthDropDown /> */}
           <Tabs defaultActiveKey="2" onChange={handleTabChange}>
-            <TabPane tab="Daily" key="1">
-              {/* The chart will automatically update when the data state changes */}
-            </TabPane>
-            <TabPane tab="Monthly" key="2">
-              {/* The chart will automatically update when the data state changes */}
-            </TabPane>
-            <TabPane tab="Yearly" key="3">
-              {/* The chart will automatically update when the data state changes */}
-            </TabPane>
+            <TabPane tab="Daily" key="1"></TabPane>
+            <TabPane tab="Monthly" key="2"></TabPane>
+            <TabPane tab="Yearly" key="3"></TabPane>
           </Tabs>
         </div>
       </div>
@@ -120,20 +164,22 @@ const Graph = ({orderData}) => {
               axisLine={false}
               tickLine={false}
               tick={{ fill: "black" }}
-              padding={{ left: 0, right: 0 }} // Add padding here
+              padding={{ left: 0, right: 0 }}
             />
             <YAxis
               type="number"
-              domain={[0, 8000]}
+              domain={[0, maxUV]}
               axisLine={false}
               tickFormatter={(tick) => {
                 if (tick === 0) return "0";
-                return `${Math.floor(tick / 1000) * 20}k`;
+                if (tick < 1000) return tick.toString();
+                return `${Math.floor(tick / 1000)}k`;
               }}
               tickLine={false}
               tick={{ fill: "black" }}
               padding={{ top: 10, bottom: 10 }} // And here
             />
+
             <Tooltip />
             <Bar
               dataKey="uv"

@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { onDate } from "../../store/slices/dateSlice";
 
 const DatePickerButton = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const buttonRef = useRef(null);
@@ -23,7 +23,7 @@ const DatePickerButton = () => {
         ).padStart(2, "0")}-${String(dateObject.getDate()).padStart(2, "0")}`
       : "Select Date";
 
-    dispatch(onDate(formattedDate))
+    dispatch(onDate(formattedDate));
   };
 
   const handleButtonClick = () => {
@@ -32,7 +32,7 @@ const DatePickerButton = () => {
 
   const handleReset = () => {
     setSelectedDate(null);
-    dispatch(onDate(""))
+    dispatch(onDate(""));
   };
 
   const buttonPosition = buttonRef.current
@@ -71,14 +71,20 @@ const DatePickerButton = () => {
           onClick={handleButtonClick}
           style={{ backgroundColor: "#E4E3FF" }}
         >
-          <p
+          <div
             className="text-purpleText font-inter cursor-pointer"
             style={{ fontSize: "12.35px", fontWeight: 600 }}
           >
             {formattedDate}
-          </p>
+          </div>
           <span className="ml-2">
-            <Image src="/Frame.svg" width={18} height={18} alt="logo icon" />
+            <Image
+              src="/Frame.svg"
+              width={18}
+              height={18}
+              alt="logo icon"
+              priority={false}
+            />
           </span>
         </div>
         {showDatePicker && (

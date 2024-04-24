@@ -90,7 +90,7 @@ function Accordion({ predefined = false, orders = [] }) {
                 </span>{" "}
                 <span style={{ fontWeight: "400", fontSize: "18px" }}>2</span>
               </div>
-              <p style={{ fontSize: "22px" }}>{item?.name}</p>
+              <div style={{ fontSize: "22px" }}>{item?.name}</div>
               <div className="font-poppins ">
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Price $
@@ -145,6 +145,7 @@ function Accordion({ predefined = false, orders = [] }) {
                   width={20}
                   height={20}
                   alt="image"
+                  priority={false}
                 />
                 <div
                   className="ml-2 font-inter"
@@ -176,7 +177,7 @@ function Accordion({ predefined = false, orders = [] }) {
                 </span>{" "}
                 <span style={{ fontWeight: "400", fontSize: "18px" }}>1</span>
               </div>
-              <p style={{ fontSize: "22px" }}>{item?.name}</p>
+              <div style={{ fontSize: "22px" }}>{item?.name}</div>
               <div className="font-poppins ">
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Price $
@@ -208,6 +209,7 @@ function Accordion({ predefined = false, orders = [] }) {
                     width={20}
                     height={20}
                     alt="image"
+                    priority={false}
                   />
                   <div
                     className="ml-2 font-inter"

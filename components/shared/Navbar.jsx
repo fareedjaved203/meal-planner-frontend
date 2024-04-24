@@ -65,6 +65,7 @@ const Navbar = () => {
           height={65}
           alt="logo icon"
           className="w-12 h-12 rounded-lg p-1"
+          priority={false}
         />
       </div>
     </nav>
