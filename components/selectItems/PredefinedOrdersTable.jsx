@@ -19,7 +19,8 @@ const pagination = {
   pageSize: 10,
 };
 
-const PredefinedOrdersTable = (orders = []) => {
+const PredefinedOrdersTable = (orders) => {
+  const params = useParams().id;
   const [list, setList] = useState([]);
   const [tempArray, setTemp] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -27,20 +28,11 @@ const PredefinedOrdersTable = (orders = []) => {
   const searchInput = useRef(null);
   const date = useSelector((state) => state.date.date);
 
-  const getItems = async () => {
-    const data = await getItemsApi();
-    console.log(data);
-    data.items.forEach((item) => {
-      const date = new Date(item.createdAt);
-      item.createdAt = date.toISOString().split("T")[0];
-    });
-    setList(data.items);
-    setTemp(data.items);
-  };
-
   useEffect(() => {
-    getItems();
-  }, []);
+    console.log("orders: ", orders);
+    setList(orders.orders);
+    setTemp(orders.orders);
+  }, [orders]);
 
   useEffect(() => {
     if (date) {
@@ -50,9 +42,10 @@ const PredefinedOrdersTable = (orders = []) => {
       console.log(data);
       setList(data);
     } else {
-      getItems();
+      setList(orders.orders);
+      setTemp(orders.orders);
     }
-  }, [date]);
+  }, [date, orders]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -172,11 +165,8 @@ const PredefinedOrdersTable = (orders = []) => {
     },
     onSelect: (record, selected, selectedRows) => {
       console.log(selectedRows);
-      localStorage.setItem("rows", JSON.stringify(selectedRows));
-    },
-    onSelectAll: (selected, selectedRows, changeRows) => {
-      console.log(selectedRows);
-      localStorage.setItem("rows", JSON.stringify(selectedRows));
+      localStorage.setItem("deletionId", selectedRows[0]._id);
+      localStorage.setItem("paramsId", params);
     },
   };
 

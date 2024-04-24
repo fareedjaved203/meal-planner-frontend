@@ -8,7 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import CustomOrderTable from "../selectItems/CustomOrderTable";
 import { useParams } from "next/navigation";
-import { getPredefinedApi } from "@/api/predefined/predefinedApi";
+import {
+  deletePredefinedApi,
+  getPredefinedApi,
+} from "@/api/predefined/predefinedApi";
 import PredefinedOrdersTable from "../selectItems/PredefinedOrdersTable";
 
 function Accordion({ predefined = false, orders = [] }) {
@@ -16,16 +19,7 @@ function Accordion({ predefined = false, orders = [] }) {
   const [activeIndex, setActiveIndex] = useState(null);
   const [customOrder, setCustomOrder] = useState([]);
   const [predefinedOrder, setPredefinedOrder] = useState([]);
-
-  const toggleItem = (pid, index) => {
-    localStorage.setItem("orderId", params);
-    localStorage.setItem("pid", pid);
-    if (index === activeIndex) {
-      setActiveIndex(null);
-    } else {
-      setActiveIndex(index);
-    }
-  };
+  const [selectedOrders, setSelectedOrders] = useState([]);
 
   useEffect(() => {
     const data = orders.orders?.filter((order) => {
@@ -43,12 +37,40 @@ function Accordion({ predefined = false, orders = [] }) {
       );
       if (predefined) {
         setPredefinedOrder(withoutProperty);
+        console.log(withoutProperty);
       } else {
         setCustomOrder(withProperty);
       }
       console.log(withoutProperty);
     }
   }, []);
+
+  const toggleItem = (pid, index) => {
+    getPredefinedOrders(pid);
+    localStorage.setItem("orderId", params);
+    localStorage.setItem("pid", pid);
+    if (index === activeIndex) {
+      setActiveIndex(null);
+    } else {
+      setActiveIndex(index);
+    }
+  };
+
+  const getPredefinedOrders = async (pid) => {
+    const items = await getPredefinedApi(pid);
+    setSelectedOrders(items?.predefined?.predefined);
+  };
+
+  const removeItem = async () => {
+    const id = localStorage.getItem("deletionId");
+    const paramsId = localStorage.getItem("paramsId");
+    // const data = await deletePredefinedApi(id, paramsId);
+    const filter = predefinedOrder.filter((item) => {
+      console.log(item);
+      return item._id != id;
+    });
+    setPredefinedOrder(filter);
+  };
 
   return (
     <div
@@ -111,6 +133,7 @@ function Accordion({ predefined = false, orders = [] }) {
                   <div
                     className="text-removeItemText w-full flex justify-center items-center font-inter cursor-pointer w-full whitespace-nowrap"
                     style={{ fontWeight: "600", fontSize: "13px" }}
+                    onClick={removeItem}
                   >
                     Remove Item
                   </div>
@@ -134,7 +157,7 @@ function Accordion({ predefined = false, orders = [] }) {
             </div>
 
             <div className="p-4">
-              <PredefinedOrdersTable orders={orders.orders} />
+              <PredefinedOrdersTable orders={selectedOrders} />
             </div>
           </div>
         </div>
@@ -145,7 +168,7 @@ function Accordion({ predefined = false, orders = [] }) {
           <div
             className="flex justify-between items-center pl-6 pr-6 cursor-pointer rounded-lg"
             style={{ height: "93px" }}
-            onClick={() => toggleItem(index)}
+            onClick={() => toggleItem(item.id, index)}
           >
             <div className="flex justify-between items-center w-full">
               <div className="font-poppins ">

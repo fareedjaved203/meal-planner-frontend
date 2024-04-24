@@ -27,11 +27,11 @@ export const getPredefinedApi = async (id) => {
   }
 };
 
-export const deletePredefinedApi = async (id, predefinedId) => {
+export const deletePredefinedApi = async (id, paramsId) => {
   try {
     const data = await apiService.request(
-      `/predefined/predefined/${id}/${predefinedId}`,
-      "DELETE"
+      `/predefined/predefined/${id}/${paramsId}`,
+      "PUT"
     );
     console.log(data);
     return data;
