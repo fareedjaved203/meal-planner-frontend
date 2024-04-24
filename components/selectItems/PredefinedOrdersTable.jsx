@@ -164,8 +164,7 @@ const PredefinedOrdersTable = (orders) => {
       console.log("selectedRows: ", selectedRows);
     },
     onSelect: (record, selected, selectedRows) => {
-      console.log(selectedRows);
-      localStorage.setItem("deletionId", selectedRows[0]._id);
+      localStorage.setItem("deletionId", selectedRows[0]?._id);
       localStorage.setItem("paramsId", params);
     },
   };

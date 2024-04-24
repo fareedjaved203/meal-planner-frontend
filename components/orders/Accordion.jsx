@@ -37,7 +37,6 @@ function Accordion({ predefined = false, orders = [] }) {
       );
       if (predefined) {
         setPredefinedOrder(withoutProperty);
-        console.log(withoutProperty);
       } else {
         setCustomOrder(withProperty);
       }
@@ -64,12 +63,12 @@ function Accordion({ predefined = false, orders = [] }) {
   const removeItem = async () => {
     const id = localStorage.getItem("deletionId");
     const paramsId = localStorage.getItem("paramsId");
-    // const data = await deletePredefinedApi(id, paramsId);
-    const filter = predefinedOrder.filter((item) => {
+    const data = await deletePredefinedApi(id, paramsId);
+    const filter = selectedOrders.filter((item) => {
       console.log(item);
       return item._id != id;
     });
-    setPredefinedOrder(filter);
+    setSelectedOrders(filter);
   };
 
   return (
