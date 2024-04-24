@@ -29,9 +29,7 @@ const PlacedOrdersTable = ({ data }) => {
         (item) => item?.properties?.length > 0
       );
       if (hasProperties) {
-        type = order?.line_items?.every(
-          (item) => item?.properties?.length > 0
-        )
+        type = order?.line_items?.every((item) => item?.properties?.length > 0)
           ? "Custom Order Details"
           : "Both Custom and Predefined";
       } else {
@@ -57,25 +55,24 @@ const PlacedOrdersTable = ({ data }) => {
         )
     );
     setMappedOrders(filteredOrders);
-    setTemp(filteredOrders)
+    setTemp(filteredOrders);
   };
 
   useEffect(() => {
     getOrders();
   }, []);
 
-  useEffect(()=>{
-    if(date){
-      const data = tempArray.filter((item)=>{
-        return item.date == date
-      })
-      console.log(data)
-      setMappedOrders(data)
+  useEffect(() => {
+    if (date) {
+      const data = tempArray.filter((item) => {
+        return item.date == date;
+      });
+      console.log(data);
+      setMappedOrders(data);
+    } else {
+      getOrders();
     }
-    else{
-    getOrders();
-    }
-  },[date])
+  }, [date]);
 
   const postOrder = async (item) => {
     const data = await postOrderApi(item);
@@ -230,8 +227,7 @@ const PlacedOrdersTable = ({ data }) => {
       title: "Order By",
       dataIndex: "orderby",
       key: "orderby",
-      filters: [{ text: "example@gmail.com", value: "example@gmail.com" }],
-      onFilter: (value, record) => record.orderby.indexOf(value) === 0,
+      ...getColumnSearchProps("orderby"),
     },
     {
       title: "Quantity",
@@ -293,7 +289,7 @@ const PlacedOrdersTable = ({ data }) => {
         onRow={(record, rowIndex) => {
           return {
             onClick: (event) => {
-              console.log(record)
+              console.log(record);
               if (event.target.type !== "checkbox") {
                 router.push(`/placed-orders/${record?.pid}`);
               }
