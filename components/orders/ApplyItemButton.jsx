@@ -13,14 +13,19 @@ const ApplyItemButton = () => {
     const pid = localStorage.getItem("pid");
     const orderId = localStorage.getItem("orderId");
     const rows = JSON.parse(data);
-    await postPredefinedApi({
+    const postItem = await postPredefinedApi({
       predefined: rows,
       pid,
       orderId,
     });
-    localStorage.removeItem("rows");
-    isLoading(false);
-    messageApi.success("Item Added Successfully");
+    if (postItem?.success) {
+      localStorage.removeItem("rows");
+      isLoading(false);
+      messageApi.success(postItem?.message);
+    } else {
+      isLoading(false);
+      messageApi.error(postItem?.message);
+    }
   };
   return (
     <div className="flex justify-center items-center w-44 bg-indigo-100 text-indigo-700 font-semibold border-indigo-700 cursor-pointer rounded p-1 pt-0 pb-0 h-14 px-2">

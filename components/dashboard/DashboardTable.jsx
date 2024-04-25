@@ -44,7 +44,7 @@ const DashboardTable = () => {
   const [searchedColumn, setSearchedColumn] = useState("");
 
   useEffect(() => {
-    setList([...data]);
+    setList([...data].slice(0, 2));
   }, []);
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
