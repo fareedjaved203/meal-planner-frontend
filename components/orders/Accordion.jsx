@@ -13,6 +13,7 @@ import {
   getPredefinedApi,
 } from "@/api/predefined/predefinedApi";
 import PredefinedOrdersTable from "../selectItems/PredefinedOrdersTable";
+import DownloadQRButton from "../DownloadQRButton";
 
 function Accordion({ predefined = false, orders = [] }) {
   const params = useParams().id;
@@ -20,6 +21,7 @@ function Accordion({ predefined = false, orders = [] }) {
   const [customOrder, setCustomOrder] = useState([]);
   const [predefinedOrder, setPredefinedOrder] = useState([]);
   const [selectedOrders, setSelectedOrders] = useState([]);
+  const [itemIds, setItemIds] = useState([]);
 
   useEffect(() => {
     const data = orders.orders?.filter((order) => {
@@ -58,6 +60,11 @@ function Accordion({ predefined = false, orders = [] }) {
   const getPredefinedOrders = async (pid) => {
     const items = await getPredefinedApi(pid);
     setSelectedOrders(items?.predefined?.predefined);
+    console.log(items?.predefined?.predefined);
+    const data = items?.predefined?.predefined.map((item) => {
+      return item?._id;
+    });
+    setItemIds(data);
   };
 
   const removeItem = async () => {
@@ -88,7 +95,9 @@ function Accordion({ predefined = false, orders = [] }) {
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Quantity
                 </span>{" "}
-                <span style={{ fontWeight: "400", fontSize: "18px" }}>2</span>
+                <span style={{ fontWeight: "400", fontSize: "18px" }}>
+                  {selectedOrders.length}
+                </span>
               </div>
               <div style={{ fontSize: "22px" }}>{item?.name}</div>
               <div className="font-poppins ">
@@ -138,22 +147,7 @@ function Accordion({ predefined = false, orders = [] }) {
                   </div>
                 </div>
               </div>
-
-              <div className="inline-flex pl-2 pr-2 justify-center items-center bg-lightSky text-purpleText cursor-pointer rounded">
-                <Image
-                  src={"/scan-barcode.svg"}
-                  width={20}
-                  height={20}
-                  alt="image"
-                  priority={false}
-                />
-                <div
-                  className="ml-2 font-inter"
-                  style={{ fontWeight: "600", fontSize: "13px" }}
-                >
-                  Download QR
-                </div>
-              </div>
+              <DownloadQRButton ids={itemIds} />
             </div>
 
             <div className="p-4">
