@@ -220,13 +220,14 @@ const PlacedOrdersTable = ({ data }) => {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      width: "30%",
+      width: "15%",
       ...getColumnSearchProps("date"),
     },
     {
       title: "Order By",
       dataIndex: "orderby",
       key: "orderby",
+      width: "25%",
       ...getColumnSearchProps("orderby"),
     },
     {

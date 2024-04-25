@@ -1,8 +1,12 @@
 "use client";
 import { postPredefinedApi } from "@/api/predefined/predefinedApi";
 import React, { useState } from "react";
+import { message } from "antd";
+
 const ApplyItemButton = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [loading, isLoading] = useState(false);
+
   const saveItem = async () => {
     isLoading(true);
     const data = localStorage.getItem("rows");
@@ -16,9 +20,11 @@ const ApplyItemButton = () => {
     });
     localStorage.removeItem("rows");
     isLoading(false);
+    messageApi.success("Item Added Successfully");
   };
   return (
     <div className="flex justify-center items-center w-44 bg-indigo-100 text-indigo-700 font-semibold border-indigo-700 cursor-pointer rounded p-1 pt-0 pb-0 h-14 px-2">
+      {contextHolder}
       <div
         className="text-purpleText w-full flex justify-center items-center font-inter"
         style={{ fontSize: "17px", paddingvertical: "9px" }}

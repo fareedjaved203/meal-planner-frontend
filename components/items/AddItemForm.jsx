@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { message } from "antd";
 import { postItemApi } from "@/api/items/itemsApi";
 
 const AddItemForm = () => {
@@ -13,6 +14,7 @@ const AddItemForm = () => {
   const [diet, setDiet] = useState("");
   const [ingredients, setIngredients] = useState([{ value: "", input: false }]);
   const [steps, setSteps] = useState([{ value: "", input: false }]);
+  const [messageApi, contextHolder] = message.useMessage();
 
   const addIngredient = () => {
     setIngredients([...ingredients, { value: "", input: false }]);
@@ -74,10 +76,14 @@ const AddItemForm = () => {
     };
     console.log(formData);
     const data = await postItemApi(formData);
+    if (data) {
+      messageApi.success("Item Added Successfully");
+    }
     console.log(data);
   };
   return (
     <>
+      {contextHolder}
       <div className="bg-white m-4 rounded p-4 pt-3">
         <div
           className="p-4 font-mulish"

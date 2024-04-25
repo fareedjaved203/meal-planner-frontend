@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
-import SelectOrdersTable from "../selectItems/SelectOrdersTable";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { IoIosArrowDropupCircle } from "react-icons/io";
-import Image from "next/image";
+import { message } from "antd";
 import Link from "next/link";
 import CustomOrderTable from "../selectItems/CustomOrderTable";
 import { useParams } from "next/navigation";
@@ -22,6 +20,7 @@ function Accordion({ predefined = false, orders = [] }) {
   const [predefinedOrder, setPredefinedOrder] = useState([]);
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [itemIds, setItemIds] = useState([]);
+  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
     const data = orders.orders?.filter((order) => {
@@ -71,6 +70,11 @@ function Accordion({ predefined = false, orders = [] }) {
     const id = localStorage.getItem("deletionId");
     const paramsId = localStorage.getItem("paramsId");
     const data = await deletePredefinedApi(id, paramsId);
+    if (data?.success) {
+      messageApi.success("Item Deleted Successfully");
+    } else {
+      messageApi.error("Something went wrong");
+    }
     const filter = selectedOrders.filter((item) => {
       console.log(item);
       return item._id != id;
@@ -83,6 +87,7 @@ function Accordion({ predefined = false, orders = [] }) {
       className="w-full rounded pl-4 pr-4 ml-4 font-poppins"
       style={{ backgroundColor: "#F8F8F8" }}
     >
+      {contextHolder}
       {predefinedOrder?.map((item, index) => (
         <div key={index} className="border-b border-gray-200 rounded-lg">
           <div
@@ -91,7 +96,10 @@ function Accordion({ predefined = false, orders = [] }) {
             onClick={() => toggleItem(item.id, index)}
           >
             <div className="flex justify-between items-center w-full">
-              <div className="font-poppins ">
+              <div
+                className="font-poppins flex-grow-1"
+                style={{ textAlign: "center" }}
+              >
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Quantity
                 </span>{" "}
@@ -99,8 +107,24 @@ function Accordion({ predefined = false, orders = [] }) {
                   {selectedOrders.length}
                 </span>
               </div>
-              <div style={{ fontSize: "22px" }}>{item?.name}</div>
-              <div className="font-poppins ">
+              <div
+                style={{
+                  fontSize: "22px",
+                  flexGrow: 1,
+                  flexShrink: 1,
+                  flexBasis: "auto",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                }}
+              >
+                {item?.name}
+              </div>
+              <div
+                className="font-poppins flex-grow-1 mr-16"
+                style={{ textAlign: "center", flexShrink: 0 }}
+              >
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Price $
                 </span>
@@ -165,14 +189,33 @@ function Accordion({ predefined = false, orders = [] }) {
             onClick={() => toggleItem(item.id, index)}
           >
             <div className="flex justify-between items-center w-full">
-              <div className="font-poppins ">
+              <div
+                className="font-poppins flex-grow-1"
+                style={{ textAlign: "center" }}
+              >
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Quantity
                 </span>{" "}
                 <span style={{ fontWeight: "400", fontSize: "18px" }}>1</span>
               </div>
-              <div style={{ fontSize: "22px" }}>{item?.name}</div>
-              <div className="font-poppins ">
+              <div
+                style={{
+                  fontSize: "22px",
+                  flexGrow: 1,
+                  flexShrink: 1,
+                  flexBasis: "auto",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                }}
+              >
+                {item?.name}
+              </div>
+              <div
+                className="font-poppins flex-grow-1 mr-16"
+                style={{ textAlign: "center", flexShrink: 0 }}
+              >
                 <span style={{ fontWeight: "700", fontSize: "18px" }}>
                   Price $
                 </span>
@@ -190,12 +233,13 @@ function Accordion({ predefined = false, orders = [] }) {
               </div>
             </div>
           </div>
+
           <div
             className={`overflow-hidden transition-max-height duration-500 ${
               activeIndex === index ? "max-h-100" : "max-h-0"
             }`}
           >
-            {!predefined && (
+            {/* {!predefined && (
               <div className="flex justify-end pr-4 pt-4">
                 <div className="inline-flex p-2 pt-2 pb-2 justify-center items-center bg-lightSky text-purpleText cursor-pointer rounded">
                   <Image
@@ -213,7 +257,7 @@ function Accordion({ predefined = false, orders = [] }) {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
 
             <div className="p-4">
               {!predefined && (

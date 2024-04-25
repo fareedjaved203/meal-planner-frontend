@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { message } from "antd";
 import { getSingleItemApi, updateItemApi } from "@/api/items/itemsApi";
 
 const UpdateItemForm = () => {
@@ -16,6 +17,7 @@ const UpdateItemForm = () => {
   const [diet, setDiet] = useState("");
   const [ingredients, setIngredients] = useState([{ value: "", input: false }]);
   const [steps, setSteps] = useState([{ value: "", input: false }]);
+  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
     const getItem = async () => {
@@ -99,10 +101,14 @@ const UpdateItemForm = () => {
     };
     console.log(formData);
     const data = await updateItemApi(params, formData);
+    if (data) {
+      messageApi.success("Item Updated Successfully");
+    }
     console.log(data);
   };
   return (
     <>
+      {contextHolder}
       <div className="bg-white m-4 rounded p-4 pt-3">
         <div
           className="p-4 font-mulish"
@@ -123,7 +129,8 @@ const UpdateItemForm = () => {
               <input
                 type="text"
                 value={nameLine1}
-                onChange={(e) => setNameLine2(e.target.value)}
+                required
+                onChange={(e) => setNameLine1(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
               />
             </div>
@@ -140,6 +147,7 @@ const UpdateItemForm = () => {
               <input
                 type="text"
                 value={nameLine2}
+                required
                 onChange={(e) => setNameLine2(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
               />
@@ -160,6 +168,7 @@ const UpdateItemForm = () => {
               <input
                 type="text"
                 value={preparationTime}
+                required
                 onChange={(e) => setPreparationTime(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
               />
@@ -177,6 +186,7 @@ const UpdateItemForm = () => {
               <input
                 type="text"
                 value={spiciness}
+                required
                 onChange={(e) => setSpiciness(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
               />
@@ -197,6 +207,7 @@ const UpdateItemForm = () => {
               <input
                 type="text"
                 value={difficulty}
+                required
                 onChange={(e) => setDifficulty(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
               />
@@ -214,6 +225,7 @@ const UpdateItemForm = () => {
               <input
                 type="text"
                 value={origin}
+                required
                 onChange={(e) => setOrigin(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
               />
@@ -235,6 +247,7 @@ const UpdateItemForm = () => {
               <input
                 type="text"
                 value={diet}
+                required
                 onChange={(e) => setDiet(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
               />
@@ -252,8 +265,9 @@ const UpdateItemForm = () => {
           <div className="flex justify-center items-center p-4" key={index}>
             <input
               type="text"
-              placeholder="test@gmail.com"
+              placeholder="sugar"
               value={ingredient.value}
+              required
               onChange={(e) => handleInputChange(e, index)}
               disabled={ingredient.input}
               className="bg-custom w-[92%] rounded h-10 p-7"
@@ -297,8 +311,9 @@ const UpdateItemForm = () => {
           <div className="flex justify-center items-center p-4" key={index}>
             <input
               type="text"
-              placeholder="test@gmail.com"
+              placeholder="boil water"
               value={step.value}
+              required
               onChange={(e) => handleStepInputChange(e, index)}
               disabled={step.input}
               className="bg-custom w-[92%] rounded h-10 p-7"
