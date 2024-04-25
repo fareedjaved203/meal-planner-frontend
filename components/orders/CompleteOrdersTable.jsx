@@ -20,12 +20,16 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
   const pagination = {
     showTotal: (total, range) => (
       <div className="font-poppins">
-        <span style={{ fontSize: "16px", fontWeight: "500", color: "#232638" }}>
-          Total Orders: {total}
-        </span>
-        <span
-          style={{ fontSize: "12px", fontWeight: "500", marginLeft: "620px" }}
+        {/* <span
+          style={{
+            fontSize: "16px",
+            fontWeight: "500",
+            color: "#232638",
+          }}
         >
+          Total Orders: {total}
+        </span> */}
+        <span style={{ fontSize: "12px", fontWeight: "500" }}>
           {range[0]}-{range[1]} of items
         </span>
       </div>
@@ -43,31 +47,30 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
     setList(formattedOrders);
     setTemp(formattedOrders);
   };
-  
+
   useEffect(() => {
     getOrders();
   }, []);
 
-  useEffect(()=>{
-    if(date){
-      const data = tempArray.filter((item)=>{
-        return item.date == date
-      })
-      console.log(data)
-      setList(data)
+  useEffect(() => {
+    if (date) {
+      const data = tempArray.filter((item) => {
+        return item.date == date;
+      });
+      console.log(data);
+      setList(data);
+    } else {
+      getOrders();
     }
-    else{
-    getOrders();
-    }
-  },[date])
+  }, [date]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    if(confirm){
+    if (confirm) {
       confirm();
     }
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
-    console.log(confirm)
+    console.log(confirm);
     console.log(selectedKeys[0]);
     console.log(dataIndex);
   };
@@ -232,11 +235,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
       title: "Complete",
       dataIndex: "complete",
       key: "complete",
-      render: (text, record, onChange) => (
-        <Checkbox
-          checked={true}
-        />
-      ),
+      render: (text, record, onChange) => <Checkbox checked={true} />,
     },
   ];
   return (
