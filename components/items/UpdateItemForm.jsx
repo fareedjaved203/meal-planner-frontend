@@ -109,7 +109,10 @@ const UpdateItemForm = () => {
   return (
     <>
       {contextHolder}
-      <div className="bg-white m-4 rounded p-4 pt-3">
+      <form
+        className="bg-white m-4 rounded p-4 pt-3"
+        onSubmit={(e) => addItemHandler(e)}
+      >
         <div
           className="p-4 font-mulish"
           style={{ fontSize: "28px", fontWeight: "900" }}
@@ -347,15 +350,15 @@ const UpdateItemForm = () => {
           </div>
         </div>
 
-        <div
-          className="flex justify-center items-center mt-4 p-4 cursor-pointer"
-          onClick={addItemHandler}
-        >
-          <div className="bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold">
+        <div className="flex justify-center items-center mt-4 p-4 cursor-pointer">
+          <button
+            type="submit"
+            className="bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold"
+          >
             Update Item
-          </div>
+          </button>
         </div>
-      </div>
+      </form>
     </>
   );
 };

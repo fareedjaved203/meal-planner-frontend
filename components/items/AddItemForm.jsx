@@ -74,17 +74,18 @@ const AddItemForm = () => {
       steps: mappedSteps,
       ingredients: mappedIngredients,
     };
-    console.log(formData);
     const data = await postItemApi(formData);
     if (data) {
       messageApi.success("Item Added Successfully");
     }
-    console.log(data);
   };
   return (
     <>
       {contextHolder}
-      <div className="bg-white m-4 rounded p-4 pt-3">
+      <form
+        className="bg-white m-4 rounded p-4 pt-3"
+        onSubmit={(e) => addItemHandler(e)}
+      >
         <div
           className="p-4 font-mulish"
           style={{ fontSize: "28px", fontWeight: "900" }}
@@ -106,6 +107,7 @@ const AddItemForm = () => {
                 value={nameLine1}
                 onChange={(e) => setNameLine1(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
+                required
               />
             </div>
           </div>
@@ -123,6 +125,7 @@ const AddItemForm = () => {
                 value={nameLine2}
                 onChange={(e) => setNameLine2(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
+                required
               />
             </div>
           </div>
@@ -143,6 +146,7 @@ const AddItemForm = () => {
                 value={preparationTime}
                 onChange={(e) => setPreparationTime(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
+                required
               />
             </div>
           </div>
@@ -160,6 +164,7 @@ const AddItemForm = () => {
                 value={spiciness}
                 onChange={(e) => setSpiciness(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
+                required
               />
             </div>
           </div>
@@ -180,6 +185,7 @@ const AddItemForm = () => {
                 value={difficulty}
                 onChange={(e) => setDifficulty(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
+                required
               />
             </div>
           </div>
@@ -197,6 +203,7 @@ const AddItemForm = () => {
                 value={origin}
                 onChange={(e) => setOrigin(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
+                required
               />
             </div>
           </div>
@@ -218,6 +225,7 @@ const AddItemForm = () => {
                 value={diet}
                 onChange={(e) => setDiet(e.target.value)}
                 className="bg-custom w-full rounded h-10 p-7"
+                required
               />
             </div>
           </div>
@@ -233,11 +241,12 @@ const AddItemForm = () => {
           <div className="flex justify-center items-center p-4" key={index}>
             <input
               type="text"
-              placeholder="test@gmail.com"
+              placeholder="sugar"
               value={ingredient.value}
               onChange={(e) => handleInputChange(e, index)}
               disabled={ingredient.input}
               className="bg-custom w-[92%] rounded h-10 p-7"
+              required
             />
             <Image
               src={ingredient.input ? `/Group 11068.svg` : `/tick.svg`}
@@ -278,11 +287,12 @@ const AddItemForm = () => {
           <div className="flex justify-center items-center p-4" key={index}>
             <input
               type="text"
-              placeholder="test@gmail.com"
+              placeholder="boil water"
               value={step.value}
               onChange={(e) => handleStepInputChange(e, index)}
               disabled={step.input}
               className="bg-custom w-[92%] rounded h-10 p-7"
+              required
             />
             <Image
               src={step.input ? `/Group 11068.svg` : `/tick.svg`}
@@ -313,15 +323,15 @@ const AddItemForm = () => {
           </div>
         </div>
 
-        <div
-          className="flex justify-center items-center mt-4 p-4 cursor-pointer"
-          onClick={addItemHandler}
-        >
-          <div className="bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold">
+        <div className="flex justify-center items-center mt-4 p-4 cursor-pointer">
+          <button
+            type="submit"
+            className="bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold"
+          >
             Add Item
-          </div>
+          </button>
         </div>
-      </div>
+      </form>
     </>
   );
 };
