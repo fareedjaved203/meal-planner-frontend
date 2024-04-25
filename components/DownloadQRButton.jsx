@@ -11,11 +11,13 @@ const DownloadQRButton = ({ ids }) => {
 
     Promise.all(
       ids.map((id, index) =>
-        QRCode.toDataURL(id).then((dataUrl) => {
-          qrFolder.file(`receipt-qr-${index}.png`, dataUrl.split(",")[1], {
-            base64: true,
-          });
-        })
+        QRCode.toDataURL(`http://localhost:3000/receipt/${id}`).then(
+          (dataUrl) => {
+            qrFolder.file(`receipt-qr-${index}.png`, dataUrl.split(",")[1], {
+              base64: true,
+            });
+          }
+        )
       )
     ).then(() => {
       zip.generateAsync({ type: "blob" }).then((content) => {
@@ -27,7 +29,7 @@ const DownloadQRButton = ({ ids }) => {
   return (
     <div>
       <div
-        className="inline-flex pl-2 pr-2 justify-center items-center bg-lightSky text-purpleText cursor-pointer rounded"
+        className="inline-flex py-2 px-2 justify-center items-center bg-lightSky text-purpleText cursor-pointer rounded"
         onClick={downloadQR}
       >
         <Image
