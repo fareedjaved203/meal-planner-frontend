@@ -160,7 +160,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
     ),
     onFilter: (value, record) => {
       return record[dataIndex]
-        .toString()
+        ?.toString()
         .toLowerCase()
         .includes(value.toLowerCase());
     },
@@ -178,7 +178,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ""}
+          textToHighlight={text ? text?.toString() : ""}
         />
       ) : (
         text

@@ -172,7 +172,7 @@ const Graph = ({ orderData }) => {
               axisLine={false}
               tickFormatter={(tick) => {
                 if (tick === 0) return "0";
-                if (tick < 1000) return tick.toString();
+                if (tick < 1000) return tick?.toString();
                 return `${Math.floor(tick / 1000)}k`;
               }}
               tickLine={false}

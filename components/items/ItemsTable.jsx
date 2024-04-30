@@ -28,33 +28,32 @@ const ItemsTable = () => {
   const [items, setItems] = useState([]);
   const [tempArray, setTemp] = useState([]);
 
-  const getItems = async()=>{
+  const getItems = async () => {
     const data = await getItemsApi();
     console.log(data);
-    data.items.forEach((item)=>{
+    data.items.forEach((item) => {
       const date = new Date(item.createdAt);
-      item.createdAt = date.toISOString().split('T')[0];
-    })
+      item.createdAt = date.toISOString().split("T")[0];
+    });
     setItems(data.items);
     setTemp(data.items);
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getItems();
-  },[])
+  }, []);
 
-  useEffect(()=>{
-    if(date){
-      const data = tempArray.filter((item)=>{
-        return item.createdAt == date
-      })
-      console.log(data)
-      setItems(data)
+  useEffect(() => {
+    if (date) {
+      const data = tempArray.filter((item) => {
+        return item.createdAt == date;
+      });
+      console.log(data);
+      setItems(data);
+    } else {
+      getItems();
     }
-    else{
-    getItems();
-    }
-  },[date])
+  }, [date]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -146,7 +145,7 @@ const ItemsTable = () => {
       />
     ),
     onFilter: (value, record) =>
-      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+      record[dataIndex]?.toString().toLowerCase().includes(value.toLowerCase()),
     onFilterDropdownOpenChange: (visible) => {
       if (visible) {
         setTimeout(() => searchInput.current?.select(), 100);
@@ -161,7 +160,7 @@ const ItemsTable = () => {
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ""}
+          textToHighlight={text ? text?.toString() : ""}
         />
       ) : (
         text
@@ -177,7 +176,6 @@ const ItemsTable = () => {
       className: "pidColumn",
       ...getColumnSearchProps("_id"),
       render: (text) => `#${text}`,
-
     },
     {
       title: "Date",
