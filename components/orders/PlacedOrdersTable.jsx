@@ -50,9 +50,7 @@ const PlacedOrdersTable = ({ data }) => {
     });
     const filteredOrders = filteredData.filter(
       (mappedOrder) =>
-        !completedOrders?.orders?.some(
-          (order) => order.pid === mappedOrder?.pid
-        )
+        !completedOrders?.orders?.some((order) => order.pid == mappedOrder?.pid)
     );
     setMappedOrders(filteredOrders);
     setTemp(filteredOrders);
@@ -184,10 +182,7 @@ const PlacedOrdersTable = ({ data }) => {
       />
     ),
     onFilter: (value, record) =>
-      record[dataIndex]
-        ?.toString()
-        ?.toLowerCase()
-        ?.includes(value?.toLowerCase()),
+      record[dataIndex]?.toLowerCase()?.includes(value?.toLowerCase()),
     onFilterDropdownOpenChange: (visible) => {
       if (visible) {
         setTimeout(() => searchInput.current?.select(), 100);
@@ -202,7 +197,7 @@ const PlacedOrdersTable = ({ data }) => {
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text?.toString() : ""}
+          textToHighlight={text ? text : ""}
         />
       ) : (
         text
