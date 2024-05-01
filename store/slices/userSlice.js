@@ -14,7 +14,7 @@ const authSlice = createSlice({
     onLogin: (state, action) => {
       console.log(action.payload);
       const expiryTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
-      Cookies.set("token", action.payload.accessToken, { expires: 7 });
+      Cookies.set("token", action.payload.accessToken, { expires: 100 });
       localStorage.setItem("user", JSON.stringify(action.payload?.user));
 
       state.user = action.payload;
