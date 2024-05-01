@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Summary = ({ data, completedOrders }) => {
+const Summary = async ({ data, completedOrders }) => {
   const earnings = data.orders.reduce((order, item) => {
     return order + Number(item.total_line_items_price);
   }, 0);

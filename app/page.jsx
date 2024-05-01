@@ -5,11 +5,12 @@ import Link from "next/link";
 import PlacedOrdersTable from "../components/orders/PlacedOrdersTable";
 import getData from "../lib/getData";
 import { getOrdersApi } from "../api/orders/ordersApi";
+import getOrders from "@/lib/getOrders";
 
 const Home = async () => {
   const data = await getData();
-  const completedOrders = await getOrdersApi();
-  console.log(completedOrders)
+  const completedOrders = await getOrders();
+  console.log("orders: ", JSON.stringify(completedOrders));
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -17,8 +18,8 @@ const Home = async () => {
           className="min-h-screen min-w-full bg-gray-100 p-4"
           suppressHydrationWarning={true}
         >
-          <Summary data={data} completedOrders={completedOrders}/>
-          <GraphAndStats data={data} completedOrders={completedOrders}/>
+          <Summary data={data} completedOrders={completedOrders} />
+          <GraphAndStats data={data} completedOrders={completedOrders} />
           <div className="p-4 bg-white rounded-lg m-4 mr-0 ml-0">
             <div className="flex flex-col sm:flex-row justify-between p-4">
               <div

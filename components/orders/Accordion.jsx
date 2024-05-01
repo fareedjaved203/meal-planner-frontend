@@ -29,7 +29,6 @@ function Accordion({ predefined = false, orders = [] }) {
 
     if (data && data.length > 0) {
       const lineItems = data[0]?.line_items;
-      console.log(lineItems);
       const withProperty = lineItems.filter(
         (item) => item?.properties.length > 0
       );
@@ -38,10 +37,19 @@ function Accordion({ predefined = false, orders = [] }) {
       );
       if (predefined) {
         setPredefinedOrder(withoutProperty);
+        if (withoutProperty.length > 0) {
+          localStorage.setItem("predefined_value", true);
+        } else {
+          localStorage.setItem("predefined_value", false);
+        }
       } else {
         setCustomOrder(withProperty);
+        if (withProperty.length > 0) {
+          localStorage.setItem("custom_value", true);
+        } else {
+          localStorage.setItem("custom_value", false);
+        }
       }
-      console.log(withoutProperty);
     }
   }, []);
 
