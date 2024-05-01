@@ -197,7 +197,7 @@ const PlacedOrdersTable = ({ data }) => {
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text : ""}
+          textToHighlight={text ? text?.toString() : ""}
         />
       ) : (
         text

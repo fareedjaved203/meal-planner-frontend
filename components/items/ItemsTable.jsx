@@ -145,7 +145,7 @@ const ItemsTable = () => {
       />
     ),
     onFilter: (value, record) =>
-      record[dataIndex].toLowerCase().includes(value.toLowerCase()),
+      record[dataIndex]?.toString().toLowerCase().includes(value.toLowerCase()),
     onFilterDropdownOpenChange: (visible) => {
       if (visible) {
         setTimeout(() => searchInput.current?.select(), 100);
@@ -160,7 +160,7 @@ const ItemsTable = () => {
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text : ""}
+          textToHighlight={text ? text?.toString() : ""}
         />
       ) : (
         text
