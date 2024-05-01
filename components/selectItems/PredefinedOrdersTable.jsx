@@ -26,6 +26,7 @@ const PredefinedOrdersTable = (orders) => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const date = useSelector((state) => state.date.date);
 
   useEffect(() => {
@@ -160,12 +161,20 @@ const PredefinedOrdersTable = (orders) => {
   });
 
   const rowSelection = {
+    selectedRowKeys,
+    type: "radio",
     onChange: (selectedRowKeys, selectedRows) => {
       console.log("selectedRows: ", selectedRows);
+      setSelectedRowKeys(selectedRowKeys);
     },
     onSelect: (record, selected, selectedRows) => {
-      localStorage.setItem("deletionId", selectedRows[0]?._id);
-      localStorage.setItem("paramsId", params);
+      if (selected) {
+        setSelectedRowKeys([record._id]);
+        localStorage.setItem("deletionId", selectedRows[0]?._id);
+        localStorage.setItem("paramsId", params);
+      } else {
+        setSelectedRowKeys([]);
+      }
     },
   };
 
@@ -228,9 +237,7 @@ const PredefinedOrdersTable = (orders) => {
     <Table
       rowKey={(record) => record._id}
       columns={columns}
-      rowSelection={{
-        ...rowSelection,
-      }}
+      rowSelection={rowSelection}
       dataSource={[...list]}
       pagination={pagination}
     />
