@@ -2,9 +2,11 @@ import RootLayout from "../layout";
 import PlacedOrdersTable from "../../components/orders/PlacedOrdersTable";
 import DatePickerButton from "../../components/shared/DatePickerButton";
 import getData from "../../lib/getData";
+import getOrders from "@/lib/getOrders";
 
 const PlacedOrders = async () => {
   const data = await getData();
+  const completedOrders = await getOrders();
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -21,7 +23,7 @@ const PlacedOrders = async () => {
             </div>
           </div>
           <div className="p-4 pt-0">
-            <PlacedOrdersTable data={data} />
+            <PlacedOrdersTable data={data} completeOrders={completedOrders} />
           </div>
         </div>
       </>

@@ -3,8 +3,11 @@ import ItemsTable from "../../components/items/ItemsTable";
 import Image from "next/image";
 import DatePickerButton from "../../components/shared/DatePickerButton";
 import Link from "next/link";
+import getItems from "@/lib/getItems";
 
-const Items = () => {
+const Items = async () => {
+  const itemsData = await getItems();
+  console.log(itemsData);
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -36,7 +39,7 @@ const Items = () => {
             </div>
           </div>
           <div className="p-4 pt-0">
-            <ItemsTable />
+            <ItemsTable itemsData={itemsData} />
           </div>
         </div>
       </>

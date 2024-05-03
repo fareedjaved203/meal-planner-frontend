@@ -8,10 +8,8 @@ import getData from "../../lib/getData";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdersApi, postOrderApi } from "@/api/orders/ordersApi";
 
-const PlacedOrdersTable = ({ data }) => {
-  const dispatch = useDispatch();
+const PlacedOrdersTable = ({ data, completeOrders }) => {
   const router = useRouter();
-  const [list, setList] = useState(data);
   const [mappedOrders, setMappedOrders] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -21,7 +19,7 @@ const PlacedOrdersTable = ({ data }) => {
   const date = useSelector((state) => state.date.date);
 
   const getOrders = async () => {
-    const completedOrders = await getOrdersApi();
+    const completedOrders = completeOrders;
 
     const filteredData = data.orders?.map((order) => {
       let type;

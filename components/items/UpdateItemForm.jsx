@@ -6,7 +6,7 @@ import { message } from "antd";
 import { getSingleItemApi, updateItemApi } from "@/api/items/itemsApi";
 import { useRouter } from "next/navigation";
 
-const UpdateItemForm = () => {
+const UpdateItemForm = ({ itemData }) => {
   const params = useParams().id;
   const router = useRouter();
   const [nameLine1, setNameLine1] = useState("");
@@ -23,7 +23,7 @@ const UpdateItemForm = () => {
 
   useEffect(() => {
     const getItem = async () => {
-      const data = await getSingleItemApi(params);
+      const data = itemData;
       console.log(data);
       setNameLine1(data.item?.nameLine1);
       setNameLine2(data.item?.nameLine2);
@@ -105,6 +105,7 @@ const UpdateItemForm = () => {
     console.log(formData);
     const data = await updateItemApi(params, formData);
     if (data) {
+      console.log(data);
       setLoading(false);
       messageApi.success("Item Updated Successfully");
       setTimeout(() => {

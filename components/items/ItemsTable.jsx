@@ -19,7 +19,7 @@ const pagination = {
   pageSize: 10,
 };
 
-const ItemsTable = () => {
+const ItemsTable = ({ itemsData }) => {
   const router = useRouter();
   const date = useSelector((state) => state.date.date);
   const [searchText, setSearchText] = useState("");
@@ -29,8 +29,7 @@ const ItemsTable = () => {
   const [tempArray, setTemp] = useState([]);
 
   const getItems = async () => {
-    const data = await getItemsApi();
-    console.log(data);
+    const data = itemsData;
     data.items.forEach((item) => {
       const date = new Date(item.createdAt);
       item.createdAt = date.toISOString().split("T")[0];
@@ -48,7 +47,6 @@ const ItemsTable = () => {
       const data = tempArray.filter((item) => {
         return item.createdAt == date;
       });
-      console.log(data);
       setItems(data);
     } else {
       getItems();

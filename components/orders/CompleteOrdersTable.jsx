@@ -5,9 +5,8 @@ import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
-import { getOrdersApi } from "@/api/orders/ordersApi";
 
-const CompleteOrdersTable = ({ order = "placed-orders" }) => {
+const CompleteOrdersTable = ({ completedOrders, order = "placed-orders" }) => {
   const router = useRouter();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -38,7 +37,7 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
   };
 
   const getOrders = async () => {
-    const data = await getOrdersApi();
+    const data = completedOrders;
     const formattedOrders = data?.orders.map((order) => {
       const date = new Date(order?.date);
       let formattedDate = date.toISOString().slice(0, 10);
@@ -246,7 +245,6 @@ const CompleteOrdersTable = ({ order = "placed-orders" }) => {
         onRow={(record, rowIndex) => {
           return {
             onClick: (event) => {
-              // Check if the event was triggered by a checkbox
               if (event.target.type !== "checkbox") {
                 router.push(`${order}/${record?.pid}`);
               }

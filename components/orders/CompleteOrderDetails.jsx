@@ -1,18 +1,17 @@
 "use client";
 import React from "react";
 import { useParams } from "next/navigation";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getSingleOrderApi } from "@/api/orders/ordersApi";
 
-const CompleteOrderDetails = () => {
+const CompleteOrderDetails = (singleOrder) => {
   const [data, setData] = useState([]);
   const id = useParams().id;
 
   useEffect(() => {
     const myorder = async () => {
-      const data = await getSingleOrderApi(id);
-      let orderData = data.order[0];
+      const data = singleOrder;
+      let orderData = data?.singleOrder?.order[0];
 
       let date = new Date(orderData.date);
 
