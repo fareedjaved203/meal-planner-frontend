@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import deleteCookie from "../../lib/deleteCookie";
 import Cookies from "js-cookie";
+import Router from "next/navigation";
 
 const initialState = {
   user: null,

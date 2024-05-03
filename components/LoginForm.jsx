@@ -17,8 +17,10 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
   const login = async () => {
+    if (!password || !email) {
+      return messageApi.error("Please fill all fields");
+    }
     setLoading(true);
-
     try {
       const data = await loginUserApi({ email, password });
       if (data.success) {
@@ -108,6 +110,7 @@ const LoginForm = () => {
               <input
                 type="email"
                 id="email"
+                required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
@@ -142,6 +145,7 @@ const LoginForm = () => {
                 id="password"
                 placeholder="Enter your password"
                 value={password}
+                required
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full pl-2 rounded login-input"
                 style={{

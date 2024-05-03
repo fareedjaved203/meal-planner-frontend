@@ -12,6 +12,8 @@ import {
 } from "recharts";
 import { getOrdersApi } from "@/api/orders/ordersApi";
 import { groupBy, sumBy } from "lodash";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const { TabPane } = Tabs;
 
@@ -51,8 +53,16 @@ const dayNames = [
 ];
 
 const Graph = ({ orderData }) => {
+  const router = useRouter();
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (!token) {
+      router.replace("/login");
+    }
+  }, []);
 
   useEffect(() => {
     const getOrders = async () => {

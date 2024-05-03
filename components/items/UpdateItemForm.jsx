@@ -4,10 +4,11 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { message } from "antd";
 import { getSingleItemApi, updateItemApi } from "@/api/items/itemsApi";
+import { useRouter } from "next/navigation";
 
 const UpdateItemForm = () => {
   const params = useParams().id;
-
+  const router = useRouter();
   const [nameLine1, setNameLine1] = useState("");
   const [nameLine2, setNameLine2] = useState("");
   const [preparationTime, setPreparationTime] = useState("");
@@ -18,6 +19,7 @@ const UpdateItemForm = () => {
   const [ingredients, setIngredients] = useState([{ value: "", input: false }]);
   const [steps, setSteps] = useState([{ value: "", input: false }]);
   const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getItem = async () => {
@@ -83,6 +85,7 @@ const UpdateItemForm = () => {
 
   const addItemHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     let mappedIngredients = ingredients.map((ingredient) => ({
       value: ingredient.value,
     }));
@@ -102,7 +105,11 @@ const UpdateItemForm = () => {
     console.log(formData);
     const data = await updateItemApi(params, formData);
     if (data) {
+      setLoading(false);
       messageApi.success("Item Updated Successfully");
+      setTimeout(() => {
+        router.replace("/items");
+      }, 1000);
     }
     console.log(data);
   };
@@ -353,9 +360,12 @@ const UpdateItemForm = () => {
         <div className="flex justify-center items-center mt-4 p-4 cursor-pointer">
           <button
             type="submit"
-            className="bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold"
+            className={`bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
           >
-            Update Item
+            {loading ? "Updating..." : "Update Item"}
           </button>
         </div>
       </form>

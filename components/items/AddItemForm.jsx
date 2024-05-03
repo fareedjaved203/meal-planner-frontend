@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { message } from "antd";
 import { postItemApi } from "@/api/items/itemsApi";
+import { useRouter } from "next/navigation";
 
 const AddItemForm = () => {
+  const router = useRouter();
   const [nameLine1, setNameLine1] = useState("");
   const [nameLine2, setNameLine2] = useState("");
   const [preparationTime, setPreparationTime] = useState("");
@@ -15,6 +17,7 @@ const AddItemForm = () => {
   const [ingredients, setIngredients] = useState([{ value: "", input: false }]);
   const [steps, setSteps] = useState([{ value: "", input: false }]);
   const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
 
   const addIngredient = () => {
     setIngredients([...ingredients, { value: "", input: false }]);
@@ -58,6 +61,7 @@ const AddItemForm = () => {
 
   const addItemHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     let mappedIngredients = ingredients.map((ingredient) => ({
       value: ingredient.value,
     }));
@@ -76,7 +80,11 @@ const AddItemForm = () => {
     };
     const data = await postItemApi(formData);
     if (data) {
+      setLoading(false);
       messageApi.success("Item Added Successfully");
+      setTimeout(() => {
+        router.replace("/items");
+      }, 1000);
     }
   };
   return (
@@ -326,9 +334,12 @@ const AddItemForm = () => {
         <div className="flex justify-center items-center mt-4 p-4 cursor-pointer">
           <button
             type="submit"
-            className="bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold"
+            className={`bg-purpleText w-full rounded h-15 p-4 mt-4 flex justify-center items-center text-white font-semibold ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
           >
-            Add Item
+            {loading ? "Saving..." : "Add Item"}
           </button>
         </div>
       </form>
