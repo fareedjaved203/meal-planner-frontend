@@ -9,6 +9,8 @@ import { Toaster } from "react-hot-toast";
 import store from "../store/store";
 import { StoreProvider } from "../store/StoreProvider";
 import LoginProtectedRoute from "../hooks/LoginProtectedRoute";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -29,6 +31,12 @@ export const metadata = {
 };
 
 const RootLayout = ({ children, showNavbar = false }) => {
+  const cookieStore = cookies();
+  const user = cookieStore.get("user");
+  // if (user) {
+  //   redirect("/");
+  //   return;
+  // }
   return (
     <html
       lang="en"

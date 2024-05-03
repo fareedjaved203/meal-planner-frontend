@@ -14,6 +14,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { logoutUserApi } from "@/api/auth/authApi";
 import { useRouter } from "next/navigation";
 import deleteCookie from "../../lib/deleteCookie";
+import { deleteUser } from "@/app/actions/cookies";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -135,8 +136,8 @@ const MainLayout = ({ children }) => {
   const logoutHandler = async () => {
     const data = await logoutUserApi();
     if (data.success) {
-      deleteCookie("token");
-      localStorage.removeItem("user");
+      deleteUser("user");
+      // localStorage.removeItem("user");
       messageApi.success(data.message);
       router.push("/login");
     } else {

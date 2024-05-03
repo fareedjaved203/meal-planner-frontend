@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { message } from "antd";
 import { getSingleItemApi, updateItemApi } from "@/api/items/itemsApi";
 import { useRouter } from "next/navigation";
+import action from "@/app/actions/action";
 
 const UpdateItemForm = ({ itemData }) => {
   const params = useParams().id;
@@ -108,6 +109,7 @@ const UpdateItemForm = ({ itemData }) => {
       console.log(data);
       setLoading(false);
       messageApi.success("Item Updated Successfully");
+      action("fetchDashboardData");
       setTimeout(() => {
         router.replace("/items");
       }, 1000);

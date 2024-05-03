@@ -6,11 +6,11 @@ import PlacedOrdersTable from "../components/orders/PlacedOrdersTable";
 import getData from "../lib/getData";
 import { getOrdersApi } from "../api/orders/ordersApi";
 import getOrders from "@/lib/getOrders";
+import { cookies } from "next/headers";
 
 const Home = async () => {
   const data = await getData();
   const completedOrders = await getOrders();
-  console.log("orders: ", JSON.stringify(completedOrders));
   return (
     <RootLayout showNavbar={true}>
       <>

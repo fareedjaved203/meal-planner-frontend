@@ -1,3 +1,4 @@
+import getData from "@/lib/getData";
 import Image from "next/image";
 
 const Summary = async ({ data, completedOrders }) => {
