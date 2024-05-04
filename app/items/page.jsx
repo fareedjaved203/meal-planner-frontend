@@ -5,12 +5,14 @@ import DatePickerButton from "../../components/shared/DatePickerButton";
 import Link from "next/link";
 import getItems from "@/lib/getItems";
 import action from "../actions/action";
+import { revalidatePath } from "next/cache";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 const Items = async () => {
   const itemsData = await getItems();
   action("fetchItemsData");
+  revalidatePath("/items");
   return (
     <RootLayout showNavbar={true}>
       <>

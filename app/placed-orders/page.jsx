@@ -4,14 +4,14 @@ import DatePickerButton from "../../components/shared/DatePickerButton";
 import getData from "../../lib/getData";
 import getOrders from "@/lib/getOrders";
 import action from "../actions/action";
-
-export const runtime = "edge";
+import { revalidatePath } from "next/cache";
 
 const PlacedOrders = async () => {
   const data = await getData();
   action("fetchShopifyData");
   const completedOrders = await getOrders();
   action("fetchOrdersData");
+  revalidatePath("placed-orders");
   return (
     <RootLayout showNavbar={true}>
       <>

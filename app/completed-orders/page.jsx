@@ -3,12 +3,14 @@ import CompleteOrdersTable from "../../components/orders/CompleteOrdersTable";
 import DatePickerButton from "../../components/shared/DatePickerButton";
 import getOrders from "@/lib/getOrders";
 import action from "../actions/action";
+import { revalidatePath } from "next/cache";
 
 export const runtime = "edge";
 
 const CompletedOrders = async () => {
   const completedOrders = await getOrders();
   action("fetchOrdersData");
+  revalidatePath("/completed-orders");
   return (
     <RootLayout showNavbar={true}>
       <>
