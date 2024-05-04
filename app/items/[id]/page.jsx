@@ -4,8 +4,6 @@ import UpdateItemForm from "@/components/items/UpdateItemForm";
 import getSingleItem from "@/lib/getSingleItem";
 import action from "@/app/actions/action";
 
-export const runtime = "edge";
-
 const ItemsId = async (props) => {
   const params = props.params;
   const data = await getSingleItem(params.id);
