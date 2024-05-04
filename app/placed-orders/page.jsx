@@ -7,9 +7,9 @@ import action from "../actions/action";
 
 const PlacedOrders = async () => {
   const data = await getData();
+  action("fetchShopifyData");
   const completedOrders = await getOrders();
   action("fetchOrdersData");
-  action("fetchShopifyData");
   return (
     <RootLayout showNavbar={true}>
       <>

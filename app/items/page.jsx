@@ -4,10 +4,11 @@ import Image from "next/image";
 import DatePickerButton from "../../components/shared/DatePickerButton";
 import Link from "next/link";
 import getItems from "@/lib/getItems";
+import action from "../actions/action";
 
 const Items = async () => {
   const itemsData = await getItems();
-  console.log(itemsData);
+  action("fetchItemsData");
   return (
     <RootLayout showNavbar={true}>
       <>
