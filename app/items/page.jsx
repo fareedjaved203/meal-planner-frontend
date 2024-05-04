@@ -6,6 +6,8 @@ import Link from "next/link";
 import getItems from "@/lib/getItems";
 import action from "../actions/action";
 
+export const runtime = "edge";
+
 const Items = async () => {
   const itemsData = await getItems();
   action("fetchItemsData");
