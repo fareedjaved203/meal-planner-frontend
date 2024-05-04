@@ -11,7 +11,7 @@ const PlacedOrders = async () => {
   action("fetchShopifyData");
   const completedOrders = await getOrders();
   action("fetchOrdersData");
-  revalidatePath("placed-orders");
+  revalidatePath("/placed-orders");
   return (
     <RootLayout showNavbar={true}>
       <>

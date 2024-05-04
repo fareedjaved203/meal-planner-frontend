@@ -5,8 +5,6 @@ import getOrders from "@/lib/getOrders";
 import action from "../actions/action";
 import { revalidatePath } from "next/cache";
 
-export const runtime = "edge";
-
 const CompletedOrders = async () => {
   const completedOrders = await getOrders();
   action("fetchOrdersData");
