@@ -16,19 +16,11 @@ const PlacedOrderId = async () => {
         <div className="bg-white m-4 rounded p-4 pt-1">
           <ShowPredefinedTitle />
           <div className="mr-4 pr-4 mb-4">
-            <Accordion
-              orders={data}
-              predefined={true}
-              predefinedData={predefinedData}
-            />
+            <Accordion orders={data} predefined={true} />
           </div>
           <ShowCustomTitle />
           <div className="mr-4 pr-4 mb-4">
-            <Accordion
-              orders={data}
-              predefined={false}
-              predefinedData={predefinedData}
-            />
+            <Accordion orders={data} predefined={false} />
           </div>
         </div>
       </>
