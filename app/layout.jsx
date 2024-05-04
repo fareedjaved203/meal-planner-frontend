@@ -6,11 +6,9 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import MainLayout from "../components/shared/MainLayout";
 import PropTypes from "prop-types";
 import { Toaster } from "react-hot-toast";
-import store from "../store/store";
 import { StoreProvider } from "../store/StoreProvider";
 import LoginProtectedRoute from "../hooks/LoginProtectedRoute";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -44,16 +42,14 @@ const RootLayout = ({ children, showNavbar = false }) => {
     >
       <body>
         <StoreProvider>
-          <LoginProtectedRoute>
-            <AntdRegistry>
-              {showNavbar ? (
-                <MainLayout>{children} </MainLayout>
-              ) : (
-                <>{children}</>
-              )}
-              <Toaster />
-            </AntdRegistry>
-          </LoginProtectedRoute>
+          <AntdRegistry>
+            {showNavbar ? (
+              <MainLayout>{children} </MainLayout>
+            ) : (
+              <>{children}</>
+            )}
+            <Toaster />
+          </AntdRegistry>
         </StoreProvider>
       </body>
     </html>

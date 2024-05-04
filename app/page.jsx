@@ -4,9 +4,7 @@ import GraphAndStats from "../components/dashboard/GraphAndStats";
 import Link from "next/link";
 import PlacedOrdersTable from "../components/orders/PlacedOrdersTable";
 import getData from "../lib/getData";
-import { getOrdersApi } from "../api/orders/ordersApi";
 import getOrders from "@/lib/getOrders";
-import { cookies } from "next/headers";
 
 const Home = async () => {
   const data = await getData();

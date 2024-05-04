@@ -6,7 +6,6 @@ import { loginUserApi } from "@/api/auth/authApi";
 import { useDispatch } from "react-redux";
 import { onLogin } from "../store/slices/userSlice";
 import { message } from "antd";
-import setCookie from "../lib/setCookie";
 import { createUser } from "@/app/actions/cookies";
 
 const LoginForm = () => {
@@ -25,19 +24,19 @@ const LoginForm = () => {
     try {
       const data = await loginUserApi({ email, password });
       if (data.success) {
-        console.log(data);
         const user = {
           ...data.user,
           token: data.accessToken,
         };
         createUser(user);
-        router.push("/");
         messageApi.success(data?.message);
         dispatch(onLogin(data));
+        setTimeout(() => {
+          router.push("/");
+        }, 500);
       } else {
         messageApi.error(data?.message);
       }
-      console.log(data);
     } catch (error) {
       messageApi.error("Incorrect details");
     }

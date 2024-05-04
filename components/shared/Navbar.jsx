@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
+import { getUser } from "@/app/actions/cookies";
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
@@ -29,15 +30,10 @@ const Navbar = () => {
       });
 
       setCurrentTime(`${formattedTime} ${meridian} ${formattedDate}`);
-    }, 1000); // Update time every second
+    }, 1000);
 
-    // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(timerId);
   }, []);
-
-  const imageSrc = ({ src }) => {
-    return `https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg`;
-  };
 
   return (
     <nav className="flex justify-between items-center bg-white text-black pl-4 pr-2 pt-1 pb-2 ml-16 leading-snug font-mulish">
