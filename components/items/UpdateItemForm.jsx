@@ -109,7 +109,7 @@ const UpdateItemForm = ({ itemData }) => {
       console.log(data);
       setLoading(false);
       messageApi.success("Item Updated Successfully");
-      action("fetchDashboardData");
+      action("fetchItemsData");
       setTimeout(() => {
         router.replace("/items");
       }, 1000);

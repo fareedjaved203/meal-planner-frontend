@@ -1,9 +1,11 @@
-import getCookie from "../lib/getCookie";
+import { getUser } from "@/app/actions/cookies";
 import { BASE_URL } from "./baseUrl";
 
 const apiService = {
   async request(url, method, data) {
-    const authToken = getCookie("token");
+    const user = await getUser("user");
+    const authToken = user;
+    console.log(authToken);
     const headers = {
       credentials: "include",
       Accept: "application/json",
@@ -11,7 +13,7 @@ const apiService = {
     };
 
     if (authToken) {
-      headers["Authorization"] = `Bearer ${authToken}`;
+      headers["Authorization"] = `Bearer ${authToken?.token}`;
     }
 
     let options = {

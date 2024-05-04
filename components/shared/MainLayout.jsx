@@ -134,19 +134,16 @@ const MainLayout = ({ children }) => {
   );
 
   const logoutHandler = async () => {
-    await deleteUser("user");
-    messageApi.success("User logged out successfully");
-    setTimeout(() => {
-      router.push("/login");
-    }, 500);
-    // const data = await logoutUserApi();
-    // if (data.success) {
-    //   await deleteUser("user");
-    //   messageApi.success(data.message);
-    //   router.push("/login");
-    // } else {
-    //   messageApi.error("Something went wrong");
-    // }
+    const data = await logoutUserApi();
+    if (data.success) {
+      await deleteUser("user");
+      messageApi.success(data.message);
+      setTimeout(() => {
+        router.push("/login");
+      }, 500);
+    } else {
+      messageApi.error("Something went wrong");
+    }
   };
 
   const logout = [

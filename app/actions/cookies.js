@@ -3,7 +3,11 @@
 import { cookies } from "next/headers";
 
 export async function createUser(data) {
-  cookies().set("user", JSON.stringify(data), { secure: true });
+  const oneDay = 24 * 60 * 60 * 1000;
+  cookies().set("user", JSON.stringify(data), {
+    expires: new Date(Date.now() + oneDay),
+    secure: true,
+  });
 }
 
 export async function deleteUser() {

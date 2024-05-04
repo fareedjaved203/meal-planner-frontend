@@ -4,6 +4,7 @@ import Image from "next/image";
 import { message } from "antd";
 import { postItemApi } from "@/api/items/itemsApi";
 import { useRouter } from "next/navigation";
+import action from "@/app/actions/action";
 
 const AddItemForm = () => {
   const router = useRouter();
@@ -82,6 +83,7 @@ const AddItemForm = () => {
     if (data) {
       setLoading(false);
       messageApi.success("Item Added Successfully");
+      action("fetchItemsData");
       setTimeout(() => {
         router.replace("/items");
       }, 1000);
