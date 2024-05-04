@@ -5,6 +5,8 @@ import getData from "../../lib/getData";
 import getOrders from "@/lib/getOrders";
 import action from "../actions/action";
 
+export const runtime = "edge";
+
 const PlacedOrders = async () => {
   const data = await getData();
   action("fetchShopifyData");

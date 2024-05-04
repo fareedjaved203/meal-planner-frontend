@@ -6,6 +6,8 @@ import ShowCustomTitle from "@/components/orders/ShowCustomTitle";
 import ShowPredefinedTitle from "@/components/orders/ShowPredefinedtitle";
 import action from "@/app/actions/action";
 
+export const runtime = "edge";
+
 const PlacedOrderId = async () => {
   const data = await getData();
   action("fetchShopifyData");

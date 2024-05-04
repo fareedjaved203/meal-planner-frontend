@@ -4,6 +4,8 @@ import DatePickerButton from "../../components/shared/DatePickerButton";
 import getOrders from "@/lib/getOrders";
 import action from "../actions/action";
 
+export const runtime = "edge";
+
 const CompletedOrders = async () => {
   const completedOrders = await getOrders();
   action("fetchOrdersData");
