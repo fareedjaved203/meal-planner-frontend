@@ -34,7 +34,7 @@ const pagination = {
       {range[0]}-{range[1]} of items
     </span>
   ),
-  pageSize: 10,
+  pageSize: 2,
 };
 
 const DashboardTable = () => {
@@ -268,7 +268,6 @@ const DashboardTable = () => {
       }}
       columns={columns}
       dataSource={[...list]}
-      pagination={pagination}
     />
   );
 };

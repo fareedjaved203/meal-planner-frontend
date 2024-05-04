@@ -2,11 +2,14 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
+import { format } from "date-fns";
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
   const username = user?.name;
-  const [currentTime, setCurrentTime] = useState("");
+  const [currentTime, setCurrentTime] = useState(
+    format(new Date(), "h:mm aa d MMM yyyy")
+  );
 
   useEffect(() => {
     const timerId = setInterval(() => {

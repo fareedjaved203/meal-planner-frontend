@@ -58,13 +58,6 @@ const Graph = ({ orderData }) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const token = Cookies.get("token");
-    if (!token) {
-      router.replace("/login");
-    }
-  }, []);
-
-  useEffect(() => {
     const getOrders = async () => {
       const data = await getOrdersApi();
       data.orders.forEach((order) => {

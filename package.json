@@ -13,6 +13,7 @@
     "@fontsource/mulish": "^5.0.17",
     "@reduxjs/toolkit": "^2.2.2",
     "antd": "^5.15.1",
+    "date-fns": "^3.6.0",
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
     "js-cookie": "^3.0.5",

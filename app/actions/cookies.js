@@ -10,3 +10,9 @@ export async function deleteUser() {
   cookies().delete("user");
   console.log("helloo??");
 }
+
+export async function getUser() {
+  const data = cookies().get("user");
+  const user = JSON.parse(data.value);
+  return user;
+}

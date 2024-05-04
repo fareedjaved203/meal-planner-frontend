@@ -42,7 +42,12 @@ const Home = async () => {
               </Link>
             </div>
             <div className="p-4">
-              <PlacedOrdersTable data={data} />
+              <PlacedOrdersTable
+                data={data}
+                completeOrders={completedOrders}
+                size={2}
+                showPagination={false}
+              />
             </div>
           </div>
         </div>

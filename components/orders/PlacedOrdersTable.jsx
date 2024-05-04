@@ -8,7 +8,12 @@ import getData from "../../lib/getData";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdersApi, postOrderApi } from "@/api/orders/ordersApi";
 
-const PlacedOrdersTable = ({ data, completeOrders }) => {
+const PlacedOrdersTable = ({
+  data,
+  completeOrders,
+  size = 10,
+  showPagination = true,
+}) => {
   const router = useRouter();
   const [mappedOrders, setMappedOrders] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -72,7 +77,6 @@ const PlacedOrdersTable = ({ data, completeOrders }) => {
 
   const postOrder = async (item) => {
     const data = await postOrderApi(item);
-    console.log(data);
   };
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -92,7 +96,7 @@ const PlacedOrdersTable = ({ data, completeOrders }) => {
         </span>
       </div>
     ),
-    pageSize: 10,
+    pageSize: size,
   };
 
   const handleReset = (clearFilters) => {
@@ -295,7 +299,7 @@ const PlacedOrdersTable = ({ data, completeOrders }) => {
           };
         }}
         dataSource={[...mappedOrders]}
-        pagination={pagination}
+        pagination={showPagination ? pagination : false}
         bordered
       />
     </>
