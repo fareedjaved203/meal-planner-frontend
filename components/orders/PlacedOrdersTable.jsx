@@ -4,6 +4,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox, message } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 const PlacedOrdersTable = ({
   data,
