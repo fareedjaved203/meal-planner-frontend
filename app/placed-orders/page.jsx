@@ -3,10 +3,13 @@ import PlacedOrdersTable from "../../components/orders/PlacedOrdersTable";
 import DatePickerButton from "../../components/shared/DatePickerButton";
 import getData from "../../lib/getData";
 import getOrders from "@/lib/getOrders";
+import action from "../actions/action";
 
 const PlacedOrders = async () => {
   const data = await getData();
   const completedOrders = await getOrders();
+  action("fetchOrdersData");
+  action("fetchShopifyData");
   return (
     <RootLayout showNavbar={true}>
       <>

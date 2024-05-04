@@ -5,7 +5,6 @@ const apiService = {
   async request(url, method, data) {
     const user = await getUser("user");
     const authToken = user;
-    console.log(authToken);
     const headers = {
       credentials: "include",
       Accept: "application/json",

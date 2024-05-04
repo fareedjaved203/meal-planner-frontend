@@ -4,8 +4,6 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { useParams } from "next/navigation";
-import { getItemsApi } from "@/api/items/itemsApi";
-import { useSelector } from "react-redux";
 
 const pagination = {
   showTotal: (total, range) => (
@@ -20,7 +18,6 @@ const pagination = {
 };
 
 const CustomOrderTable = (orders = []) => {
-  console.log(orders);
   const params = useParams().id;
   const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState("");

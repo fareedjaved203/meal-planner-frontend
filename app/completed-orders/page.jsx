@@ -2,9 +2,11 @@ import RootLayout from "../layout";
 import CompleteOrdersTable from "../../components/orders/CompleteOrdersTable";
 import DatePickerButton from "../../components/shared/DatePickerButton";
 import getOrders from "@/lib/getOrders";
+import action from "../actions/action";
 
 const CompletedOrders = async () => {
   const completedOrders = await getOrders();
+  action("fetchOrdersData");
   return (
     <RootLayout showNavbar={true}>
       <>

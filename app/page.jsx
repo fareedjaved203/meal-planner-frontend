@@ -5,10 +5,13 @@ import Link from "next/link";
 import PlacedOrdersTable from "../components/orders/PlacedOrdersTable";
 import getData from "../lib/getData";
 import getOrders from "@/lib/getOrders";
+import action from "./actions/action";
 
 const Home = async () => {
   const data = await getData();
   const completedOrders = await getOrders();
+  action("fetchShopifyData");
+  action("fetchOrdersData");
   return (
     <RootLayout showNavbar={true}>
       <>

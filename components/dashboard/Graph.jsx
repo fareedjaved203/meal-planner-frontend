@@ -52,14 +52,14 @@ const dayNames = [
   "Saturday",
 ];
 
-const Graph = ({ orderData }) => {
+const Graph = ({ orderData, completedOrders }) => {
   const router = useRouter();
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const getOrders = async () => {
-      const data = await getOrdersApi();
+    const getOrders = () => {
+      const data = completedOrders;
       data.orders.forEach((order) => {
         let date = new Date(order.createdAt);
         order.createdAt = date.toISOString().split("T")[0];

@@ -11,13 +11,13 @@ const ChildComponent = ({ children }) => {
 
   useEffect(() => {
     dispatch(onReload());
-    const orders = async () => {
-      const data = await getOrdersApi();
-      if (data) {
-        dispatch(onSave(data.orders));
-      }
-    };
-    orders();
+    // const orders = async () => {
+    //   const data = await getOrdersApi();
+    //   if (data) {
+    //     dispatch(onSave(data.orders));
+    //   }
+    // };
+    // orders();
   }, []);
 
   return <>{children}</>;
