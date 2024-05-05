@@ -2,8 +2,10 @@
 import { postPredefinedApi } from "@/api/predefined/predefinedApi";
 import React, { useState } from "react";
 import { message } from "antd";
+import { useRouter } from "next/navigation";
 
 const ApplyItemButton = () => {
+  const router = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, isLoading] = useState(false);
 
@@ -22,6 +24,9 @@ const ApplyItemButton = () => {
       localStorage.removeItem("rows");
       isLoading(false);
       messageApi.success(postItem?.message);
+      setTimeout(() => {
+        router.back();
+      }, 1000);
     } else {
       isLoading(false);
       messageApi.error(postItem?.message);
