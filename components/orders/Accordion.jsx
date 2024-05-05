@@ -112,7 +112,7 @@ function Accordion({ predefined = false, orders = [] }) {
                   Quantity
                 </span>{" "}
                 <span style={{ fontWeight: "400", fontSize: "18px" }}>
-                  {selectedOrders.length}
+                  {selectedOrders.length > 0 ? selectedOrders.length : ""}
                 </span>
               </div>
               <div
