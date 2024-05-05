@@ -19,7 +19,7 @@ const pagination = {
   pageSize: 10,
 };
 
-const SelectOrdersTable = (orders = []) => {
+const SelectOrdersTable = (itemsData) => {
   const [list, setList] = useState([]);
   const [tempArray, setTemp] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -28,7 +28,7 @@ const SelectOrdersTable = (orders = []) => {
   const date = useSelector((state) => state.date.date);
 
   const getItems = async () => {
-    const data = await getItemsApi();
+    const data = itemsData;
     console.log(data);
     data.items.forEach((item) => {
       const date = new Date(item.createdAt);

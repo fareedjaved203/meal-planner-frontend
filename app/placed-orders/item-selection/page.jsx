@@ -5,8 +5,12 @@ import DatePickerButton from "../../../components/shared/DatePickerButton";
 import BackButton from "../../../components/shared/BackButton";
 import Link from "next/link";
 import ApplyItemButton from "@/components/orders/ApplyItemButton";
+import getItems from "@/lib/getItems";
+import action from "@/app/actions/action";
 
-const PlacedOrders = () => {
+const PlacedOrders = async () => {
+  const itemsData = await getItems();
+  action("fetchItemsData");
   return (
     <RootLayout showNavbar={true}>
       <>
@@ -30,7 +34,7 @@ const PlacedOrders = () => {
             </div>
           </div>
           <div className="m-4">
-            <SelectOrdersTable />
+            <SelectOrdersTable itemsData={itemsData} />
           </div>
         </div>
       </>
