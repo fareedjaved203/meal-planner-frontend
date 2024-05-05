@@ -29,13 +29,12 @@ const SelectOrdersTable = (itemsData) => {
 
   const getItems = async () => {
     const data = itemsData;
-    console.log(data);
-    data.items.forEach((item) => {
+    data?.itemsData?.items?.forEach((item) => {
       const date = new Date(item.createdAt);
       item.createdAt = date.toISOString().split("T")[0];
     });
-    setList(data.items);
-    setTemp(data.items);
+    setList(data?.itemsData?.items);
+    setTemp(data?.itemsData?.items);
   };
 
   useEffect(() => {
