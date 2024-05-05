@@ -5,6 +5,7 @@ import { Button, Input, Space, Table, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import action from "@/app/actions/action";
 
 const CompleteOrdersTable = ({ completedOrders, order = "placed-orders" }) => {
   const router = useRouter();
@@ -38,6 +39,7 @@ const CompleteOrdersTable = ({ completedOrders, order = "placed-orders" }) => {
 
   const getOrders = async () => {
     const data = completedOrders;
+    action("fetchOrdersData");
     const formattedOrders = data?.orders.map((order) => {
       const date = new Date(order?.date);
       let formattedDate = date.toISOString().slice(0, 10);

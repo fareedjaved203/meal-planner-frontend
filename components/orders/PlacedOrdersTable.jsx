@@ -6,6 +6,7 @@ import Highlighter from "react-highlight-words";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { postOrderApi } from "@/api/orders/ordersApi";
+import action from "@/app/actions/action";
 
 const PlacedOrdersTable = ({
   data,
@@ -24,7 +25,8 @@ const PlacedOrdersTable = ({
 
   const getOrders = async () => {
     const completedOrders = completeOrders;
-
+    action("fetchOrdersData");
+    action("fetchShopifyData");
     const filteredData = data.orders?.map((order) => {
       let type;
       const hasProperties = order.line_items?.some(
